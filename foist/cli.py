@@ -65,6 +65,7 @@ def process_metadata(directory):
     count = 0
     for d in dirnames:
         thesis = ThesisItem(d, directory)
+        thesis.generate_item_metadata()
         thesis.add_text_errors(text_encoding_errors)
         thesis.create_item_turtle_statements()
         thesis.create_file_sparql_update('.pdf')

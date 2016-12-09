@@ -5,8 +5,10 @@ import logging
 import os
 import xml.etree.ElementTree as ET
 
+import rdflib
 import requests
 
+from foist.namespaces import BIBO, DCTERMS, LOCAL, MSL, PCDM
 
 log = logging.getLogger(__name__)
 ns = {'mets': 'http://www.loc.gov/METS/',
@@ -23,125 +25,97 @@ class ThesisItem(object):
         mets = os.path.join(location, name, name + '.xml')
         tree = ET.parse(mets)
         self.root = tree.getroot()
-        self.metadata = {
-            'abstract': {'pred': 'dcterms:abstract',
-                         'obj': self.get_field('abstract', 'abstract')},
-            'advisor': {'pred': 'msl:reviewedBy',
-                        'obj': self.get_field('advisor',
-                                              ('name/*[mods:roleTerm='
-                                               '"advisor"]/../mods:namePart')
-                                              )},
-            'author': {'pred': 'dcterms:creator',
-                       'obj': self.get_field('author',
-                                             ('name/*[mods:roleTerm='
-                                              '"author"]/../mods:namePart'))},
-            'copyright': {'pred': 'dcterms:dateCopyrighted',
-                          'obj': self.get_field('copyright',
-                                                'originInfo/mods:copyrightDate'
-                                                )},
-            'department': {'pred': 'msl:associatedDepartment',
-                           'obj': self.get_field('department',
-                                                 ('subject/mods:topic'))},
-            'handle': {'pred': 'bibo:handle',
-                       'obj': self.get_field('handle',
-                                             'identifier[@type="uri"]', 'uri'
-                                             )},
-            'item_type': {'pred': 'dcterms:type',
-                          'obj': 'bibo:Thesis'},
-            'publication_date': {'pred': 'dcterms:dateIssued',
-                                 'obj': self.get_field('publication_date',
-                                                       ('originInfo/'
-                                                        'mods:dateIssued'))},
-            'publisher': {'pred': 'dcterms:publisher',
-                          'obj': '"Massachusetts Institute of Technology"'},
-            'rights': {'pred': 'dcterms:rights',
-                       'obj': ('"M.I.T. theses are protected by copyright. '
-                               'They may be viewed from this source for any '
-                               'purpose, but reproduction or distribution in '
-                               'any format is prohibited without written '
-                               'permission. See provided URL for inquiries '
-                               'about permission."')},
-            'title': {'pred': 'dcterms:title',
-                      'obj': self.get_field('title', 'titleInfo/mods:title')}
-            }
+        self.metadata = rdflib.Graph()
+        self.s = rdflib.URIRef('')
+        self.metadata.bind('bibo', BIBO)
+        self.metadata.bind('dcterms', DCTERMS)
+        self.metadata.bind('local', LOCAL)
+        self.metadata.bind('msl', MSL)
+        self.metadata.bind('pcdm', PCDM)
+
+    def generate_item_metadata(self):
+        self.metadata.add((self.s, DCTERMS.abstract,
+                           self.get_field('abstract', 'abstract')))
+        self.metadata.add((self.s, MSL.reviewedBy,
+                           self.get_field('advisor', ('name/*[mods:roleTerm='
+                                          '"advisor"]/../mods:namePart'))))
+        self.metadata.add((self.s, DCTERMS.creator,
+                           self.get_field('author', ('name/*[mods:roleTerm='
+                                          '"author"]/../mods:namePart'))))
+        self.metadata.add((self.s, DCTERMS.dateCopyrighted,
+                           self.get_field('copyright',
+                                          'originInfo/mods:copyrightDate')))
+        self.metadata.add((self.s, MSL['associatedDepartment'],
+                           self.get_field('department', 'subject/mods:topic')))
+        self.metadata.add((self.s, BIBO.handle,
+                           self.get_field('handle', 'identifier[@type="uri"]',
+                                          'uri')))
+        self.metadata.add((self.s, DCTERMS.type, BIBO.thesis))
+        self.metadata.add((self.s, DCTERMS.dateIssued,
+                           self.get_field('publication_date',
+                                          'originInfo/mods:dateIssued')))
+        self.metadata.add((self.s, DCTERMS.publisher,
+                           rdflib.Literal(('Massachusetts Institute of'
+                                           'Technology'))))
+        self.metadata.add((self.s, DCTERMS.rights,
+                           rdflib.Literal(('M.I.T. theses are protected by '
+                                           'copyright. They may be viewed from'
+                                           ' this source for any purpose, but '
+                                           'reproduction or distribution in '
+                                           'any format is prohibited without '
+                                           'written permission. See provided '
+                                           'URL for inquiries about '
+                                           'permission.'))))
+        self.metadata.add((self.s, DCTERMS.title,
+                           self.get_field('title', 'titleInfo/mods:title')))
 
     def create_item_turtle_statements(self):
         turtle_file = os.path.join(self.location, self.name,
                                    self.name + '.ttl')
         with open(turtle_file, 'wb') as f:
-            f.write(('@prefix bibo: <http://purl.org/ontology/bibo/>\n')
-                    .encode('utf-8'))
-            f.write(('@prefix dcterms: <http://purl.org/dc/terms/>\n')
-                    .encode('utf-8'))
-            f.write(('@prefix local: <http://example.com/>\n')
-                    .encode('utf-8'))
-            f.write(('@prefix msl: <http://purl.org/montana-state/library/>\n')
-                    .encode('utf-8'))
-            f.write(('@prefix pcdm: <http://pcdm.org/models#>\n')
-                    .encode('utf-8'))
-            f.write(('\n<>').encode('utf-8'))
-            for m in self.metadata:
-                f.write(('\n\t' + self.metadata[m]['pred'] + ' ' +
-                        self.metadata[m]['obj'] + ' ;').encode('utf-8'))
-            f.write(('\n\ta pcdm:Object .').encode('utf-8'))
+            f.write(self.metadata.serialize(format='turtle'))
 
     def create_file_sparql_update(self, file_ext):
         sparql_file = os.path.join(self.location, self.name,
                                    self.name + file_ext + '.ru')
+        lang = self.get_field('language', 'language/mods:languageTerm')
+        query = ('PREFIX dcterms: <http://purl.org/dc/terms/> PREFIX pcdm: '
+                 '<http://pcdm.org/models#> INSERT { <> a pcdm:File ; '
+                 'dcterms:language "' + lang + '"')
+        if file_ext == '.pdf':
+            pages = self.get_field('pages', 'physicalDescription/mods:extent')
+            query += ' ; dcterms:extent "' + pages + '"'
+        query += ' . } WHERE { }'
         with open(sparql_file, 'wb') as f:
-            f.write(('PREFIX dcterms: <http://purl.org/dc/terms/>\n')
-                    .encode('utf-8'))
-            f.write(('PREFIX pcdm: <http://pcdm.org/models#>\n')
-                    .encode('utf-8'))
-            f.write(('INSERT {').encode('utf-8'))
-            f.write(('\n\t<>' + ' dcterms:language ' +
-                    self.get_field('language', 'language/mods:languageTerm') +
-                    ' ;').encode('utf-8'))
-            if file_ext == '.pdf':
-                f.write(('\n\t\t' + 'dcterms:extent ' +
-                         self.get_field('pages',
-                                        'physicalDescription/mods:extent') +
-                         ' ;').encode('utf-8'))
-            f.write(('\n\t\ta pcdm:File .').encode('utf-8'))
-            f.write(('\n} WHERE {\n}').encode('utf-8'))
+            f.write(query.encode('utf-8'))
 
     def get_field(self, field, search_string, t='string'):
         base = './mets:dmdSec/*/*/*/mods:'
         try:
             result = self.root.find(base + search_string, ns).text
             if t == 'string':
-                return '"' + result.replace('"', "'") + '"'
+                return rdflib.Literal(result.replace('"', "'"))
             elif t == 'uri':
-                return '<' + result + '>'
+                return rdflib.URIRef(result)
         except AttributeError as e:
             log.warning(('Error parsing ' + field +
                          ' field for item ' + self.name))
-            return '"None"'
+            return rdflib.Literal('None')
 
     def add_text_errors(self, text_errors):
         if self.name in text_errors:
             errors = text_errors[self.name]
-            if errors['PDFBox err'] != '0':
-                self.metadata['no_full_text'] = {'pred': 'local:no_full_text',
-                                                 'obj': '"True"'}
-            elif errors['No new text'] != '0':
-                self.metadata['no_full_text'] = {'pred': 'local:no_full_text',
-                                                 'obj': '"True"'}
-            elif errors['No old text'] != '0':
-                self.metadata['no_full_text'] = {'pred': 'local:no_full_text',
-                                                 'obj': '"True"'}
-            elif errors['Encoded'] != '0':
-                self.metadata['no_full_text'] = {'pred': 'local:no_full_text',
-                                                 'obj': '"True"'}
+            if (errors['PDFBox err'] != '0' or
+                (errors['No new text'] != '0' and ['No old text'] != '0') or
+                    errors['Encoded'] != '0' or errors['Hex strings'] != '0'):
+                self.metadata.add((self.s, LOCAL.no_full_text,
+                                   rdflib.Literal('True')))
             if errors['Ligatures'] != '0':
-                self.metadata['ligatures'] = {'pred': 'local:ligature_errors',
-                                              'obj': '"True"'}
+                self.metadata.add((self.s, LOCAL.ligature_errors,
+                                   rdflib.Literal('True')))
             if errors['Line ends'] != '0':
-                self.metadata['line_ends'] = {'pred': 'local:line_ends',
-                                              'obj': '"True"'}
-            if errors['Hex strings'] != '0':
-                self.metadata['no_full_text'] = {'pred': 'local:no_full_text',
-                                                 'obj': '"True"'}
+                self.metadata.add((self.s, LOCAL.line_ends,
+                                   rdflib.Literal('True')))
 
 
 def parse_text_encoding_errors(tsv_file):
@@ -206,25 +180,16 @@ def create_pcdm_relationships(transaction, item):
     '''
     uri = transaction + item
     headers = {'Content-Type': 'application/sparql-update'}
-    data = '''
-    PREFIX pcdm: <http://pcdm.org/models#>
-    INSERT {
-        <> pcdm:hasMember <''' + uri + '''> .
-    } WHERE {
-    }'''
-    r = requests.patch(transaction, headers=headers, data=data)
+    query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
+             'pcdm:hasMember <' + uri + '> . } WHERE { }')
+    r = requests.patch(transaction, headers=headers, data=query)
     log.info(('%s PCDM collection membership created: %s') %
              (r, item))
     pdf = uri + '/' + item + '.pdf'
     text = uri + '/' + item + '.txt'
-    data = '''
-    PREFIX pcdm: <http://pcdm.org/models#>
-    INSERT {
-        <> pcdm:hasFile <''' + pdf + '''> .
-        <> pcdm:hasFile <''' + text + '''> .
-    } WHERE {
-    }'''
-    r = requests.patch(uri, headers=headers, data=data)
+    query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> pcdm:hasFile '
+             '<' + pdf + '> ; pcdm:hasFile <' + text + '> . } WHERE { }')
+    r = requests.patch(uri, headers=headers, data=query)
     log.info(('%s PCDM file memberships created: %s') %
              (r, item))
 

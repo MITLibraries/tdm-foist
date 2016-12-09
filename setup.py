@@ -30,6 +30,7 @@ setup(
     packages=find_packages(exclude=['tests']),
     install_requires=[
         'click',
+        'rdflib',
         'requests',
     ],
     entry_points={
