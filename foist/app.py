@@ -19,10 +19,9 @@ class ThesisItem(object):
     '''A thesis object representing a single thesis intellectual entity with
     all its associated metadata.
     '''
-    def __init__(self, name, location):
+    def __init__(self, name, output_location, mets):
         self.name = name
-        self.location = location
-        mets = os.path.join(location, name, name + '.xml')
+        self.output_location = output_location
         tree = ET.parse(mets)
         self.root = tree.getroot()
         self.metadata = rdflib.Graph()
@@ -45,7 +44,7 @@ class ThesisItem(object):
         self.metadata.add((self.s, DCTERMS.dateCopyrighted,
                            self.get_field('copyright',
                                           'originInfo/mods:copyrightDate')))
-        self.metadata.add((self.s, MSL['associatedDepartment'],
+        self.metadata.add((self.s, MSL.associatedDepartment,
                            self.get_field('department', 'subject/mods:topic')))
         self.metadata.add((self.s, BIBO.handle,
                            self.get_field('handle', 'identifier[@type="uri"]',
@@ -70,13 +69,13 @@ class ThesisItem(object):
                            self.get_field('title', 'titleInfo/mods:title')))
 
     def create_item_turtle_statements(self):
-        turtle_file = os.path.join(self.location, self.name,
+        turtle_file = os.path.join(self.output_location, self.name,
                                    self.name + '.ttl')
         with open(turtle_file, 'wb') as f:
             f.write(self.metadata.serialize(format='turtle'))
 
     def create_file_sparql_update(self, file_ext):
-        sparql_file = os.path.join(self.location, self.name,
+        sparql_file = os.path.join(self.output_location, self.name,
                                    self.name + file_ext + '.ru')
         lang = self.get_field('language', 'language/mods:languageTerm')
         query = ('PREFIX dcterms: <http://purl.org/dc/terms/> PREFIX pcdm: '
@@ -170,9 +169,11 @@ def add_file_metadata(transaction, item, ext, file_path):
         r = requests.patch(uri, headers=headers, data=data)
     if r.status_code >= 200 and r.status_code < 300:
         log.info(('%s File metadata updated: ' + item + ext) % (r))
+        return 'Success'
     else:
         log.error(('%s %s File metadata NOT updated: ' + item + ext)
                   % (r, r.text))
+        return 'Failure'
 
 
 def create_pcdm_relationships(transaction, item):
@@ -183,15 +184,25 @@ def create_pcdm_relationships(transaction, item):
     query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
              'pcdm:hasMember <' + uri + '> . } WHERE { }')
     r = requests.patch(transaction, headers=headers, data=query)
-    log.info(('%s PCDM collection membership created: %s') %
-             (r, item))
+    if r.status_code >= 200 and r.status_code < 300:
+        log.info(('%s PCDM collection membership created: %s') %
+                 (r, item))
+    else:
+        log.error(('%s PCDM collection membership NOT created: %s') %
+                  (r, item))
     pdf = uri + '/' + item + '.pdf'
     text = uri + '/' + item + '.txt'
     query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> pcdm:hasFile '
              '<' + pdf + '> ; pcdm:hasFile <' + text + '> . } WHERE { }')
     r = requests.patch(uri, headers=headers, data=query)
-    log.info(('%s PCDM file memberships created: %s') %
-             (r, item))
+    if r.status_code >= 200 and r.status_code < 300:
+        log.info(('%s PCDM file memberships created: %s') %
+                 (r, item))
+        return 'Success'
+    else:
+        log.error(('%s PCDM file memberships NOT created: %s') %
+                  (r, item))
+        return 'Failure'
 
 
 def start_transaction(fedora_uri):
@@ -212,5 +223,7 @@ def commit_transaction(location):
     r = requests.post(uri)
     if r.status_code == 204:
         log.info('%s Transaction committed.' % (r))
+        return True
     else:
         log.error('% Transaction failed.' % (r))
+        return False
