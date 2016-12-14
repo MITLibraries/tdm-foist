@@ -50,28 +50,39 @@ def main():
 
 
 @main.command()
-@click.argument('directory', type=click.Path(exists=True, file_okay=False,
-                                             resolve_path=True))
-def process_metadata(directory):
+@click.argument('input_directory', type=click.Path(exists=True,
+                                                   file_okay=False,
+                                                   resolve_path=True))
+@click.option('-o', '--output_directory', default='',
+              type=click.Path(exists=False, file_okay=False,
+                              resolve_path=False),
+              help=('Output directory for thesis metadata files. Default is '
+                    'same as input directory.'))
+def process_metadata(input_directory, output_directory):
     '''Parse metadata for all thesis items in a directory.
 
-    This script traverses the given DIRECTORY of thesis files and for each
-    thesis creates a turtle file of metadata statements and SPARQL update
-    files for each file representation of the thesis.
+    This script traverses the given INPUT_DIRECTORY of thesis files and for
+    each thesis creates a turtle file of metadata statements and SPARQL update
+    files for each file representation of the thesis. These get stored in the
+    OUTPUT_DIRECTORY, which if not specified defaults to the INPUT_DIRECTORY.
     '''
-    error_file = glob.glob(os.path.join(directory, '*.tab'))[0]
+    if output_directory == '':
+        output_directory = input_directory
+    error_file = glob.glob(os.path.join(input_directory, '*.tab'))[0]
     text_encoding_errors = parse_text_encoding_errors(error_file)
-    dirnames = next(os.walk(os.path.join(directory, '.')))[1]
+    dirnames = next(os.walk(os.path.join(input_directory, '.')))[1]
     count = 0
     for d in dirnames:
-        thesis = ThesisItem(d, directory)
+        mets = os.path.join(input_directory, d, d + '.xml')
+        thesis = ThesisItem(d, output_directory, mets)
+        thesis.generate_item_metadata()
         thesis.add_text_errors(text_encoding_errors)
         thesis.create_item_turtle_statements()
         thesis.create_file_sparql_update('.pdf')
         thesis.create_file_sparql_update('-new.txt')
         count += 1
     logger.info('TOTAL: %s theses processed in folder %s' % (str(count),
-                                                             directory))
+                                                             input_directory))
 
 
 @main.command()
@@ -115,7 +126,7 @@ def upload_theses(directory, fedora_uri):
                 thesis_count += 1
             commit_transaction(t)
         except FileNotFoundError as e:
-            log.error(e)
+            logger.error(e)
             error_count += 1
     logger.info(('TOTAL: %s theses ingested, %s files ingested. %s theses '
                  'not ingested.\n') % (thesis_count, file_count, error_count))

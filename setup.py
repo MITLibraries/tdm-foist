@@ -30,6 +30,7 @@ setup(
     packages=find_packages(exclude=['tests']),
     install_requires=[
         'click',
+        'rdflib',
         'requests',
     ],
     entry_points={
@@ -41,11 +42,6 @@ setup(
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
     ],
 )
