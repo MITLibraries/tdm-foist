@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 import rdflib
 import requests
 
-from foist.namespaces import BIBO, DCTERMS, LOCAL, MSL, PCDM
+from foist.namespaces import BIBO, DCTERMS, DCTYPE, LOCAL, MODS, MSL, PCDM, RDF
 
 log = logging.getLogger(__name__)
 ns = {'mets': 'http://www.loc.gov/METS/',
@@ -28,7 +28,9 @@ class ThesisItem(object):
         self.s = rdflib.URIRef('')
         self.metadata.bind('bibo', BIBO)
         self.metadata.bind('dcterms', DCTERMS)
+        self.metadata.bind('dctype', DCTYPE)
         self.metadata.bind('local', LOCAL)
+        self.metadata.bind('mods', MODS)
         self.metadata.bind('msl', MSL)
         self.metadata.bind('pcdm', PCDM)
 
@@ -49,12 +51,14 @@ class ThesisItem(object):
         self.metadata.add((self.s, BIBO.handle,
                            self.get_field('handle', 'identifier[@type="uri"]',
                                           'uri')))
-        self.metadata.add((self.s, DCTERMS.type, BIBO.thesis))
+        self.metadata.add((self.s, RDF.type, BIBO.thesis))
+        self.metadata.add((self.s, RDF.type, PCDM.Object))
+        self.metadata.add((self.s, DCTERMS.type, DCTYPE.text))
         self.metadata.add((self.s, DCTERMS.dateIssued,
                            self.get_field('publication_date',
                                           'originInfo/mods:dateIssued')))
         self.metadata.add((self.s, DCTERMS.publisher,
-                           rdflib.Literal(('Massachusetts Institute of'
+                           rdflib.Literal(('Massachusetts Institute of '
                                            'Technology'))))
         self.metadata.add((self.s, DCTERMS.rights,
                            rdflib.Literal(('M.I.T. theses are protected by '
@@ -67,6 +71,20 @@ class ThesisItem(object):
                                            'permission.'))))
         self.metadata.add((self.s, DCTERMS.title,
                            self.get_field('title', 'titleInfo/mods:title')))
+        if (self.get_field('alternative_title',
+                           'titleInfo[@type="alternative"]/mods:title') !=
+                rdflib.Literal('None')):
+            self.metadata.add((self.s, DCTERMS.title,
+                               self.get_field('alternative_title',
+                                              ('titleInfo[@type="alternative"]'
+                                               '/mods:title'))))
+        for f in self.root.findall('./mets:dmdSec/*/*/*/mods:note', ns):
+            if f.text.startswith('Thesis'):
+                self.metadata.add((self.s, MSL.degreeGrantedForCompletion,
+                                   rdflib.Literal(f.text)))
+            else:
+                self.metadata.add((self.s, MODS.note,
+                                   rdflib.Literal(f.text)))
 
     def create_item_turtle_statements(self):
         turtle_file = os.path.join(self.output_location, self.name,
@@ -93,11 +111,11 @@ class ThesisItem(object):
         try:
             result = self.root.find(base + search_string, ns).text
             if t == 'string':
-                return rdflib.Literal(result.replace('"', "'"))
+                return rdflib.Literal(result)
             elif t == 'uri':
                 return rdflib.URIRef(result)
         except AttributeError as e:
-            log.warning(('Error parsing ' + field +
+            log.warning(('No ' + field +
                          ' field for item ' + self.name))
             return rdflib.Literal('None')
 
@@ -159,10 +177,10 @@ def add_thesis_item_file(transaction, item, ext, mimetype, file_path):
         return 'Failure'
 
 
-def add_file_metadata(transaction, item, ext, file_path):
+def add_file_metadata(transaction, item, ext, file_path, sparql_path):
     '''Update the metadata for a given file.
     '''
-    sparql = file_path + '.ru'
+    sparql = sparql_path
     uri = transaction + item + '/' + item + ext + '/fcr:metadata'
     headers = {'Content-Type': 'application/sparql-update'}
     with open(sparql, 'rb') as data:

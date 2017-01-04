@@ -106,7 +106,8 @@ def upload_theses(directory, fedora_uri):
     error_count = 0
     for d in dirnames:
         turtle = os.path.join(directory, d, d + '.ttl')
-        pdf = os.path.join(directory, d, d + '.pdf')
+        pdf = '/Users/hbailey/Dropbox (MIT)/Application Developer Analyst/Projects/Fedora TDM 2016/Sample tiny-sized PDF.pdf'
+        # pdf = os.path.join(directory, d, d + '.pdf')
         text = os.path.join(directory, d, d + '-new.txt')
         try:
             t = start_transaction(fedora_uri)
@@ -114,13 +115,15 @@ def upload_theses(directory, fedora_uri):
             if create_thesis_item_container(tt, d, turtle) == 'Success':
                 if add_thesis_item_file(tt, d, '.pdf', 'application/pdf',
                                         pdf) == 'Success':
-                    add_file_metadata(tt, d, '.pdf', pdf)
+                    sparql_path = os.path.join(directory, d, d + '.pdf.ru')
+                    add_file_metadata(tt, d, '.pdf', pdf, sparql_path)
                     file_count += 1
                 # TODO: Check for 'no_full_text' field in metadata and only do
                 # the following if field is not present
                 if add_thesis_item_file(tt, d, '.txt', 'text/plain',
                                         text) == 'Success':
-                    add_file_metadata(tt, d, '.txt', text)
+                    sparql_path = os.path.join(directory, d, d + '-new.txt.ru')
+                    add_file_metadata(tt, d, '.txt', text, sparql_path)
                     file_count += 1
                 create_pcdm_relationships(tt, d)
                 thesis_count += 1
