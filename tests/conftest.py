@@ -26,15 +26,21 @@ def xml():
 
 
 @pytest.fixture
-def xml_missing_abstract():
+def xml_missing_fields():
     cur_dir = os.path.dirname(os.path.realpath(__file__))
-    return os.path.join(cur_dir, 'fixtures/thesis_missing_abstract.xml')
+    return os.path.join(cur_dir, 'fixtures/thesis_missing_fields.xml')
 
 
 @pytest.fixture
 def pdf():
     cur_dir = os.path.dirname(os.path.realpath(__file__))
     return os.path.join(cur_dir, 'fixtures/thesis/thesis.pdf')
+
+
+@pytest.fixture
+def sparql():
+    cur_dir = os.path.dirname(os.path.realpath(__file__))
+    return os.path.join(cur_dir, 'fixtures/thesis/thesis.pdf.ru')
 
 
 @pytest.fixture
@@ -63,8 +69,10 @@ def fedora():
                headers={'Location': 'mock://example.com/rest/tx:123456789'})
         m.post('/rest/tx:123456789/fcr:tx/fcr:commit',
                status_code=204)
+        m.post('/rest/tx:123456789/fcr:tx/fcr:rollback',
+               status_code=204)
         m.put('/rest/tx:123456789/theses/thesis',
-              status_code=204)
+              status_code=201)
         m.put('/rest/tx:123456789/theses/thesis/thesis.pdf',
               status_code=201)
         m.patch('/rest/tx:123456789/theses/thesis/thesis.pdf/fcr:metadata',
@@ -73,10 +81,33 @@ def fedora():
               status_code=201)
         m.patch('/rest/tx:123456789/theses/thesis/thesis.txt/fcr:metadata',
                 status_code=204)
+        m.patch('/rest/tx:123456789/theses',
+                status_code=204)
         m.patch('/rest/tx:123456789/theses/',
                 status_code=204)
         m.patch('/rest/tx:123456789/theses/thesis',
                 status_code=204)
-        m.put(matcher, status_code=204)
+        m.patch('/rest/tx:123456789/theses/thesis/',
+                status_code=204)
+        m.put(matcher, status_code=201)
         m.patch(matcher, status_code=204)
+        yield m
+
+@pytest.yield_fixture
+def fedora_errors():
+    with requests_mock.Mocker() as m:
+        m.post('/rest/fcr:tx', status_code=201,
+               headers={'Location': 'mock://example.com/rest/tx:error'})
+        m.post('/rest/tx:error/fcr:tx/fcr:commit',
+               status_code=410)
+        m.post('/rest/tx:error/fcr:tx/fcr:rollback',
+               status_code=410)
+        m.put('/rest/tx:error/theses/thesis',
+              status_code=412)
+        m.put('/rest/tx:error/theses/thesis/thesis.pdf',
+              status_code=412)
+        m.patch('/rest/tx:error/theses/thesis/thesis.pdf/fcr:metadata',
+                status_code=412)
+        m.patch('/rest/tx:error/theses',
+                status_code=412)
         yield m

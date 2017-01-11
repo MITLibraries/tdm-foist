@@ -4,12 +4,13 @@ import glob
 import logging
 import logging.config
 import os
+import xml.etree.ElementTree as ET
 
 import click
 
-from foist import (add_file_metadata, add_thesis_item_file, commit_transaction,
+from foist import (add_file_metadata, add_thesis_item_file,
                    create_pcdm_relationships, create_thesis_item_container,
-                   parse_text_encoding_errors, start_transaction, ThesisItem)
+                   parse_text_encoding_errors, Thesis, transaction)
 
 
 logger = logging.getLogger(__name__)
@@ -37,7 +38,7 @@ logging.config.dictConfig({
     },
     'loggers': {
         'foist': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'handlers': ['console', 'file']
         }
     }
@@ -73,13 +74,17 @@ def process_metadata(input_directory, output_directory):
     dirnames = next(os.walk(os.path.join(input_directory, '.')))[1]
     count = 0
     for d in dirnames:
-        mets = os.path.join(input_directory, d, d + '.xml')
-        thesis = ThesisItem(d, output_directory, mets)
-        thesis.generate_item_metadata()
-        thesis.add_text_errors(text_encoding_errors)
-        thesis.create_item_turtle_statements()
-        thesis.create_file_sparql_update('.pdf')
-        thesis.create_file_sparql_update('-new.txt')
+        mets = ET.parse(os.path.join(input_directory, d, d + '.xml')).getroot()
+        thesis = Thesis(d, mets, text_encoding_errors)
+        with open(os.path.join(output_directory, thesis.name, thesis.name +
+                               '.ttl'), 'wb') as f:
+            f.write(thesis.get_metadata())
+        with open(os.path.join(output_directory, thesis.name, thesis.name +
+                               '.pdf.ru'), 'wb') as f:
+            f.write(thesis.create_file_sparql_update('.pdf').encode('utf-8'))
+        with open(os.path.join(output_directory, thesis.name, thesis.name +
+                               '.txt.ru'), 'wb') as f:
+            f.write(thesis.create_file_sparql_update('.txt').encode('utf-8'))
         count += 1
     logger.info('TOTAL: %s theses processed in folder %s' % (str(count),
                                                              input_directory))
@@ -102,37 +107,41 @@ def upload_theses(directory, fedora_uri):
     '''
     dirnames = next(os.walk(os.path.join(directory, '.')))[1]
     thesis_count = 0
-    file_count = 0
-    error_count = 0
     for d in dirnames:
-        turtle = os.path.join(directory, d, d + '.ttl')
-        pdf = '/Users/hbailey/Dropbox (MIT)/Application Developer Analyst/Projects/Fedora TDM 2016/Sample tiny-sized PDF.pdf'
+        turtle_path = os.path.join(directory, d, d + '.ttl')
+        pdf_path = '/Users/hbailey/Dropbox (MIT)/Application Developer Analyst/Projects/Fedora TDM 2016/Sample tiny-sized PDF.pdf'
         # pdf = os.path.join(directory, d, d + '.pdf')
-        text = os.path.join(directory, d, d + '-new.txt')
-        try:
-            t = start_transaction(fedora_uri)
-            tt = t + '/theses/'
-            if create_thesis_item_container(tt, d, turtle) == 'Success':
-                if add_thesis_item_file(tt, d, '.pdf', 'application/pdf',
-                                        pdf) == 'Success':
-                    sparql_path = os.path.join(directory, d, d + '.pdf.ru')
-                    add_file_metadata(tt, d, '.pdf', pdf, sparql_path)
-                    file_count += 1
-                # TODO: Check for 'no_full_text' field in metadata and only do
-                # the following if field is not present
-                if add_thesis_item_file(tt, d, '.txt', 'text/plain',
-                                        text) == 'Success':
-                    sparql_path = os.path.join(directory, d, d + '-new.txt.ru')
-                    add_file_metadata(tt, d, '.txt', text, sparql_path)
-                    file_count += 1
-                create_pcdm_relationships(tt, d)
-                thesis_count += 1
-            commit_transaction(t)
-        except FileNotFoundError as e:
-            logger.error(e)
-            error_count += 1
-    logger.info(('TOTAL: %s theses ingested, %s files ingested. %s theses '
-                 'not ingested.\n') % (thesis_count, file_count, error_count))
+        text_path = os.path.join(directory, d, d + '-new.txt')
+        with transaction(fedora_uri) as t:
+            parent_loc = t + '/theses/'
+            item_loc = parent_loc + d + '/'
+            pdf_loc = item_loc + d + '.pdf/'
+            pdf_sparql = os.path.join(directory, d, d + '.pdf.ru')
+            text_loc = item_loc + d + '.txt/'
+            text_sparql = os.path.join(directory, d, d + '-new.txt.ru')
+
+            create_thesis_item_container(parent_loc, d, turtle_path)
+
+            add_thesis_item_file(item_loc, d, '.pdf', 'application/pdf',
+                                 pdf_path)
+            add_file_metadata(pdf_loc, d, '.pdf', pdf_path, pdf_sparql)
+            # TODO: Check for 'no_full_text' field in metadata and only do
+            # the following if field is not present
+            add_thesis_item_file(item_loc, d, '.txt', 'text/plain',
+                                 text_path)
+            add_file_metadata(text_loc, d, '.txt', text_path, text_sparql)
+
+            query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
+                     'pcdm:hasMember <' + parent_loc + 'thesis> . } WHERE '
+                     '{ }')
+            create_pcdm_relationships(parent_loc, query)
+
+            query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
+                     'pcdm:hasFile <' + item_loc + 'thesis.pdf> ; pcdm:hasFile'
+                     ' <' + item_loc + 'thesis.txt> . } WHERE { }')
+            create_pcdm_relationships(item_loc, query)
+            thesis_count += 1
+    logger.info('TOTAL: %s theses ingested.\n' % thesis_count)
 
 
 if __name__ == '__main__':

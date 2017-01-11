@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
+from contextlib import contextmanager
 import csv
 import logging
 import os
-import xml.etree.ElementTree as ET
 
 import rdflib
 import requests
@@ -11,128 +11,234 @@ import requests
 from foist.namespaces import BIBO, DCTERMS, DCTYPE, LOCAL, MODS, MSL, PCDM, RDF
 
 log = logging.getLogger(__name__)
-ns = {'mets': 'http://www.loc.gov/METS/',
-      'mods': 'http://www.loc.gov/mods/v3'}
+
+base_mets_search = './mets:dmdSec/*/*/*/mods:'
+mets_namespace = {'mets': 'http://www.loc.gov/METS/',
+                  'mods': 'http://www.loc.gov/mods/v3'}
 
 
-class ThesisItem(object):
+class Thesis(object):
     '''A thesis object representing a single thesis intellectual entity with
     all its associated metadata.
     '''
-    def __init__(self, name, output_location, mets):
+    def __init__(self, name, mets, text_errors):
         self.name = name
-        self.output_location = output_location
-        tree = ET.parse(mets)
-        self.root = tree.getroot()
-        self.metadata = rdflib.Graph()
-        self.s = rdflib.URIRef('')
-        self.metadata.bind('bibo', BIBO)
-        self.metadata.bind('dcterms', DCTERMS)
-        self.metadata.bind('dctype', DCTYPE)
-        self.metadata.bind('local', LOCAL)
-        self.metadata.bind('mods', MODS)
-        self.metadata.bind('msl', MSL)
-        self.metadata.bind('pcdm', PCDM)
+        self.mets = mets
 
-    def generate_item_metadata(self):
-        self.metadata.add((self.s, DCTERMS.abstract,
-                           self.get_field('abstract', 'abstract')))
-        self.metadata.add((self.s, MSL.reviewedBy,
-                           self.get_field('advisor', ('name/*[mods:roleTerm='
-                                          '"advisor"]/../mods:namePart'))))
-        self.metadata.add((self.s, DCTERMS.creator,
-                           self.get_field('author', ('name/*[mods:roleTerm='
-                                          '"author"]/../mods:namePart'))))
-        self.metadata.add((self.s, DCTERMS.dateCopyrighted,
-                           self.get_field('copyright',
-                                          'originInfo/mods:copyrightDate')))
-        self.metadata.add((self.s, MSL.associatedDepartment,
-                           self.get_field('department', 'subject/mods:topic')))
-        self.metadata.add((self.s, BIBO.handle,
-                           self.get_field('handle', 'identifier[@type="uri"]',
-                                          'uri')))
-        self.metadata.add((self.s, RDF.type, BIBO.thesis))
-        self.metadata.add((self.s, RDF.type, PCDM.Object))
-        self.metadata.add((self.s, DCTERMS.type, DCTYPE.text))
-        self.metadata.add((self.s, DCTERMS.dateIssued,
-                           self.get_field('publication_date',
-                                          'originInfo/mods:dateIssued')))
-        self.metadata.add((self.s, DCTERMS.publisher,
-                           rdflib.Literal(('Massachusetts Institute of '
-                                           'Technology'))))
-        self.metadata.add((self.s, DCTERMS.rights,
-                           rdflib.Literal(('M.I.T. theses are protected by '
-                                           'copyright. They may be viewed from'
-                                           ' this source for any purpose, but '
-                                           'reproduction or distribution in '
-                                           'any format is prohibited without '
-                                           'written permission. See provided '
-                                           'URL for inquiries about '
-                                           'permission.'))))
-        self.metadata.add((self.s, DCTERMS.title,
-                           self.get_field('title', 'titleInfo/mods:title')))
-        if (self.get_field('alternative_title',
-                           'titleInfo[@type="alternative"]/mods:title') !=
-                rdflib.Literal('None')):
-            self.metadata.add((self.s, DCTERMS.title,
-                               self.get_field('alternative_title',
-                                              ('titleInfo[@type="alternative"]'
-                                               '/mods:title'))))
-        for f in self.root.findall('./mets:dmdSec/*/*/*/mods:note', ns):
-            if f.text.startswith('Thesis'):
-                self.metadata.add((self.s, MSL.degreeGrantedForCompletion,
-                                   rdflib.Literal(f.text)))
-            else:
-                self.metadata.add((self.s, MODS.note,
-                                   rdflib.Literal(f.text)))
+        try:
+            self.errors = text_errors[self.name]
+        except KeyError:
+            self.errors = None
 
-    def create_item_turtle_statements(self):
-        turtle_file = os.path.join(self.output_location, self.name,
-                                   self.name + '.ttl')
-        with open(turtle_file, 'wb') as f:
-            f.write(self.metadata.serialize(format='turtle'))
+    @property
+    def abstract(self):
+        return self._get_field('abstract', field_type='split',
+                               text_to_strip='(cont.)')
+
+    @property
+    def advisor(self):
+        return self._get_field(('name/*[mods:roleTerm="advisor"]/../'
+                                'mods:namePart'), field_type='multi')
+
+    @property
+    def alt_title(self):
+        return self._get_field('titleInfo[@type="alternative"]/mods:title',
+                               field_type='multi')
+
+    @property
+    def author(self):
+        return self._get_field(('name/*[mods:roleTerm="author"]/../'
+                                'mods:namePart'), field_type='multi')
+
+    @property
+    def copyright_date(self):
+        return self._get_field('originInfo/mods:copyrightDate')
+
+    @property
+    def dc_type(self):
+        return DCTYPE.Text
+
+    @property
+    def degree_statement(self):
+        return self._get_field('note', field_type='degree')
+
+    @property
+    def department(self):
+        return self._get_field('subject/mods:topic', field_type='multi')
+
+    @property
+    def handle(self):
+        return self._get_field('identifier[@type="uri"]')
+
+    @property
+    def issue_date(self):
+        return self._get_field('originInfo/mods:dateIssued')
+
+    @property
+    def ligatures(self):
+        if self.errors:
+            return self._get_error_value('Ligatures')
+        else:
+            return None
+
+    @property
+    def line_ends(self):
+        if self.errors:
+            return self._get_error_value('Line ends')
+        else:
+            return None
+
+    @property
+    def no_full_text(self):
+        if self.errors:
+            return self._get_full_text_error()
+        else:
+            return None
+
+    @property
+    def notes(self):
+        return self._get_field('note', field_type='notes')
+
+    @property
+    def publisher(self):
+        return 'Massachusetts Institute of Technology'
+
+    @property
+    def rdf_type(self):
+        return [BIBO.Thesis, PCDM.Object]
+
+    @property
+    def rights_statement(self):
+        return ('M.I.T. theses are protected by copyright. They may be viewed '
+                'from this source for any purpose, but reproduction or '
+                'distribution in any format is prohibited without written '
+                'permission. See provided URL for inquiries about permission.')
+
+    @property
+    def title(self):
+        return self._get_field('titleInfo/mods:title')
+
+    def get_metadata(self, serialization='turtle'):
+        m = rdflib.Graph()
+        s = rdflib.URIRef('')
+
+        def _add_metadata_field(p, obj, obj_type='string'):
+            if obj is None:
+                o = rdflib.Literal('None')
+                m.add((s, p, o))
+            elif obj is True:
+                o = rdflib.Literal('True')
+                m.add((s, p, o))
+            elif type(obj) == str:
+                o = _create_rdf_obj(obj, obj_type)
+                m.add((s, p, o))
+            elif type(obj) == list:
+                for i in obj:
+                    o = _create_rdf_obj(i, obj_type)
+                    m.add((s, p, o))
+
+        def _create_rdf_obj(obj, obj_type):
+            if obj_type == 'string':
+                o = rdflib.Literal(obj)
+                return o
+            elif obj_type == 'uri':
+                o = rdflib.URIRef(obj)
+                return o
+
+        # Bind prefixes to metadata graph
+        m.bind('bibo', BIBO)
+        m.bind('dcterms', DCTERMS)
+        m.bind('dctype', DCTYPE)
+        m.bind('local', LOCAL)
+        m.bind('mods', MODS)
+        m.bind('msl', MSL)
+        m.bind('pcdm', PCDM)
+        m.bind('rdf', RDF)
+
+        # Add all metadata properties
+        _add_metadata_field(DCTERMS.abstract, self.abstract)
+        _add_metadata_field(MSL.reviewedBy, self.advisor)
+        _add_metadata_field(DCTERMS.title, self.alt_title)
+        _add_metadata_field(DCTERMS.creator, self.author)
+        _add_metadata_field(DCTERMS.dateCopyrighted, self.copyright_date)
+        _add_metadata_field(DCTERMS.type, self.dc_type)
+        _add_metadata_field(MSL.degreeGrantedForCompletion,
+                            self.degree_statement)
+        _add_metadata_field(MSL.associatedDepartment, self.department)
+        _add_metadata_field(BIBO.handle, self.handle, obj_type='uri')
+        _add_metadata_field(DCTERMS.dateIssued, self.issue_date)
+        _add_metadata_field(LOCAL.ligature_errors, self.ligatures)
+        _add_metadata_field(LOCAL.line_ends, self.line_ends)
+        _add_metadata_field(LOCAL.no_full_text, self.no_full_text)
+        _add_metadata_field(MODS.note, self.notes)
+        _add_metadata_field(DCTERMS.publisher, self.publisher)
+        _add_metadata_field(RDF.type, self.rdf_type)
+        _add_metadata_field(DCTERMS.rights, self.rights_statement)
+        _add_metadata_field(DCTERMS.title, self.title)
+
+        if serialization == 'turtle':
+            return m.serialize(format='turtle')
 
     def create_file_sparql_update(self, file_ext):
-        sparql_file = os.path.join(self.output_location, self.name,
-                                   self.name + file_ext + '.ru')
-        lang = self.get_field('language', 'language/mods:languageTerm')
+        lang = self._get_field('language/mods:languageTerm')
         query = ('PREFIX dcterms: <http://purl.org/dc/terms/> PREFIX pcdm: '
                  '<http://pcdm.org/models#> INSERT { <> a pcdm:File ; '
                  'dcterms:language "' + lang + '"')
         if file_ext == '.pdf':
-            pages = self.get_field('pages', 'physicalDescription/mods:extent')
+            pages = self._get_field('physicalDescription/mods:extent')
             query += ' ; dcterms:extent "' + pages + '"'
         query += ' . } WHERE { }'
-        with open(sparql_file, 'wb') as f:
-            f.write(query.encode('utf-8'))
+        return query
 
-    def get_field(self, field, search_string, t='string'):
-        base = './mets:dmdSec/*/*/*/mods:'
-        try:
-            result = self.root.find(base + search_string, ns).text
-            if t == 'string':
-                return rdflib.Literal(result)
-            elif t == 'uri':
-                return rdflib.URIRef(result)
-        except AttributeError as e:
-            log.warning(('No ' + field +
-                         ' field for item ' + self.name))
-            return rdflib.Literal('None')
+    def _get_field(self, search_string, field_type='single',
+                   text_to_strip=None):
+        result = []
+        if field_type == 'degree':
+            for f in self.mets.findall(base_mets_search + search_string,
+                                       mets_namespace):
+                if f.text.startswith('Thesis'):
+                    result = f.text
+        elif field_type == 'multi':
+            for f in self.mets.findall(base_mets_search + search_string,
+                                       mets_namespace):
+                result.append(f.text)
+        elif field_type == 'notes':
+            for f in self.mets.findall(base_mets_search + search_string,
+                                       mets_namespace):
+                if not f.text.startswith('Thesis'):
+                    result.append(f.text)
+        elif field_type == 'single':
+            try:
+                result = self.mets.find(base_mets_search + search_string,
+                                        mets_namespace).text
+            except AttributeError as e:
+                result = None
+        elif field_type == 'split':
+            for f in self.mets.findall(base_mets_search + search_string,
+                                       mets_namespace):
+                if not result:
+                    result = f.text
+                else:
+                    t = f.text.lstrip(text_to_strip)
+                    result += t
+        if not result:
+            result = None
+        return result
 
-    def add_text_errors(self, text_errors):
-        if self.name in text_errors:
-            errors = text_errors[self.name]
-            if (errors['PDFBox err'] != '0' or
-                (errors['No new text'] != '0' and ['No old text'] != '0') or
-                    errors['Encoded'] != '0' or errors['Hex strings'] != '0'):
-                self.metadata.add((self.s, LOCAL.no_full_text,
-                                   rdflib.Literal('True')))
-            if errors['Ligatures'] != '0':
-                self.metadata.add((self.s, LOCAL.ligature_errors,
-                                   rdflib.Literal('True')))
-            if errors['Line ends'] != '0':
-                self.metadata.add((self.s, LOCAL.line_ends,
-                                   rdflib.Literal('True')))
+    def _get_error_value(self, error):
+        result = None
+        if self.errors[error] == '1':
+            result = True
+        return result
+
+    def _get_full_text_error(self):
+        result = None
+        s = self.errors
+        if (s['PDFBox err'] == '1' or
+            (s['No new text'] == '1' and s['No old text'] == '1') or
+                s['Encoded'] == '1' or s['Hex strings'] == '1'):
+            result = True
+        return result
 
 
 def parse_text_encoding_errors(tsv_file):
@@ -147,101 +253,81 @@ def parse_text_encoding_errors(tsv_file):
         return text_encoding_errors
 
 
-def create_thesis_item_container(transaction, item, turtle):
-    '''Create basic PCDM container for a thesis item.
-    '''
-    uri = transaction + item
-    headers = {'Content-Type': 'text/turtle; charset=utf-8'}
-    with open(turtle, 'rb') as payload:
-        r = requests.put(uri, headers=headers, data=payload)
-    if r.status_code >= 200 and r.status_code < 300:
-        log.info(('%s Thesis item created: %s') % (r, r.text))
-        return 'Success'
-    else:
-        log.error(('%s %s ITEM ' + item) % (r, r.text))
-        return 'Failure'
-
-
-def add_thesis_item_file(transaction, item, ext, mimetype, file_path):
-    '''Add a file to a thesis item container.
-    '''
-    uri = transaction + item + '/' + item + ext
-    headers = {'Content-Type': mimetype}
-    with open(file_path, 'rb') as payload:
-        r = requests.put(uri, headers=headers, data=payload)
-    if r.status_code >= 200 and r.status_code < 300:
-        log.info(('%s Thesis file added: %s') % (r, r.text))
-        return 'Success'
-    else:
-        log.error(('%s %s FILE ' + item + ext) % (r, r.text))
-        return 'Failure'
-
-
-def add_file_metadata(transaction, item, ext, file_path, sparql_path):
-    '''Update the metadata for a given file.
-    '''
-    sparql = sparql_path
-    uri = transaction + item + '/' + item + ext + '/fcr:metadata'
-    headers = {'Content-Type': 'application/sparql-update'}
-    with open(sparql, 'rb') as data:
-        r = requests.patch(uri, headers=headers, data=data)
-    if r.status_code >= 200 and r.status_code < 300:
-        log.info(('%s File metadata updated: ' + item + ext) % (r))
-        return 'Success'
-    else:
-        log.error(('%s %s File metadata NOT updated: ' + item + ext)
-                  % (r, r.text))
-        return 'Failure'
-
-
-def create_pcdm_relationships(transaction, item):
-    '''Create PCDM relationship statements for a thesis item.
-    '''
-    uri = transaction + item
-    headers = {'Content-Type': 'application/sparql-update'}
-    query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
-             'pcdm:hasMember <' + uri + '> . } WHERE { }')
-    r = requests.patch(transaction, headers=headers, data=query)
-    if r.status_code >= 200 and r.status_code < 300:
-        log.info(('%s PCDM collection membership created: %s') %
-                 (r, item))
-    else:
-        log.error(('%s PCDM collection membership NOT created: %s') %
-                  (r, item))
-    pdf = uri + '/' + item + '.pdf'
-    text = uri + '/' + item + '.txt'
-    query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> pcdm:hasFile '
-             '<' + pdf + '> ; pcdm:hasFile <' + text + '> . } WHERE { }')
-    r = requests.patch(uri, headers=headers, data=query)
-    if r.status_code >= 200 and r.status_code < 300:
-        log.info(('%s PCDM file memberships created: %s') %
-                 (r, item))
-        return 'Success'
-    else:
-        log.error(('%s PCDM file memberships NOT created: %s') %
-                  (r, item))
-        return 'Failure'
-
-
-def start_transaction(fedora_uri):
-    '''Starts a Fedora transaction.
-    Returns location header.
+@contextmanager
+def transaction(fedora_uri):
+    '''Starts a Fedora transaction, yields a location header, commits and
+    closes the transaction.
     '''
     uri = fedora_uri + 'fcr:tx'
     r = requests.post(uri)
-    log.info('%s Transaction started: %s' % (r, r.headers['Location']))
-    return r.headers['Location']
-
-
-def commit_transaction(location):
-    '''Commit and close a Fedora transaction.
-    Returns status code.
-    '''
-    uri = location + '/fcr:tx/fcr:commit'
-    r = requests.post(uri)
-    if r.status_code == 204:
-        log.info('%s Transaction committed.' % (r))
-        return True
+    location = r.headers['Location']
+    try:
+        yield location
+    except Exception as e:
+        uri = location + '/fcr:tx/fcr:rollback'
+        r = requests.post(uri)
+        log.debug(e)
+        log.warning('Transaction %s rolled back and closed' % location)
     else:
-        log.error('% Transaction failed.' % (r))
-        return False
+        uri = location + '/fcr:tx/fcr:commit'
+        try:
+            r = requests.post(uri)
+            r.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            raise e
+
+
+def create_thesis_item_container(location, item, turtle_path):
+    '''Create basic PCDM container for a thesis item.
+    '''
+    uri = location + item
+    headers = {'Content-Type': 'text/turtle; charset=utf-8'}
+    with open(turtle_path, 'rb') as data:
+        try:
+            r = requests.put(uri, headers=headers, data=data)
+            r.raise_for_status()
+            return r.status_code
+        except requests.exceptions.HTTPError as e:
+            raise e
+
+
+def add_thesis_item_file(location, item, ext, mimetype, file_path):
+    '''Add a file to a thesis item container.
+    '''
+    uri = location + item + ext
+    headers = {'Content-Type': mimetype}
+    with open(file_path, 'rb') as data:
+        try:
+            r = requests.put(uri, headers=headers, data=data)
+            r.raise_for_status()
+            return r.status_code
+        except requests.exceptions.HTTPError as e:
+            raise e
+
+
+def add_file_metadata(location, item, ext, file_path, sparql_path):
+    '''Update the metadata for a given file.
+    '''
+    uri = location + 'fcr:metadata'
+    print(uri)
+    headers = {'Content-Type': 'application/sparql-update'}
+    with open(sparql_path, 'rb') as data:
+        try:
+            r = requests.patch(uri, headers=headers, data=data)
+            r.raise_for_status()
+            return r.status_code
+        except requests.exceptions.HTTPError as e:
+            raise e
+
+
+def create_pcdm_relationships(uri, query):
+    '''Create PCDM relationship statement between a thesis item and its parent
+    container (hasMember).
+    '''
+    headers = {'Content-Type': 'application/sparql-update'}
+    try:
+        r = requests.patch(uri, headers=headers, data=query)
+        r.raise_for_status()
+        return r.status_code
+    except requests.exceptions.HTTPError as e:
+        raise e

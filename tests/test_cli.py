@@ -18,11 +18,12 @@ def test_process_metadata(runner, theses_dir, tmpdir):
     l = tempfile.mkdtemp()
     p = os.path.join(l, 'thesis')
     q = os.path.join(l, 'thesis-02')
+    r = os.path.join(l, 'thesis-03')
     os.makedirs(p)
     os.makedirs(q)
+    os.makedirs(r)
     result = runner.invoke(main, ['process_metadata',
                            theses_dir, '-o', l])
-
     assert result.exit_code == 0
 
 

@@ -10,12 +10,6 @@
    <xmlData xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-1.xsd"><mods:mods xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-1.xsd">
   <mods:name>
     <mods:role>
-      <mods:roleTerm type="text">advisor</mods:roleTerm>
-    </mods:role>
-    <mods:namePart>Georgia Perakis.</mods:namePart>
-  </mods:name>
-  <mods:name>
-    <mods:role>
       <mods:roleTerm type="text">author</mods:roleTerm>
     </mods:role>
     <mods:namePart>Zhang, Lei, Ph. D. Massachusetts Institute of Technology. Department Electrical Engineering and Computer Science.</mods:namePart>
@@ -33,15 +27,9 @@
     <mods:dateAvailable encoding="iso8601">2007-10-19T20:31:20Z</mods:dateAvailable>
   </mods:extension>
   <mods:originInfo>
-    <mods:copyrightDate encoding="iso8601">2006</mods:copyrightDate>
-  </mods:originInfo>
-  <mods:originInfo>
     <mods:dateIssued encoding="iso8601">2006</mods:dateIssued>
   </mods:originInfo>
   <mods:identifier type="uri">http://hdl.handle.net/1721.1/39208</mods:identifier>
-  <mods:note>Thesis (S.M.)--Massachusetts Institute of Technology, Computation for Design and Optimization Program, 2006.</mods:note>
-  <mods:note>Includes bibliographical references (p. 107-109).</mods:note>
-  <mods:note type="statement of responsibility">by Lei Zhang.</mods:note>
   <mods:physicalDescription>
     <mods:extent>109 p.</mods:extent>
   </mods:physicalDescription>
