@@ -309,7 +309,6 @@ def add_file_metadata(location, item, ext, file_path, sparql_path):
     '''Update the metadata for a given file.
     '''
     uri = location + 'fcr:metadata'
-    print(uri)
     headers = {'Content-Type': 'application/sparql-update'}
     with open(sparql_path, 'rb') as data:
         try:

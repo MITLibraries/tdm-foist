@@ -74,7 +74,10 @@ def process_metadata(input_directory, output_directory):
     dirnames = next(os.walk(os.path.join(input_directory, '.')))[1]
     count = 0
     for d in dirnames:
-        mets = ET.parse(os.path.join(input_directory, d, d + '.xml')).getroot()
+        try:
+            mets = ET.parse(os.path.join(input_directory, d, d + '.xml')).getroot()
+        except IOError as e:
+            logger.error('No XML file for item %s. %s' % (d, e))
         thesis = Thesis(d, mets, text_encoding_errors)
         with open(os.path.join(output_directory, thesis.name, thesis.name +
                                '.ttl'), 'wb') as f:
@@ -109,7 +112,7 @@ def upload_theses(directory, fedora_uri):
     thesis_count = 0
     for d in dirnames:
         turtle_path = os.path.join(directory, d, d + '.ttl')
-        pdf = os.path.join(directory, d, d + '.pdf')
+        pdf_path = os.path.join(directory, d, d + '.pdf')
         text_path = os.path.join(directory, d, d + '-new.txt')
         with transaction(fedora_uri) as t:
             parent_loc = t + '/theses/'
@@ -117,7 +120,7 @@ def upload_theses(directory, fedora_uri):
             pdf_loc = item_loc + d + '.pdf/'
             pdf_sparql = os.path.join(directory, d, d + '.pdf.ru')
             text_loc = item_loc + d + '.txt/'
-            text_sparql = os.path.join(directory, d, d + '-new.txt.ru')
+            text_sparql = os.path.join(directory, d, d + '.txt.ru')
 
             create_thesis_item_container(parent_loc, d, turtle_path)
 
@@ -131,13 +134,13 @@ def upload_theses(directory, fedora_uri):
             add_file_metadata(text_loc, d, '.txt', text_path, text_sparql)
 
             query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
-                     'pcdm:hasMember <' + parent_loc + 'thesis> . } WHERE '
+                     'pcdm:hasMember <' + parent_loc + d + '> . } WHERE '
                      '{ }')
-            create_pcdm_relationships(parent_loc, query)
+            create_pcdm_relationships(t + '/theses', query)
 
             query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
-                     'pcdm:hasFile <' + item_loc + 'thesis.pdf> ; pcdm:hasFile'
-                     ' <' + item_loc + 'thesis.txt> . } WHERE { }')
+                     'pcdm:hasFile <' + pdf_loc + '> ; pcdm:hasFile'
+                     ' <' + text_loc + '> . } WHERE { }')
             create_pcdm_relationships(item_loc, query)
             thesis_count += 1
     logger.info('TOTAL: %s theses ingested.\n' % thesis_count)
