@@ -109,8 +109,7 @@ def upload_theses(directory, fedora_uri):
     thesis_count = 0
     for d in dirnames:
         turtle_path = os.path.join(directory, d, d + '.ttl')
-        pdf_path = '/Users/hbailey/Dropbox (MIT)/Application Developer Analyst/Projects/Fedora TDM 2016/Sample tiny-sized PDF.pdf'
-        # pdf = os.path.join(directory, d, d + '.pdf')
+        pdf = os.path.join(directory, d, d + '.pdf')
         text_path = os.path.join(directory, d, d + '-new.txt')
         with transaction(fedora_uri) as t:
             parent_loc = t + '/theses/'
