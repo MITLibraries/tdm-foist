@@ -75,10 +75,11 @@ def process_metadata(input_directory, output_directory):
     count = 0
     for d in dirnames:
         try:
-            mets = ET.parse(os.path.join(input_directory, d, d + '.xml')).getroot()
+            mets = ET.parse(os.path.join(input_directory, d,
+                                         d + '.xml')).getroot()
         except IOError as e:
             logger.error('No XML file for item %s. %s' % (d, e))
-        thesis = Thesis(d, mets, text_encoding_errors)
+        thesis = Thesis(d, mets, text_encoding_errors.get(d))
         with open(os.path.join(output_directory, thesis.name, thesis.name +
                                '.ttl'), 'wb') as f:
             f.write(thesis.get_metadata())

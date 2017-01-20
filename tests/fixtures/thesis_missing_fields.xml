@@ -26,10 +26,6 @@
   <mods:extension>
     <mods:dateAvailable encoding="iso8601">2007-10-19T20:31:20Z</mods:dateAvailable>
   </mods:extension>
-  <mods:originInfo>
-    <mods:dateIssued encoding="iso8601">2006</mods:dateIssued>
-  </mods:originInfo>
-  <mods:identifier type="uri">http://hdl.handle.net/1721.1/39208</mods:identifier>
   <mods:physicalDescription>
     <mods:extent>109 p.</mods:extent>
   </mods:physicalDescription>
@@ -44,9 +40,6 @@
   <mods:subject>
     <mods:topic>Computation for Design and Optimization Program.</mods:topic>
   </mods:subject>
-  <mods:titleInfo>
-    <mods:title>Multi-period pricing for perishable products : uncertainty and competition</mods:title>
-  </mods:titleInfo>
   <mods:genre>Thesis</mods:genre>
 </mods:mods></xmlData>
   </mdWrap>

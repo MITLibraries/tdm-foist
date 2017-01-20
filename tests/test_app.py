@@ -19,12 +19,12 @@ def test_thesis(tmpdir, xml, text_errors):
     '''
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
-    errors = parse_text_encoding_errors(text_errors)
+    errors = parse_text_encoding_errors(text_errors).get('thesis')
     t = Thesis('thesis', mets, errors)
 
     assert t.name == 'thesis'
     assert t.mets == mets
-    assert t.errors == errors['thesis']
+    assert t.errors == errors
 
 
 def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
@@ -33,7 +33,7 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
     '''
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
-    errors = parse_text_encoding_errors(text_errors)
+    errors = parse_text_encoding_errors(text_errors).get('thesis')
     t = Thesis('thesis', mets, errors)
 
     assert t.abstract == 'Sample abstract.'
@@ -67,7 +67,7 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
 def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
-    errors = parse_text_encoding_errors(text_errors)
+    errors = parse_text_encoding_errors(text_errors).get('thesis')
     t = Thesis('thesis', mets, errors)
     m = t.get_metadata()
 
@@ -98,20 +98,23 @@ def test_thesis_handles_missing_metadata_fields(tmpdir, xml_missing_fields,
                                                 text_errors):
     l = tempfile.mkdtemp()
     mets = ET.parse(xml_missing_fields).getroot()
-    errors = parse_text_encoding_errors(text_errors)
+    errors = parse_text_encoding_errors(text_errors).get('thesis-02')
     t = Thesis('thesis-02', mets, errors)
 
     assert t.advisor is None
     assert t.copyright_date is None
     assert t.degree_statement is None
-    assert t.notes is None
+    assert t.handle is None
+    assert t.issue_date is None
     assert t.line_ends is None
+    assert t.notes is None
+    assert t.title is None
 
 
 def test_thesis_create_file_sparql_update_is_correct(tmpdir, xml, text_errors):
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
-    errors = parse_text_encoding_errors(text_errors)
+    errors = parse_text_encoding_errors(text_errors).get('thesis')
     t = Thesis('thesis', mets, errors)
 
     s = t.create_file_sparql_update('.pdf')

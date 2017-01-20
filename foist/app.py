@@ -21,38 +21,48 @@ class Thesis(object):
     '''A thesis object representing a single thesis intellectual entity with
     all its associated metadata.
     '''
-    def __init__(self, name, mets, text_errors):
+    def __init__(self, name, mets, text_errors=None):
         self.name = name
         self.mets = mets
-
-        try:
-            self.errors = text_errors[self.name]
-        except KeyError:
-            self.errors = None
+        self.errors = text_errors
 
     @property
     def abstract(self):
-        return self._get_field('abstract', field_type='split',
-                               text_to_strip='(cont.)')
+        result = ''.join([e.text.lstrip('(cont.)') for
+                         e in self.mets.findall('.//mods:abstract',
+                                                mets_namespace)])
+        return result or None
 
     @property
     def advisor(self):
-        return self._get_field(('name/*[mods:roleTerm="advisor"]/../'
-                                'mods:namePart'), field_type='multi')
+        result = [e.text for e in
+                  self.mets.findall(('.//mods:name/*[mods:roleTerm='
+                                     '"advisor"]/../mods:namePart'),
+                                    mets_namespace)]
+        return result or None
 
     @property
     def alt_title(self):
-        return self._get_field('titleInfo[@type="alternative"]/mods:title',
-                               field_type='multi')
+        result = [e.text for e in
+                  self.mets.findall(('.//mods:titleInfo[@type="alternative"]/'
+                                     'mods:title'), mets_namespace)]
+        return result or None
 
     @property
     def author(self):
-        return self._get_field(('name/*[mods:roleTerm="author"]/../'
-                                'mods:namePart'), field_type='multi')
+        result = [e.text for e in
+                  self.mets.findall(('.//mods:name/*[mods:roleTerm="author"]/'
+                                     '../mods:namePart'), mets_namespace)]
+        return result or None
 
     @property
     def copyright_date(self):
-        return self._get_field('originInfo/mods:copyrightDate')
+        try:
+            result = self.mets.find('.//mods:originInfo/mods:copyrightDate',
+                                    mets_namespace).text
+        except AttributeError:
+            result = None
+        return result
 
     @property
     def dc_type(self):
@@ -60,44 +70,54 @@ class Thesis(object):
 
     @property
     def degree_statement(self):
-        return self._get_field('note', field_type='degree')
+        result = [e.text for e in
+                  self.mets.findall('.//mods:note', mets_namespace) if
+                  e.text.startswith('Thesis')]
+        return result[0] if result else None
 
     @property
     def department(self):
-        return self._get_field('subject/mods:topic', field_type='multi')
+        result = [e.text for e in
+                  self.mets.findall('.//mods:subject/mods:topic',
+                                    mets_namespace)]
+        return result or None
 
     @property
     def handle(self):
-        return self._get_field('identifier[@type="uri"]')
+        try:
+            result = self.mets.find('.//mods:identifier[@type="uri"]',
+                                    mets_namespace).text
+        except AttributeError:
+            result = None
+        return result
 
     @property
     def issue_date(self):
-        return self._get_field('originInfo/mods:dateIssued')
+        try:
+            result = self.mets.find('.//mods:originInfo/mods:dateIssued',
+                                    mets_namespace).text
+        except AttributeError:
+            result = None
+        return result
 
     @property
     def ligatures(self):
-        if self.errors:
-            return self._get_error_value('Ligatures')
-        else:
-            return None
+        return self._get_error_value('Ligatures') if self.errors else None
 
     @property
     def line_ends(self):
-        if self.errors:
-            return self._get_error_value('Line ends')
-        else:
-            return None
+        return self._get_error_value('Line ends') if self.errors else None
 
     @property
     def no_full_text(self):
-        if self.errors:
-            return self._get_full_text_error()
-        else:
-            return None
+        return self._get_full_text_error() if self.errors else None
 
     @property
     def notes(self):
-        return self._get_field('note', field_type='notes')
+        result = [e.text for e in
+                  self.mets.findall('.//mods:note', mets_namespace) if not
+                  e.text.startswith('Thesis')]
+        return result or None
 
     @property
     def publisher(self):
@@ -116,7 +136,12 @@ class Thesis(object):
 
     @property
     def title(self):
-        return self._get_field('titleInfo/mods:title')
+        try:
+            result = self.mets.find('.//mods:titleInfo/mods:title',
+                                    mets_namespace).text
+        except AttributeError:
+            result = None
+        return result
 
     def get_metadata(self, serialization='turtle'):
         m = rdflib.Graph()
@@ -180,65 +205,28 @@ class Thesis(object):
             return m.serialize(format='turtle')
 
     def create_file_sparql_update(self, file_ext):
-        lang = self._get_field('language/mods:languageTerm')
+        lang = self.mets.find('.//mods:language/mods:languageTerm',
+                              mets_namespace).text
         query = ('PREFIX dcterms: <http://purl.org/dc/terms/> PREFIX pcdm: '
                  '<http://pcdm.org/models#> INSERT { <> a pcdm:File ; '
                  'dcterms:language "' + lang + '"')
         if file_ext == '.pdf':
-            pages = self._get_field('physicalDescription/mods:extent')
+            pages = self.mets.find('.//mods:physicalDescription/mods:extent',
+                                   mets_namespace).text
             query += ' ; dcterms:extent "' + pages + '"'
         query += ' . } WHERE { }'
         return query
 
-    def _get_field(self, search_string, field_type='single',
-                   text_to_strip=None):
-        result = []
-        if field_type == 'degree':
-            for f in self.mets.findall(base_mets_search + search_string,
-                                       mets_namespace):
-                if f.text.startswith('Thesis'):
-                    result = f.text
-        elif field_type == 'multi':
-            for f in self.mets.findall(base_mets_search + search_string,
-                                       mets_namespace):
-                result.append(f.text)
-        elif field_type == 'notes':
-            for f in self.mets.findall(base_mets_search + search_string,
-                                       mets_namespace):
-                if not f.text.startswith('Thesis'):
-                    result.append(f.text)
-        elif field_type == 'single':
-            try:
-                result = self.mets.find(base_mets_search + search_string,
-                                        mets_namespace).text
-            except AttributeError as e:
-                result = None
-        elif field_type == 'split':
-            for f in self.mets.findall(base_mets_search + search_string,
-                                       mets_namespace):
-                if not result:
-                    result = f.text
-                else:
-                    t = f.text.lstrip(text_to_strip)
-                    result += t
-        if not result:
-            result = None
-        return result
-
     def _get_error_value(self, error):
-        result = None
         if self.errors[error] == '1':
-            result = True
-        return result
+            return True
 
     def _get_full_text_error(self):
-        result = None
         s = self.errors
         if (s['PDFBox err'] == '1' or
             (s['No new text'] == '1' and s['No old text'] == '1') or
                 s['Encoded'] == '1' or s['Hex strings'] == '1'):
-            result = True
-        return result
+            return True
 
 
 def parse_text_encoding_errors(tsv_file):
