@@ -3,6 +3,8 @@
 *.pyc
 *.egg-info
 *.log
+*.log.*
 .cache
 build/
 dist/
+venv/
