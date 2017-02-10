@@ -21,10 +21,11 @@ class Thesis(object):
     '''A thesis object representing a single thesis intellectual entity with
     all its associated metadata.
     '''
-    def __init__(self, name, mets, text_errors=None):
+    def __init__(self, name, mets, text_errors=None, collection=None):
         self.name = name
         self.mets = mets
         self.errors = text_errors
+        self.collection = collection
 
     @property
     def abstract(self):
@@ -80,7 +81,13 @@ class Thesis(object):
         result = [e.text for e in
                   self.mets.findall('.//mods:subject/mods:topic',
                                     mets_namespace)]
+        if self.collection:
+            result.append(self.collection)
         return result or None
+
+    @property
+    def encoded_text(self):
+        return self._get_error_value('Encoded text new file') if self.errors else None
 
     @property
     def handle(self):
@@ -102,11 +109,7 @@ class Thesis(object):
 
     @property
     def ligatures(self):
-        return self._get_error_value('Ligatures') if self.errors else None
-
-    @property
-    def line_ends(self):
-        return self._get_error_value('Line ends') if self.errors else None
+        return self._get_error_value('Ligatures new') if self.errors else None
 
     @property
     def no_full_text(self):
@@ -129,10 +132,10 @@ class Thesis(object):
 
     @property
     def rights_statement(self):
-        return ('M.I.T. theses are protected by copyright. They may be viewed '
-                'from this source for any purpose, but reproduction or '
-                'distribution in any format is prohibited without written '
-                'permission. See provided URL for inquiries about permission.')
+        return ('MIT theses are protected by copyright. They may be viewed, '
+                'downloaded, or printed from this source but further '
+                'reproduction or distribution in any format is prohibited '
+                'without written permission.')
 
     @property
     def title(self):
@@ -183,17 +186,18 @@ class Thesis(object):
         # Add all metadata properties
         _add_metadata_field(DCTERMS.abstract, self.abstract)
         _add_metadata_field(MSL.reviewedBy, self.advisor)
-        _add_metadata_field(DCTERMS.title, self.alt_title)
+        if self.alt_title:
+            _add_metadata_field(DCTERMS.title, self.alt_title)
         _add_metadata_field(DCTERMS.creator, self.author)
         _add_metadata_field(DCTERMS.dateCopyrighted, self.copyright_date)
         _add_metadata_field(DCTERMS.type, self.dc_type)
         _add_metadata_field(MSL.degreeGrantedForCompletion,
                             self.degree_statement)
         _add_metadata_field(MSL.associatedDepartment, self.department)
+        _add_metadata_field(LOCAL.encoded_text, self.encoded_text)
         _add_metadata_field(BIBO.handle, self.handle, obj_type='uri')
         _add_metadata_field(DCTERMS.dateIssued, self.issue_date)
         _add_metadata_field(LOCAL.ligature_errors, self.ligatures)
-        _add_metadata_field(LOCAL.line_ends, self.line_ends)
         _add_metadata_field(LOCAL.no_full_text, self.no_full_text)
         _add_metadata_field(MODS.note, self.notes)
         _add_metadata_field(DCTERMS.publisher, self.publisher)
@@ -208,12 +212,15 @@ class Thesis(object):
         lang = self.mets.find('.//mods:language/mods:languageTerm',
                               mets_namespace).text
         query = ('PREFIX dcterms: <http://purl.org/dc/terms/> PREFIX pcdm: '
-                 '<http://pcdm.org/models#> INSERT { <> a pcdm:File ; '
-                 'dcterms:language "' + lang + '"')
+                 '<http://pcdm.org/models#> PREFIX ebucore: '
+                 '<http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> '
+                 'INSERT { <> a pcdm:File ; dcterms:language "' + lang + '"')
         if file_ext == '.pdf':
             pages = self.mets.find('.//mods:physicalDescription/mods:extent',
                                    mets_namespace).text
             query += ' ; dcterms:extent "' + pages + '"'
+        elif file_ext == '.txt':
+            query += ' ; ebucore:hasEncodingFormat "utf-8"'
         query += ' . } WHERE { }'
         return query
 
@@ -223,9 +230,8 @@ class Thesis(object):
 
     def _get_full_text_error(self):
         s = self.errors
-        if (s['PDFBox err'] == '1' or
-            (s['No new text'] == '1' and s['No old text'] == '1') or
-                s['Encoded'] == '1' or s['Hex strings'] == '1'):
+        if (s['PDFBox err'] == '1' or (s['No text old file'] == '1' and
+                                       s['No text new file'] == '1')):
             return True
 
 

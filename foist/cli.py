@@ -59,7 +59,9 @@ def main():
                               resolve_path=False),
               help=('Output directory for thesis metadata files. Default is '
                     'same as input directory.'))
-def process_metadata(input_directory, output_directory):
+@click.option('-c', '--collection_name', default=None,
+              help=('Name of collection to be recorded as metadata.'))
+def process_metadata(input_directory, output_directory, collection_name):
     '''Parse metadata for all thesis items in a directory.
 
     This script traverses the given INPUT_DIRECTORY of thesis files and for
@@ -74,12 +76,16 @@ def process_metadata(input_directory, output_directory):
     dirnames = next(os.walk(os.path.join(input_directory, '.')))[1]
     count = 0
     for d in dirnames:
+        if not os.path.exists(os.path.join(input_directory, d, d + '.pdf')):
+            logger.warning(('No PDF file for item %s. Item metadata not '
+                          'processed.') % d)
+            continue
         try:
             mets = ET.parse(os.path.join(input_directory, d,
                                          d + '.xml')).getroot()
         except IOError as e:
-            logger.error('No XML file for item %s. %s' % (d, e))
-        thesis = Thesis(d, mets, text_encoding_errors.get(d))
+            logger.warning('No XML file for item %s. %s' % (d, e))
+        thesis = Thesis(d, mets, text_encoding_errors.get(d), collection_name)
         with open(os.path.join(output_directory, thesis.name, thesis.name +
                                '.ttl'), 'wb') as f:
             f.write(thesis.get_metadata())
@@ -115,6 +121,9 @@ def upload_theses(directory, fedora_uri):
         turtle_path = os.path.join(directory, d, d + '.ttl')
         pdf_path = os.path.join(directory, d, d + '.pdf')
         text_path = os.path.join(directory, d, d + '-new.txt')
+        if not os.path.exists(pdf_path):
+            logger.warning('No PDF for item %s, not ingested into Fedora.' % d)
+            continue
         with transaction(fedora_uri) as t:
             parent_loc = t + '/theses/'
             item_loc = parent_loc + d + '/'
@@ -128,8 +137,6 @@ def upload_theses(directory, fedora_uri):
             add_thesis_item_file(item_loc, d, '.pdf', 'application/pdf',
                                  pdf_path)
             add_file_metadata(pdf_loc, d, '.pdf', pdf_path, pdf_sparql)
-            # TODO: Check for 'no_full_text' field in metadata and only do
-            # the following if field is not present
             add_thesis_item_file(item_loc, d, '.txt', 'text/plain',
                                  text_path)
             add_file_metadata(text_loc, d, '.txt', text_path, text_sparql)
