@@ -120,36 +120,49 @@ def upload_theses(directory, fedora_uri):
     for d in dirnames:
         turtle_path = os.path.join(directory, d, d + '.ttl')
         pdf_path = os.path.join(directory, d, d + '.pdf')
-        text_path = os.path.join(directory, d, d + '-new.txt')
+        text_path = None
         if not os.path.exists(pdf_path):
             logger.warning('No PDF for item %s, not ingested into Fedora.' % d)
             continue
+
+        with open(turtle_path, 'r') as f:
+            s = f.read()
+            if 'local:no_full_text "True"' not in s:
+                if os.path.exists(os.path.join(directory, d, d + '-new.txt')):
+                    text_path = os.path.join(directory, d, d + '-new.txt')
+                elif os.path.exists(os.path.join(directory, d, d + '.txt')):
+                    text_path = os.path.join(directory, d, d + '.txt')
+
         with transaction(fedora_uri) as t:
             parent_loc = t + '/theses/'
             item_loc = parent_loc + d + '/'
-            pdf_loc = item_loc + d + '.pdf/'
-            pdf_sparql = os.path.join(directory, d, d + '.pdf.ru')
-            text_loc = item_loc + d + '.txt/'
-            text_sparql = os.path.join(directory, d, d + '.txt.ru')
-
             create_thesis_item_container(parent_loc, d, turtle_path)
 
+            pdf_loc = item_loc + d + '.pdf/'
+            pdf_sparql = os.path.join(directory, d, d + '.pdf.ru')
             add_thesis_item_file(item_loc, d, '.pdf', 'application/pdf',
                                  pdf_path)
             add_file_metadata(pdf_loc, d, '.pdf', pdf_path, pdf_sparql)
-            add_thesis_item_file(item_loc, d, '.txt', 'text/plain',
-                                 text_path)
-            add_file_metadata(text_loc, d, '.txt', text_path, text_sparql)
+
+            query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
+                     'pcdm:hasFile <' + pdf_loc + '> . } WHERE { }')
+            create_pcdm_relationships(item_loc, query)
+
+            if text_path:
+                text_loc = item_loc + d + '.txt/'
+                text_sparql = os.path.join(directory, d, d + '.txt.ru')
+                add_thesis_item_file(item_loc, d, '.txt', 'text/plain',
+                                     text_path)
+                add_file_metadata(text_loc, d, '.txt', text_path, text_sparql)
+
+                query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
+                         'pcdm:hasFile <' + text_loc + '> . } WHERE { }')
+                create_pcdm_relationships(item_loc, query)
 
             query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
                      'pcdm:hasMember <' + parent_loc + d + '> . } WHERE '
                      '{ }')
             create_pcdm_relationships(t + '/theses', query)
-
-            query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
-                     'pcdm:hasFile <' + pdf_loc + '> ; pcdm:hasFile'
-                     ' <' + text_loc + '> . } WHERE { }')
-            create_pcdm_relationships(item_loc, query)
             thesis_count += 1
     logger.info('TOTAL: %s theses ingested.\n' % thesis_count)
 

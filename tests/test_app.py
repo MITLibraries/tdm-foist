@@ -45,8 +45,7 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
     assert t.degree_statement == ('Thesis (S.M.)--Massachusetts Institute '
                                   'of Technology, Computation for Design and '
                                   'Optimization Program, 2006.')
-    assert t.department == ['Department One.', 'Department Two.',
-                            'Chemical Engineering']
+    assert t.department == ['Department One.', 'Chemical Engineering']
     assert t.encoded_text is True
     assert t.handle == 'http://hdl.handle.net/1721.1/39208'
     assert t.issue_date == '2006'

@@ -10,7 +10,7 @@
 
 <> local:ligature_errors "True" ;
     local:line_ends "True" ;
-    local:no_full_text "True" ;
+    local:no_full_text "None" ;
     dcterms:abstract "The pricing problem in a multi-period setting is a challenging problem and has attracted much attention in recent years. In this thesis, we consider a monopoly and an oligopoly pricing problem. In the latter, several sellers simultaneously seek an optimal pricing policy for their products. The products are assumed to be differentiated and substitutable. Each seller has the option to set prices for her products at each time period, and her goal is to find a pricing policy that will yield the maximum overall profit. Each seller has a fixed initial inventory of each product to be allocated over the entire time horizon and does not have the option to produce additional inventory between periods. There are no holding costs or back-order costs. In addition, the products are perishable and have no salvage costs. This means that at the end of the entire time horizon, any remaining products will be worthless. The demand function each seller faces for each product is uncertain and is affected by both the prices at the current period and past pricing history for her and her competitors. In this thesis, we address both the uncertain and the competitive aspect of the problem. First, we study the uncertain aspect of the problem in a simplified setting, where there is only one seller and two periods in the model." ;
     dcterms:creator "Zhang, Lei, Ph. D. Massachusetts Institute of Technology. Department Electrical Engineering and Computer Science." ;
     dcterms:dateCopyrighted "2006" ;

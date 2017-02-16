@@ -78,9 +78,8 @@ class Thesis(object):
 
     @property
     def department(self):
-        result = [e.text for e in
-                  self.mets.findall('.//mods:subject/mods:topic',
-                                    mets_namespace)]
+        result = [self.mets.find('.//mods:subject/mods:topic',
+                                 mets_namespace).text]
         if self.collection:
             result.append(self.collection)
         return result or None
