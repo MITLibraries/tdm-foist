@@ -104,6 +104,7 @@ def test_thesis_handles_missing_metadata_fields(tmpdir, xml_missing_fields,
     assert t.advisor is None
     assert t.copyright_date is None
     assert t.degree_statement is None
+    assert t.department is None
     assert t.encoded_text is None
     assert t.handle is None
     assert t.issue_date is None

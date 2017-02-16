@@ -37,9 +37,6 @@
   </mods:originInfo>
   <mods:accessCondition type="useAndReproduction">M.I.T. theses are protected by copyright. They may be viewed from this source for any purpose, but reproduction or distribution in any format is prohibited without written permission. See provided URL for inquiries about permission.</mods:accessCondition>
   <mods:accessCondition xmlns:xlink="http://www.w3.org/1999/xlink" xlink:simpleLink="http://dspace.mit.edu/handle/1721.1/7582">http://dspace.mit.edu/handle/1721.1/7582</mods:accessCondition>
-  <mods:subject>
-    <mods:topic>Computation for Design and Optimization Program.</mods:topic>
-  </mods:subject>
   <mods:genre>Thesis</mods:genre>
 </mods:mods></xmlData>
   </mdWrap>

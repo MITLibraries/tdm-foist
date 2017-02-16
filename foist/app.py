@@ -78,8 +78,11 @@ class Thesis(object):
 
     @property
     def department(self):
-        result = [self.mets.find('.//mods:subject/mods:topic',
-                                 mets_namespace).text]
+        try:
+            result = [self.mets.find('.//mods:subject/mods:topic',
+                                     mets_namespace).text]
+        except AttributeError:
+            result = []
         if self.collection:
             result.append(self.collection)
         return result or None
