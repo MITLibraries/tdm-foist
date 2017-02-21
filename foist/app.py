@@ -29,9 +29,12 @@ class Thesis(object):
 
     @property
     def abstract(self):
-        result = ''.join([e.text.lstrip('(cont.)') for
-                         e in self.mets.findall('.//mods:abstract',
-                                                mets_namespace)])
+        try:
+            result = ''.join([e.text.lstrip('(cont.)') for
+                             e in self.mets.findall('.//mods:abstract',
+                                                    mets_namespace)])
+        except AttributeError:
+            pass
         return result or None
 
     @property
@@ -192,7 +195,7 @@ class Thesis(object):
             _add_metadata_field(DCTERMS.title, self.alt_title)
         _add_metadata_field(DCTERMS.creator, self.author)
         _add_metadata_field(DCTERMS.dateCopyrighted, self.copyright_date)
-        _add_metadata_field(DCTERMS.type, self.dc_type)
+        _add_metadata_field(DCTERMS.type, self.dc_type, obj_type='uri')
         _add_metadata_field(MSL.degreeGrantedForCompletion,
                             self.degree_statement)
         _add_metadata_field(MSL.associatedDepartment, self.department)
@@ -203,7 +206,7 @@ class Thesis(object):
         _add_metadata_field(LOCAL.no_full_text, self.no_full_text)
         _add_metadata_field(MODS.note, self.notes)
         _add_metadata_field(DCTERMS.publisher, self.publisher)
-        _add_metadata_field(RDF.type, self.rdf_type)
+        _add_metadata_field(RDF.type, self.rdf_type, obj_type='uri')
         _add_metadata_field(DCTERMS.rights, self.rights_statement)
         _add_metadata_field(DCTERMS.title, self.title)
 

@@ -86,7 +86,8 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
 
     # Check a few metadata statements
     assert b'<>' in m
-    assert b'a "http://pcdm.org/models#Object"' in m
+    assert b'a pcdm:Object' in m
+    assert b'bibo:Thesis' in m
     assert b'dcterms:title "Alternative Title."' in m
     assert b'local:ligature_errors "None"' in m
     assert b'local:encoded_text "True"' in m
