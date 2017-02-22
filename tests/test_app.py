@@ -34,7 +34,7 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
-    t = Thesis('thesis', mets, errors)
+    t = Thesis('thesis', mets, errors, 'Chemical Engineering')
 
     assert t.abstract == 'Sample abstract.'
     assert t.advisor == ['Advisor One.', 'Advisor Two.']
@@ -45,22 +45,21 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
     assert t.degree_statement == ('Thesis (S.M.)--Massachusetts Institute '
                                   'of Technology, Computation for Design and '
                                   'Optimization Program, 2006.')
-    assert t.department == ['Department One.', 'Department Two.']
+    assert t.department == ['Department One.', 'Chemical Engineering']
+    assert t.encoded_text is True
     assert t.handle == 'http://hdl.handle.net/1721.1/39208'
     assert t.issue_date == '2006'
     assert t.ligatures is None
-    assert t.line_ends is True
     assert t.no_full_text is True
     assert t.notes == ['Includes bibliographical references (p. 1-2).',
                        'by Lei Zhang.']
     assert t.publisher == 'Massachusetts Institute of Technology'
     assert t.rdf_type == [BIBO.Thesis, PCDM.Object]
-    assert t.rights_statement == ('M.I.T. theses are protected by copyright. '
-                                  'They may be viewed from this source for '
-                                  'any purpose, but reproduction or '
+    assert t.rights_statement == ('MIT theses are protected by copyright. They'
+                                  ' may be viewed, downloaded, or printed from'
+                                  ' this source but further reproduction or '
                                   'distribution in any format is prohibited '
-                                  'without written permission. See provided '
-                                  'URL for inquiries about permission.')
+                                  'without written permission.')
     assert t.title == 'Sample Title.'
 
 
@@ -87,10 +86,11 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
 
     # Check a few metadata statements
     assert b'<>' in m
-    assert b'a "http://pcdm.org/models#Object"' in m
+    assert b'a pcdm:Object' in m
+    assert b'bibo:Thesis' in m
     assert b'dcterms:title "Alternative Title."' in m
     assert b'local:ligature_errors "None"' in m
-    assert b'local:line_ends "True"' in m
+    assert b'local:encoded_text "True"' in m
     assert b'bibo:handle <http://hdl.handle.net/1721.1/39208>' in m
 
 
@@ -101,12 +101,16 @@ def test_thesis_handles_missing_metadata_fields(tmpdir, xml_missing_fields,
     errors = parse_text_encoding_errors(text_errors).get('thesis-02')
     t = Thesis('thesis-02', mets, errors)
 
+    assert t.abstract is None
     assert t.advisor is None
     assert t.copyright_date is None
     assert t.degree_statement is None
+    assert t.department is None
+    assert t.encoded_text is None
     assert t.handle is None
     assert t.issue_date is None
-    assert t.line_ends is None
+    assert t.ligatures is None
+    assert t.no_full_text is None
     assert t.notes is None
     assert t.title is None
 
@@ -119,15 +123,23 @@ def test_thesis_create_file_sparql_update_is_correct(tmpdir, xml, text_errors):
 
     s = t.create_file_sparql_update('.pdf')
     assert s == ('PREFIX dcterms: <http://purl.org/dc/terms/> PREFIX pcdm: '
-                 '<http://pcdm.org/models#> INSERT { <> a pcdm:File ; '
-                 'dcterms:language "eng" ; dcterms:extent "109 p." . } WHERE '
-                 '{ }')
+                 '<http://pcdm.org/models#> PREFIX ebucore: '
+                 '<http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> '
+                 'INSERT { <> a pcdm:File ; dcterms:language "eng" ; '
+                 'dcterms:extent "109 p." . } WHERE { }')
+
+    s = t.create_file_sparql_update('.txt')
+    assert s == ('PREFIX dcterms: <http://purl.org/dc/terms/> PREFIX pcdm: '
+                 '<http://pcdm.org/models#> PREFIX ebucore: '
+                 '<http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> '
+                 'INSERT { <> a pcdm:File ; dcterms:language "eng" ; '
+                 'ebucore:hasEncodingFormat "utf-8" . } WHERE { }')
 
 
 def test_parse_text_encoding_errors_creates_dict(text_errors):
     d = parse_text_encoding_errors(text_errors)
     assert type(d) == dict
-    assert d['thesis']['Encoded'] == '1'
+    assert d['thesis']['Encoded text old file'] == '1'
 
 
 def test_transaction_commits(fedora):
