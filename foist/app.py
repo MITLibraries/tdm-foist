@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 from contextlib import contextmanager
+from functools import reduce
 import csv
 import logging
 import os
+import re
+
 
 import rdflib
 import requests
@@ -16,12 +19,21 @@ base_mets_search = './mets:dmdSec/*/*/*/mods:'
 mets_namespace = {'mets': 'http://www.loc.gov/METS/',
                   'mods': 'http://www.loc.gov/mods/v3'}
 
+repls = (('E.E', 'Elec.E'), ('Elect.E', 'Elec.E'), ('OceanE', 'Ocean.E'),
+         ('M.ArchAS', 'M.Arch.A.S'), ('PhD', 'Ph.D'), ('ScD', 'Sc.D'))
+
+degrees = ['B.Arch.', 'B.C.P.', 'B.S.', 'C.P.H.', 'Chem.E.', 'Civ.E.',
+           'E.A.A.', 'Elec.E.', 'Env.E.', 'M.Arch.', 'M.Arch.A.S.', 'M.B.A.',
+           'M.C.P.', 'M.Eng.', 'M.Fin.', 'M.S.', 'M.S.V.S.', 'Mat.Eng.',
+           'Nav.Arch.', 'Mech.E.', 'Nav.E.', 'Nucl.E.', 'Ocean.E.', 'Ph.D.',
+           'S.B.', 'S.M.', 'S.M.M.O.T.', 'Sc.D.']
+
 
 class Thesis(object):
     '''A thesis object representing a single thesis intellectual entity with
     all its associated metadata.
     '''
-    def __init__(self, name, mets, text_errors=None, collection=None):
+    def __init__(self, name, mets, collection, text_errors=None):
         self.name = name
         self.mets = mets
         self.errors = text_errors
@@ -34,7 +46,7 @@ class Thesis(object):
                              e in self.mets.findall('.//mods:abstract',
                                                     mets_namespace)])
         except AttributeError:
-            pass
+            result = None
         return result or None
 
     @property
@@ -73,32 +85,57 @@ class Thesis(object):
         return DCTYPE.Text
 
     @property
+    def degree(self):
+        result = []
+        try:
+            degree = re.findall('[A-Z][a-z]{,4}\.? ?[A-Z][a-z]{,3}\.?[A-Z]?\.?[A-Z]?\.?[A-Z]?\.?', self.degree_statement)
+            for item in degree:
+                i = item.replace(' ', '')
+                i = i.rstrip('..')
+                i = reduce(lambda a, kv: a.replace(*kv), repls, i)
+                if not i.endswith('.'):
+                    i += '.'
+                if i in degrees:
+                    result.append(i)
+        except TypeError as e:
+            result = None
+        return result or None
+
+    @property
     def degree_statement(self):
-        result = [e.text for e in
-                  self.mets.findall('.//mods:note', mets_namespace) if
-                  e.text.startswith('Thesis')]
+        try:
+            result = [e.text for e in
+                      self.mets.findall('.//mods:note', mets_namespace) if
+                      e.text is not None and
+                      (e.text.startswith('Thesis') or
+                       e.text.startswith('Massachusetts Institute of '
+                                         'Technology'))]
+        except AttributeError as e:
+            result = None
         return result[0] if result else None
 
     @property
     def department(self):
-        try:
-            result = [self.mets.find('.//mods:subject/mods:topic',
-                                     mets_namespace).text]
-        except AttributeError:
-            result = []
-        if self.collection:
-            result.append(self.collection)
-        return result or None
+        return self.collection
 
     @property
     def encoded_text(self):
-        return self._get_error_value('Encoded text new file') if self.errors else None
+        return (self._get_error_value('Encoded text new file') if self.errors
+                else None)
 
     @property
     def handle(self):
         try:
             result = self.mets.find('.//mods:identifier[@type="uri"]',
                                     mets_namespace).text
+        except AttributeError:
+            result = None
+        return result
+
+    @property
+    def handle_part(self):
+        try:
+            result = self.handle.split('/')[-1]
         except AttributeError:
             result = None
         return result
@@ -122,9 +159,11 @@ class Thesis(object):
 
     @property
     def notes(self):
-        result = [e.text for e in
-                  self.mets.findall('.//mods:note', mets_namespace) if not
-                  e.text.startswith('Thesis')]
+        try:
+            result = [e.text for e in
+                      self.mets.findall('.//mods:note', mets_namespace)]
+        except AttributeError:
+            pass
         return result or None
 
     @property
@@ -197,10 +236,12 @@ class Thesis(object):
         _add_metadata_field(DCTERMS.dateCopyrighted, self.copyright_date)
         _add_metadata_field(DCTERMS.type, self.dc_type, obj_type='uri')
         _add_metadata_field(MSL.degreeGrantedForCompletion,
-                            self.degree_statement)
+                            self.degree)
+        _add_metadata_field(LOCAL.degree_statement, self.degree_statement)
         _add_metadata_field(MSL.associatedDepartment, self.department)
         _add_metadata_field(LOCAL.encoded_text, self.encoded_text)
         _add_metadata_field(BIBO.handle, self.handle, obj_type='uri')
+        _add_metadata_field(LOCAL.handle_part, self.handle_part)
         _add_metadata_field(DCTERMS.dateIssued, self.issue_date)
         _add_metadata_field(LOCAL.ligature_errors, self.ligatures)
         _add_metadata_field(LOCAL.no_full_text, self.no_full_text)
@@ -214,16 +255,23 @@ class Thesis(object):
             return m.serialize(format='turtle')
 
     def create_file_sparql_update(self, file_ext):
-        lang = self.mets.find('.//mods:language/mods:languageTerm',
-                              mets_namespace).text
         query = ('PREFIX dcterms: <http://purl.org/dc/terms/> PREFIX pcdm: '
                  '<http://pcdm.org/models#> PREFIX ebucore: '
                  '<http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> '
-                 'INSERT { <> a pcdm:File ; dcterms:language "' + lang + '"')
+                 'INSERT { <> a pcdm:File')
+        try:
+            lang = self.mets.find('.//mods:language/mods:languageTerm',
+                                  mets_namespace).text
+            query += ' ; dcterms:language "' + lang + '"'
+        except AttributeError:
+            pass
         if file_ext == '.pdf':
-            pages = self.mets.find('.//mods:physicalDescription/mods:extent',
-                                   mets_namespace).text
-            query += ' ; dcterms:extent "' + pages + '"'
+            try:
+                pages = self.mets.find(('.//mods:physicalDescription/mods:'
+                                       'extent'), mets_namespace).text
+                query += ' ; dcterms:extent "' + pages + '"'
+            except AttributeError:
+                pass
         elif file_ext == '.txt':
             query += ' ; ebucore:hasEncodingFormat "utf-8"'
         query += ' . } WHERE { }'

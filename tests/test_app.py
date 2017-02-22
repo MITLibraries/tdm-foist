@@ -20,7 +20,8 @@ def test_thesis(tmpdir, xml, text_errors):
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
-    t = Thesis('thesis', mets, errors)
+    t = Thesis('thesis', mets, 'Computation for Design and Optimization',
+               errors)
 
     assert t.name == 'thesis'
     assert t.mets == mets
@@ -34,7 +35,8 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
-    t = Thesis('thesis', mets, errors, 'Chemical Engineering')
+    t = Thesis('thesis', mets, 'Computation for Design and Optimization',
+               errors)
 
     assert t.abstract == 'Sample abstract.'
     assert t.advisor == ['Advisor One.', 'Advisor Two.']
@@ -42,16 +44,21 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
     assert t.author == ['Author One.', 'Author Two.']
     assert t.copyright_date == '2006'
     assert t.dc_type == DCTYPE.Text
-    assert t.degree_statement == ('Thesis (S.M.)--Massachusetts Institute '
-                                  'of Technology, Computation for Design and '
-                                  'Optimization Program, 2006.')
-    assert t.department == ['Department One.', 'Chemical Engineering']
+    assert t.degree == ['S.M.', 'M.B.A.']
+    assert t.degree_statement == ('Thesis (S.M. and M.B.A.)--Massachusetts '
+                                  'Institute of Technology, Computation for '
+                                  'Design and Optimization Program, 2006.')
+    assert t.department == 'Computation for Design and Optimization'
     assert t.encoded_text is True
     assert t.handle == 'http://hdl.handle.net/1721.1/39208'
+    assert t.handle_part == '39208'
     assert t.issue_date == '2006'
     assert t.ligatures is None
     assert t.no_full_text is True
-    assert t.notes == ['Includes bibliographical references (p. 1-2).',
+    assert t.notes == [('Thesis (S.M. and M.B.A.)--Massachusetts Institute of '
+                        'Technology, Computation for Design and Optimization '
+                        'Program, 2006.'),
+                       'Includes bibliographical references (p. 1-2).',
                        'by Lei Zhang.']
     assert t.publisher == 'Massachusetts Institute of Technology'
     assert t.rdf_type == [BIBO.Thesis, PCDM.Object]
@@ -67,7 +74,8 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
-    t = Thesis('thesis', mets, errors)
+    t = Thesis('thesis', mets, 'Computation for Design and Optimization',
+               errors)
     m = t.get_metadata()
 
     # Check all prefix bindings
@@ -92,6 +100,14 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     assert b'local:ligature_errors "None"' in m
     assert b'local:encoded_text "True"' in m
     assert b'bibo:handle <http://hdl.handle.net/1721.1/39208>' in m
+    assert b'msl:degreeGrantedForCompletion "M.B.A."' in m
+    assert b'"S.M."' in m
+    assert (b'local:degree_statement "Thesis (S.M. and M.B.A.)--Massachusetts '
+            b'Institute of Technology, Computation for Design and Optimization'
+            b' Program, 2006."' in m)
+    assert (b'msl:associatedDepartment "Computation for Design and '
+            b'Optimization"' in m)
+    assert b'local:handle_part "39208"' in m
 
 
 def test_thesis_handles_missing_metadata_fields(tmpdir, xml_missing_fields,
@@ -99,15 +115,17 @@ def test_thesis_handles_missing_metadata_fields(tmpdir, xml_missing_fields,
     l = tempfile.mkdtemp()
     mets = ET.parse(xml_missing_fields).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis-02')
-    t = Thesis('thesis-02', mets, errors)
+    t = Thesis('thesis-02', mets, 'Test department', errors)
 
     assert t.abstract is None
     assert t.advisor is None
     assert t.copyright_date is None
+    assert t.degree is None
     assert t.degree_statement is None
-    assert t.department is None
+    assert t.department == 'Test department'
     assert t.encoded_text is None
     assert t.handle is None
+    assert t.handle_part is None
     assert t.issue_date is None
     assert t.ligatures is None
     assert t.no_full_text is None
@@ -134,6 +152,21 @@ def test_thesis_create_file_sparql_update_is_correct(tmpdir, xml, text_errors):
                  '<http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> '
                  'INSERT { <> a pcdm:File ; dcterms:language "eng" ; '
                  'ebucore:hasEncodingFormat "utf-8" . } WHERE { }')
+
+
+def test_thesis_create_file_sparql_update_missing_fields(tmpdir,
+                                                         xml_missing_fields,
+                                                         text_errors):
+    l = tempfile.mkdtemp()
+    mets = ET.parse(xml_missing_fields).getroot()
+    errors = parse_text_encoding_errors(text_errors).get('thesis')
+    t = Thesis('thesis', mets, errors)
+
+    s = t.create_file_sparql_update('.pdf')
+    assert s == ('PREFIX dcterms: <http://purl.org/dc/terms/> PREFIX pcdm: '
+                 '<http://pcdm.org/models#> PREFIX ebucore: '
+                 '<http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> '
+                 'INSERT { <> a pcdm:File . } WHERE { }')
 
 
 def test_parse_text_encoding_errors_creates_dict(text_errors):
