@@ -23,7 +23,7 @@ def test_process_metadata(runner, theses_dir, tmpdir):
     os.makedirs(q)
     os.makedirs(r)
     result = runner.invoke(main, ['process_metadata',
-                           theses_dir, '-o', l])
+                           theses_dir, 'Test Collection', '-o', l])
     assert result.exit_code == 0
 
 

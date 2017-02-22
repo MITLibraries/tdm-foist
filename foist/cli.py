@@ -54,13 +54,12 @@ def main():
 @click.argument('input_directory', type=click.Path(exists=True,
                                                    file_okay=False,
                                                    resolve_path=True))
+@click.argument('collection_name')
 @click.option('-o', '--output_directory', default='',
               type=click.Path(exists=False, file_okay=False,
                               resolve_path=False),
               help=('Output directory for thesis metadata files. Default is '
                     'same as input directory.'))
-@click.option('-c', '--collection_name', default=None,
-              help=('Name of collection to be recorded as metadata.'))
 def process_metadata(input_directory, output_directory, collection_name):
     '''Parse metadata for all thesis items in a directory.
 
@@ -78,14 +77,14 @@ def process_metadata(input_directory, output_directory, collection_name):
     for d in dirnames:
         if not os.path.exists(os.path.join(input_directory, d, d + '.pdf')):
             logger.warning(('No PDF file for item %s. Item metadata not '
-                          'processed.') % d)
+                           'processed.') % d)
             continue
         try:
             mets = ET.parse(os.path.join(input_directory, d,
                                          d + '.xml')).getroot()
         except IOError as e:
             logger.warning('No XML file for item %s. %s' % (d, e))
-        thesis = Thesis(d, mets, text_encoding_errors.get(d), collection_name)
+        thesis = Thesis(d, mets, collection_name, text_encoding_errors.get(d))
         with open(os.path.join(output_directory, thesis.name, thesis.name +
                                '.ttl'), 'wb') as f:
             f.write(thesis.get_metadata())

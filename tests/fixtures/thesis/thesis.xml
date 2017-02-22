@@ -51,7 +51,7 @@
     <mods:dateIssued encoding="iso8601">2006</mods:dateIssued>
   </mods:originInfo>
   <mods:identifier type="uri">http://hdl.handle.net/1721.1/39208</mods:identifier>
-  <mods:note>Thesis (S.M.)--Massachusetts Institute of Technology, Computation for Design and Optimization Program, 2006.</mods:note>
+  <mods:note>Thesis (S.M. and M.B.A.)--Massachusetts Institute of Technology, Computation for Design and Optimization Program, 2006.</mods:note>
   <mods:note>Includes bibliographical references (p. 1-2).</mods:note>
   <mods:abstract>Sample</mods:abstract>
   <mods:abstract>(cont.) abstract.</mods:abstract>

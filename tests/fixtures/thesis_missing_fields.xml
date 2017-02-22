@@ -26,12 +26,6 @@
   <mods:extension>
     <mods:dateAvailable encoding="iso8601">2007-10-19T20:31:20Z</mods:dateAvailable>
   </mods:extension>
-  <mods:physicalDescription>
-    <mods:extent>109 p.</mods:extent>
-  </mods:physicalDescription>
-  <mods:language>
-    <mods:languageTerm authority="rfc3066">eng</mods:languageTerm>
-  </mods:language>
   <mods:originInfo>
     <mods:publisher>Massachusetts Institute of Technology</mods:publisher>
   </mods:originInfo>
