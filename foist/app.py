@@ -91,7 +91,7 @@ class Thesis(object):
             degree = re.findall('[A-Z][a-z]{,4}\.? ?[A-Z][a-z]{,3}\.?[A-Z]?\.?[A-Z]?\.?[A-Z]?\.?', self.degree_statement)
             for item in degree:
                 i = item.replace(' ', '')
-                i = i.rstrip('..')
+                i = i.rstrip('.')
                 i = reduce(lambda a, kv: a.replace(*kv), repls, i)
                 if not i.endswith('.'):
                     i += '.'
