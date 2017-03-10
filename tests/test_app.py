@@ -180,9 +180,10 @@ def test_transaction_commits(fedora):
         assert t == 'mock://example.com/rest/tx:123456789'
 
 
-def test_transaction_with_error_rolls_back_and_closes(fedora):
-    with transaction('mock://example.com/rest/') as t:
-        raise
+def test_transaction_with_error_raises_exception(fedora):
+    with pytest.raises(RuntimeError):
+        with transaction('mock://example.com/rest/') as t:
+            raise
 
 
 def test_transaction_commit_fail_raises_exception(fedora_errors):
