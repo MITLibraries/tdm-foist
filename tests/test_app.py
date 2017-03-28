@@ -10,7 +10,8 @@ import xml.etree.ElementTree as ET
 
 from foist.app import (add_file_metadata, add_thesis_item_file,
                        create_pcdm_relationships, create_thesis_item_container,
-                       parse_text_encoding_errors, Thesis, transaction)
+                       parse_text_encoding_errors, Thesis, transaction,
+                       update_metadata)
 from foist.namespaces import BIBO, DCTERMS, DCTYPE, LOCAL, MODS, MSL, PCDM, RDF
 
 
@@ -96,6 +97,7 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     assert b'<>' in m
     assert b'a pcdm:Object' in m
     assert b'bibo:Thesis' in m
+    assert b'dcterms:type dctype:Text' in m
     assert b'dcterms:title "Alternative Title."' in m
     assert b'local:ligature_errors "None"' in m
     assert b'local:encoded_text "True"' in m
@@ -236,7 +238,7 @@ def test_add_file_metadata_failure_raises_error(fedora_errors, pdf, sparql):
 def test_create_pcdm_relationships_is_successful(fedora):
     r = None
     with transaction('mock://example.com/rest/') as t:
-        uri = t + '/theses'
+        uri = t + '/theses/'
         query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
                  'pcdm:hasMember <' + uri + '/thesis> . } WHERE { }')
         r = create_pcdm_relationships(uri, query)
@@ -249,3 +251,22 @@ def test_create_pcdm_relationships_failure_raises_error(fedora_errors):
         query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
                  'pcdm:hasMember <' + uri + '/thesis> . } WHERE { }')
         create_pcdm_relationships(uri, query)
+
+
+def test_update_metadata_is_successful(fedora):
+    r = None
+    uri = 'mock://example.com/rest/theses/thesis'
+    query = ('PREFIX msl: <http://purl.org/montana-state/library/> INSERT { <>'
+             ' msl:associatedDepartment "A sample department" . } WHERE { NOT '
+             'EXISTS { ?s msl:associatedDepartment ?o } }')
+    r = update_metadata(uri, query)
+    assert r == 204
+
+
+def test_update_metadata_failure_raises_error(fedora_errors):
+    with pytest.raises(requests.exceptions.HTTPError):
+        uri = 'mock://example.com/rest/theses/thesis'
+        query = ('PREFIX msl: <http://purl.org/montana-state/library/> INSERT '
+                 '{ <> msl:associatedDepartment "A sample department" . } '
+                 'WHERE { NOT EXISTS { ?s msl:associatedDepartment ?o } }')
+        update_metadata(uri, query)

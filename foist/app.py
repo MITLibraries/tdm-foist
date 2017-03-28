@@ -88,7 +88,8 @@ class Thesis(object):
     def degree(self):
         result = []
         try:
-            degree = re.findall('[A-Z][a-z]{,4}\.? ?[A-Z][a-z]{,3}\.?[A-Z]?\.?[A-Z]?\.?[A-Z]?\.?', self.degree_statement)
+            degree = re.findall('[A-Z][a-z]{,4}\.? ?[A-Z][a-z]{,3}\.?[A-Z]?\.?'
+                                '[A-Z]?\.?[A-Z]?\.?', self.degree_statement)
             for item in degree:
                 i = item.replace(' ', '')
                 i = i.rstrip('.')
@@ -116,7 +117,7 @@ class Thesis(object):
 
     @property
     def department(self):
-        return self.collection
+        return str(self.collection)
 
     @property
     def encoded_text(self):
@@ -201,13 +202,13 @@ class Thesis(object):
             elif obj is True:
                 o = rdflib.Literal('True')
                 m.add((s, p, o))
-            elif type(obj) == str:
-                o = _create_rdf_obj(obj, obj_type)
-                m.add((s, p, o))
             elif type(obj) == list:
                 for i in obj:
                     o = _create_rdf_obj(i, obj_type)
                     m.add((s, p, o))
+            else:
+                o = _create_rdf_obj(obj, obj_type)
+                m.add((s, p, o))
 
         def _create_rdf_obj(obj, obj_type):
             if obj_type == 'string':
@@ -491,11 +492,24 @@ def upload_thesis(d, parent_dir, fedora_uri, auth):
             if str(e).startswith('409'):
                 return 'Exists'
             else:
-                logger.warning('Upload attempt failed, retrying %s' % d)
-                logger.debug(e)
+                log.warning('Upload attempt failed, retrying %s' % d)
+                log.debug(e)
                 retries += 1
         query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { '
                  '<> pcdm:hasMember <' + fedora_uri + 'theses/' +
                  d + '> . } WHERE { }')
         create_pcdm_relationships(fedora_uri + 'theses/', query, auth)
         return 'Success'
+
+
+def update_metadata(uri, sparql, auth=None):
+    '''Update metadata for a single item in Fedora, given the item's URI and a
+    SPARQL update query.
+    '''
+    headers = {'Content-Type': 'application/sparql-update'}
+    try:
+        r = requests.patch(uri, headers=headers, auth=auth, data=sparql)
+        r.raise_for_status()
+        return r.status_code
+    except requests.exceptions.HTTPError as e:
+        raise e
