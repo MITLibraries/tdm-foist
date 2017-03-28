@@ -110,7 +110,7 @@ class Thesis(object):
                       (e.text.startswith('Thesis') or
                        e.text.startswith('Massachusetts Institute of '
                                          'Technology'))]
-        except AttributeError as e:
+        except AttributeError:
             result = None
         return result[0] if result else None
 
@@ -301,79 +301,201 @@ def parse_text_encoding_errors(tsv_file):
 
 
 @contextmanager
-def transaction(fedora_uri):
+def transaction(fedora_uri, auth=None):
     '''Starts a Fedora transaction, yields a location header, commits and
     closes the transaction.
     '''
     uri = fedora_uri + 'fcr:tx'
-    r = requests.post(uri)
+    r = requests.post(uri, auth=auth)
     location = r.headers['Location']
     try:
         yield location
     except Exception as e:
         uri = location + '/fcr:tx/fcr:rollback'
-        r = requests.post(uri)
-        log.debug(e)
-        log.warning('Transaction %s rolled back and closed' % location)
+        r = requests.post(uri, auth=auth)
+        raise(e)
     else:
         uri = location + '/fcr:tx/fcr:commit'
         try:
-            r = requests.post(uri)
+            r = requests.post(uri, auth=auth)
             r.raise_for_status()
         except requests.exceptions.HTTPError as e:
             raise e
 
 
-def create_thesis_item_container(location, item, turtle_path):
+def create_thesis_item_container(location, item, turtle_path, auth=None):
     '''Create basic PCDM container for a thesis item.
     '''
     uri = location + item
     headers = {'Content-Type': 'text/turtle; charset=utf-8'}
     with open(turtle_path, 'rb') as data:
         try:
-            r = requests.put(uri, headers=headers, data=data)
+            r = requests.put(uri, headers=headers, auth=auth, data=data)
             r.raise_for_status()
             return r.status_code
         except requests.exceptions.HTTPError as e:
             raise e
 
 
-def add_thesis_item_file(location, item, ext, mimetype, file_path):
+def add_thesis_item_file(location, item, ext, mimetype, file_path, auth=None):
     '''Add a file to a thesis item container.
     '''
     uri = location + item + ext
     headers = {'Content-Type': mimetype}
     with open(file_path, 'rb') as data:
         try:
-            r = requests.put(uri, headers=headers, data=data)
+            r = requests.put(uri, headers=headers, auth=auth, data=data)
             r.raise_for_status()
             return r.status_code
         except requests.exceptions.HTTPError as e:
             raise e
 
 
-def add_file_metadata(location, item, ext, file_path, sparql_path):
+def add_file_metadata(location, item, ext, file_path, sparql_path, auth=None):
     '''Update the metadata for a given file.
     '''
     uri = location + 'fcr:metadata'
     headers = {'Content-Type': 'application/sparql-update'}
     with open(sparql_path, 'rb') as data:
         try:
-            r = requests.patch(uri, headers=headers, data=data)
+            r = requests.patch(uri, headers=headers, auth=auth, data=data)
             r.raise_for_status()
             return r.status_code
         except requests.exceptions.HTTPError as e:
             raise e
 
 
-def create_pcdm_relationships(uri, query):
+def create_pcdm_relationships(uri, query, auth=None):
     '''Create PCDM relationship statement between a thesis item and its parent
     container (hasMember).
     '''
     headers = {'Content-Type': 'application/sparql-update'}
     try:
-        r = requests.patch(uri, headers=headers, data=query)
+        r = requests.patch(uri, headers=headers, auth=auth, data=query)
         r.raise_for_status()
         return r.status_code
     except requests.exceptions.HTTPError as e:
         raise e
+
+
+# Create a temporary dummy resource to initialize custom RDF namespace prefixes
+def initialize_custom_prefixes(fedora_uri, auth=None):
+    uri = fedora_uri + 'initialize'
+    headers = {'Content-Type': 'application/sparql-update'}
+    data = '''
+        PREFIX bibo: <http://purl.org/ontology/bibo/>
+        PREFIX dcterms: <http://purl.org/dc/terms/>
+        PREFIX dctype: <http://purl.org/dc/dcmitype/>
+        PREFIX local: <http://example.com/>
+        PREFIX mods: <http://www.loc.gov/standards/mods/modsrdf/v1/#>
+        PREFIX msl: <http://purl.org/montana-state/library/>
+        PREFIX pcdm: <http://pcdm.org/models#>
+    INSERT DATA {
+        <> a pcdm:Object ;
+            bibo:test 'test' ;
+            dcterms:test 'test' ;
+            dctype:test 'test' ;
+            local:test 'test' ;
+            mods:test 'test' ;
+            msl:test 'test' .
+        }'''
+    try:
+        r1 = requests.put(uri, auth=auth)
+        r1.raise_for_status
+        r2 = requests.patch(uri, headers=headers, auth=auth,
+                            data=data)
+        r2.raise_for_status
+        log.info('Custom prefixes initialized')
+        r3 = requests.delete(uri, auth=auth)
+        r3.raise_for_status
+        r4 = requests.delete(uri+'/fcr:tombstone', auth=auth)
+        r4.raise_for_status
+        log.info('Dummy initialization resource deleted')
+    except requests.exceptions.HTTPError as e:
+        log.error(e)
+
+
+# Create basic PCDM container for thesis collection
+def create_theses_container(fedora_uri, auth=None):
+    uri = fedora_uri + 'theses'
+    headers = {'Content-Type': 'text/turtle'}
+    turtle = '''
+        @prefix pcdm: <http://pcdm.org/models#>
+
+        <> a pcdm:Collection .
+        '''
+    try:
+        r = requests.put(uri, headers=headers, auth=auth,
+                         data=turtle)
+        r.raise_for_status
+        log.info('Theses container created at location: %s' %
+                 (r.headers['Location']))
+    except requests.exceptions.HTTPError as e:
+        log.error(e)
+    except KeyError as e:
+        log.warning('Thesis container already exists')
+
+
+# Upload a single thesis item and its files to Fedora
+def upload_thesis(d, parent_dir, fedora_uri, auth):
+    turtle_path = os.path.join(parent_dir, d, d + '.ttl')
+    pdf_path = os.path.join(parent_dir, d, d + '.pdf')
+    text_path = None
+
+    if not os.path.exists(pdf_path):
+        return 'Not a thesis'
+
+    with open(turtle_path, 'r') as f:
+        s = f.read()
+        if 'local:no_full_text "True"' not in s:
+            if os.path.exists(os.path.join(parent_dir, d, d + '-new.txt')):
+                text_path = os.path.join(parent_dir, d, d + '-new.txt')
+            elif os.path.exists(os.path.join(parent_dir, d, d + '.txt')):
+                text_path = os.path.join(parent_dir, d, d + '.txt')
+
+    retries = 0
+    while retries < 5:
+        try:
+            with transaction(fedora_uri, auth) as t:
+                parent_loc = t + '/theses/'
+                item_loc = parent_loc + d + '/'
+                create_thesis_item_container(parent_loc, d, turtle_path,
+                                             auth)
+
+                pdf_loc = item_loc + d + '.pdf/'
+                pdf_sparql = os.path.join(parent_dir, d, d + '.pdf.ru')
+                add_thesis_item_file(item_loc, d, '.pdf',
+                                     'application/pdf', pdf_path, auth)
+                add_file_metadata(pdf_loc, d, '.pdf', pdf_path, pdf_sparql,
+                                  auth)
+
+                query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { '
+                         '<> pcdm:hasFile <' + fedora_uri + 'theses/' + d +
+                         '/' + d + '.pdf> . } WHERE { }')
+                create_pcdm_relationships(item_loc, query, auth)
+
+                if text_path:
+                    text_loc = item_loc + d + '.txt/'
+                    text_sparql = os.path.join(parent_dir, d, d + '.txt.ru')
+                    add_thesis_item_file(item_loc, d, '.txt', 'text/plain',
+                                         text_path, auth)
+                    add_file_metadata(text_loc, d, '.txt', text_path,
+                                      text_sparql, auth)
+
+                    query = ('PREFIX pcdm: <http://pcdm.org/models#> '
+                             'INSERT { <> pcdm:hasFile <' + fedora_uri +
+                             'theses/' + d + '/' + d + '.txt> . } WHERE '
+                             '{ }')
+                    create_pcdm_relationships(item_loc, query, auth)
+        except requests.exceptions.HTTPError as e:
+            if str(e).startswith('409'):
+                return 'Exists'
+            else:
+                logger.warning('Upload attempt failed, retrying %s' % d)
+                logger.debug(e)
+                retries += 1
+        query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { '
+                 '<> pcdm:hasMember <' + fedora_uri + 'theses/' +
+                 d + '> . } WHERE { }')
+        create_pcdm_relationships(fedora_uri + 'theses/', query, auth)
+        return 'Success'

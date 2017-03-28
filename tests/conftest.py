@@ -89,9 +89,11 @@ def fedora():
                 status_code=204)
         m.patch('/rest/tx:123456789/theses/thesis/',
                 status_code=204)
+        m.patch('/rest/theses/', status_code=204)
         m.put(matcher, status_code=201)
         m.patch(matcher, status_code=204)
         yield m
+
 
 @pytest.yield_fixture
 def fedora_errors():

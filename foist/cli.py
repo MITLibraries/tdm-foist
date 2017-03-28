@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
+import concurrent.futures
 import glob
 import logging
 import logging.config
@@ -7,10 +8,14 @@ import os
 import xml.etree.ElementTree as ET
 
 import click
+import requests
+from timeit import default_timer as timer
 
 from foist import (add_file_metadata, add_thesis_item_file,
-                   create_pcdm_relationships, create_thesis_item_container,
-                   parse_text_encoding_errors, Thesis, transaction)
+                   create_pcdm_relationships, create_theses_container,
+                   create_thesis_item_container, initialize_custom_prefixes,
+                   parse_text_encoding_errors, Thesis, transaction,
+                   upload_thesis)
 
 
 logger = logging.getLogger(__name__)
@@ -106,7 +111,10 @@ def process_metadata(input_directory, output_directory, collection_name):
               default='http://localhost:8080/fcrepo/rest/',
               help=('Base Fedora REST URI. Default is '
                     'http://localhost:8080/fcrepo/rest/'))
-def upload_theses(directory, fedora_uri):
+@click.option('-u', '--username', default=None)
+@click.option('-p', '--password', default=None)
+@click.option('-w', '--workers', default=1)
+def upload_theses(directory, fedora_uri, username, password, workers):
     '''Uploads all thesis items in a directory to Fedora.
 
     This script traverses the given DIRECTORY of thesis files exported from
@@ -114,56 +122,44 @@ def upload_theses(directory, fedora_uri):
     adds file metadata, and adds PCDM relationship statements between the
     collection, item, and files.
     '''
+    auth = (username, password) if username else None
     dirnames = next(os.walk(os.path.join(directory, '.')))[1]
     thesis_count = 0
-    for d in dirnames:
-        turtle_path = os.path.join(directory, d, d + '.ttl')
-        pdf_path = os.path.join(directory, d, d + '.pdf')
-        text_path = None
-        if not os.path.exists(pdf_path):
-            logger.warning('No PDF for item %s, not ingested into Fedora.' % d)
-            continue
+    start = timer()
 
-        with open(turtle_path, 'r') as f:
-            s = f.read()
-            if 'local:no_full_text "True"' not in s:
-                if os.path.exists(os.path.join(directory, d, d + '-new.txt')):
-                    text_path = os.path.join(directory, d, d + '-new.txt')
-                elif os.path.exists(os.path.join(directory, d, d + '.txt')):
-                    text_path = os.path.join(directory, d, d + '.txt')
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as\
+            executor:
+        run_next = {executor.submit(upload_thesis, d, directory, fedora_uri,
+                                    auth): d for d in dirnames}
+        for future in concurrent.futures.as_completed(run_next):
+            d = run_next[future]
+            if future.result() == 'Success':
+                thesis_count += 1
+            elif future.result() == 'Exists':
+                logger.warning('Item %s already in collection' % d)
+                thesis_count += 1
+            elif future.result() == 'Not a thesis':
+                logger.warning('No PDF for item %s, not ingested into Fedora.'
+                               % d)
+            else:
+                logger.warning('Thesis %s upload failed' % d)
 
-        with transaction(fedora_uri) as t:
-            parent_loc = t + '/theses/'
-            item_loc = parent_loc + d + '/'
-            create_thesis_item_container(parent_loc, d, turtle_path)
-
-            pdf_loc = item_loc + d + '.pdf/'
-            pdf_sparql = os.path.join(directory, d, d + '.pdf.ru')
-            add_thesis_item_file(item_loc, d, '.pdf', 'application/pdf',
-                                 pdf_path)
-            add_file_metadata(pdf_loc, d, '.pdf', pdf_path, pdf_sparql)
-
-            query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
-                     'pcdm:hasFile <' + pdf_loc + '> . } WHERE { }')
-            create_pcdm_relationships(item_loc, query)
-
-            if text_path:
-                text_loc = item_loc + d + '.txt/'
-                text_sparql = os.path.join(directory, d, d + '.txt.ru')
-                add_thesis_item_file(item_loc, d, '.txt', 'text/plain',
-                                     text_path)
-                add_file_metadata(text_loc, d, '.txt', text_path, text_sparql)
-
-                query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
-                         'pcdm:hasFile <' + text_loc + '> . } WHERE { }')
-                create_pcdm_relationships(item_loc, query)
-
-            query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
-                     'pcdm:hasMember <' + parent_loc + d + '> . } WHERE '
-                     '{ }')
-            create_pcdm_relationships(t + '/theses', query)
-            thesis_count += 1
+    end = timer()
+    logger.info(end - start)
     logger.info('TOTAL: %s theses ingested.\n' % thesis_count)
+
+
+@main.command()
+@click.option('-f', '--fedora-uri',
+              default='http://localhost:8080/fcrepo/rest/',
+              help=('Base Fedora REST URI. Default is '
+                    'http://localhost:8080/fcrepo/rest/'))
+@click.option('-u', '--username', default=None)
+@click.option('-p', '--password', default=None)
+def initialize_fedora(fedora_uri, username, password):
+    auth = (username, password) if username else None
+    initialize_custom_prefixes(fedora_uri, auth)
+    create_theses_container(fedora_uri, auth)
 
 
 if __name__ == '__main__':

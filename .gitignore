@@ -5,6 +5,7 @@
 *.log
 *.log.*
 .cache
+.python-version
 build/
 dist/
 venv/
