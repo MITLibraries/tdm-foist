@@ -99,8 +99,7 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     assert b'bibo:Thesis' in m
     assert b'dcterms:type dctype:Text' in m
     assert b'dcterms:title "Alternative Title."' in m
-    assert b'local:ligature_errors "None"' in m
-    assert b'local:encoded_text "True"' in m
+    assert b'local:encoded_text true' in m
     assert b'bibo:handle <http://hdl.handle.net/1721.1/39208>' in m
     assert b'msl:degreeGrantedForCompletion "M.B.A."' in m
     assert b'"S.M."' in m
@@ -110,6 +109,15 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     assert (b'msl:associatedDepartment "Computation for Design and '
             b'Optimization"' in m)
     assert b'local:handle_part "39208"' in m
+
+
+def test_get_metadata_removes_fields_with_none(xml, text_errors):
+    mets = ET.parse(xml).getroot()
+    errors = parse_text_encoding_errors(text_errors).get('thesis')
+    t = Thesis('thesis', mets, 'Computation for Design and Optimization',
+               errors)
+    m = t.get_metadata()
+    assert b'local:ligature_errors' not in m
 
 
 def test_thesis_handles_missing_metadata_fields(tmpdir, xml_missing_fields,
