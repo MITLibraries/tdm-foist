@@ -10,7 +10,8 @@ import xml.etree.ElementTree as ET
 
 from foist.app import (add_file_metadata, add_thesis_item_file,
                        create_pcdm_relationships, create_thesis_item_container,
-                       parse_text_encoding_errors, Thesis, transaction)
+                       parse_text_encoding_errors, Thesis, transaction,
+                       update_metadata)
 from foist.namespaces import BIBO, DCTERMS, DCTYPE, LOCAL, MODS, MSL, PCDM, RDF
 
 
@@ -96,9 +97,9 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     assert b'<>' in m
     assert b'a pcdm:Object' in m
     assert b'bibo:Thesis' in m
+    assert b'dcterms:type dctype:Text' in m
     assert b'dcterms:title "Alternative Title."' in m
-    assert b'local:ligature_errors "None"' in m
-    assert b'local:encoded_text "True"' in m
+    assert b'local:encoded_text true' in m
     assert b'bibo:handle <http://hdl.handle.net/1721.1/39208>' in m
     assert b'msl:degreeGrantedForCompletion "M.B.A."' in m
     assert b'"S.M."' in m
@@ -108,6 +109,15 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     assert (b'msl:associatedDepartment "Computation for Design and '
             b'Optimization"' in m)
     assert b'local:handle_part "39208"' in m
+
+
+def test_get_metadata_removes_fields_with_none(xml, text_errors):
+    mets = ET.parse(xml).getroot()
+    errors = parse_text_encoding_errors(text_errors).get('thesis')
+    t = Thesis('thesis', mets, 'Computation for Design and Optimization',
+               errors)
+    m = t.get_metadata()
+    assert b'local:ligature_errors' not in m
 
 
 def test_thesis_handles_missing_metadata_fields(tmpdir, xml_missing_fields,
@@ -236,7 +246,7 @@ def test_add_file_metadata_failure_raises_error(fedora_errors, pdf, sparql):
 def test_create_pcdm_relationships_is_successful(fedora):
     r = None
     with transaction('mock://example.com/rest/') as t:
-        uri = t + '/theses'
+        uri = t + '/theses/'
         query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
                  'pcdm:hasMember <' + uri + '/thesis> . } WHERE { }')
         r = create_pcdm_relationships(uri, query)
@@ -249,3 +259,22 @@ def test_create_pcdm_relationships_failure_raises_error(fedora_errors):
         query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
                  'pcdm:hasMember <' + uri + '/thesis> . } WHERE { }')
         create_pcdm_relationships(uri, query)
+
+
+def test_update_metadata_is_successful(fedora):
+    r = None
+    uri = 'mock://example.com/rest/theses/thesis'
+    query = ('PREFIX msl: <http://purl.org/montana-state/library/> INSERT { <>'
+             ' msl:associatedDepartment "A sample department" . } WHERE { NOT '
+             'EXISTS { ?s msl:associatedDepartment ?o } }')
+    r = update_metadata(uri, query)
+    assert r == 204
+
+
+def test_update_metadata_failure_raises_error(fedora_errors):
+    with pytest.raises(requests.exceptions.HTTPError):
+        uri = 'mock://example.com/rest/theses/thesis'
+        query = ('PREFIX msl: <http://purl.org/montana-state/library/> INSERT '
+                 '{ <> msl:associatedDepartment "A sample department" . } '
+                 'WHERE { NOT EXISTS { ?s msl:associatedDepartment ?o } }')
+        update_metadata(uri, query)

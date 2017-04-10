@@ -13,6 +13,12 @@ import requests
 
 from foist.namespaces import BIBO, DCTERMS, DCTYPE, LOCAL, MODS, MSL, PCDM, RDF
 
+
+try:
+    basestring
+except NameError:
+    basestring = (str, bytes)
+
 log = logging.getLogger(__name__)
 
 base_mets_search = './mets:dmdSec/*/*/*/mods:'
@@ -88,7 +94,8 @@ class Thesis(object):
     def degree(self):
         result = []
         try:
-            degree = re.findall('[A-Z][a-z]{,4}\.? ?[A-Z][a-z]{,3}\.?[A-Z]?\.?[A-Z]?\.?[A-Z]?\.?', self.degree_statement)
+            degree = re.findall('[A-Z][a-z]{,4}\.? ?[A-Z][a-z]{,3}\.?[A-Z]?\.?'
+                                '[A-Z]?\.?[A-Z]?\.?', self.degree_statement)
             for item in degree:
                 i = item.replace(' ', '')
                 i = i.rstrip('.')
@@ -116,7 +123,7 @@ class Thesis(object):
 
     @property
     def department(self):
-        return self.collection
+        return str(self.collection)
 
     @property
     def encoded_text(self):
@@ -194,28 +201,24 @@ class Thesis(object):
         m = rdflib.Graph()
         s = rdflib.URIRef('')
 
-        def _add_metadata_field(p, obj, obj_type='string'):
-            if obj is None:
-                o = rdflib.Literal('None')
+        def _add_metadata_field(p, obj, is_uri=False):
+            if not isinstance(obj, basestring):
+                try:
+                    for i in obj:
+                        o = _create_rdf_obj(i, is_uri)
+                        m.add((s, p, o))
+                    return
+                except TypeError:
+                    # not iterable
+                    pass
+            if obj is not None:
+                o = _create_rdf_obj(obj, is_uri)
                 m.add((s, p, o))
-            elif obj is True:
-                o = rdflib.Literal('True')
-                m.add((s, p, o))
-            elif type(obj) == str:
-                o = _create_rdf_obj(obj, obj_type)
-                m.add((s, p, o))
-            elif type(obj) == list:
-                for i in obj:
-                    o = _create_rdf_obj(i, obj_type)
-                    m.add((s, p, o))
 
-        def _create_rdf_obj(obj, obj_type):
-            if obj_type == 'string':
-                o = rdflib.Literal(obj)
-                return o
-            elif obj_type == 'uri':
-                o = rdflib.URIRef(obj)
-                return o
+        def _create_rdf_obj(obj, is_uri):
+            if is_uri:
+                return rdflib.URIRef(obj)
+            return rdflib.Literal(obj)
 
         # Bind prefixes to metadata graph
         m.bind('bibo', BIBO)
@@ -234,20 +237,20 @@ class Thesis(object):
             _add_metadata_field(DCTERMS.title, self.alt_title)
         _add_metadata_field(DCTERMS.creator, self.author)
         _add_metadata_field(DCTERMS.dateCopyrighted, self.copyright_date)
-        _add_metadata_field(DCTERMS.type, self.dc_type, obj_type='uri')
+        _add_metadata_field(DCTERMS.type, self.dc_type, is_uri='uri')
         _add_metadata_field(MSL.degreeGrantedForCompletion,
                             self.degree)
         _add_metadata_field(LOCAL.degree_statement, self.degree_statement)
         _add_metadata_field(MSL.associatedDepartment, self.department)
         _add_metadata_field(LOCAL.encoded_text, self.encoded_text)
-        _add_metadata_field(BIBO.handle, self.handle, obj_type='uri')
+        _add_metadata_field(BIBO.handle, self.handle, is_uri='uri')
         _add_metadata_field(LOCAL.handle_part, self.handle_part)
         _add_metadata_field(DCTERMS.dateIssued, self.issue_date)
         _add_metadata_field(LOCAL.ligature_errors, self.ligatures)
         _add_metadata_field(LOCAL.no_full_text, self.no_full_text)
         _add_metadata_field(MODS.note, self.notes)
         _add_metadata_field(DCTERMS.publisher, self.publisher)
-        _add_metadata_field(RDF.type, self.rdf_type, obj_type='uri')
+        _add_metadata_field(RDF.type, self.rdf_type, is_uri='uri')
         _add_metadata_field(DCTERMS.rights, self.rights_statement)
         _add_metadata_field(DCTERMS.title, self.title)
 
@@ -491,11 +494,24 @@ def upload_thesis(d, parent_dir, fedora_uri, auth):
             if str(e).startswith('409'):
                 return 'Exists'
             else:
-                logger.warning('Upload attempt failed, retrying %s' % d)
-                logger.debug(e)
+                log.warning('Upload attempt failed, retrying %s' % d)
+                log.debug(e)
                 retries += 1
         query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { '
                  '<> pcdm:hasMember <' + fedora_uri + 'theses/' +
                  d + '> . } WHERE { }')
         create_pcdm_relationships(fedora_uri + 'theses/', query, auth)
         return 'Success'
+
+
+def update_metadata(uri, sparql, auth=None):
+    '''Update metadata for a single item in Fedora, given the item's URI and a
+    SPARQL update query.
+    '''
+    headers = {'Content-Type': 'application/sparql-update'}
+    try:
+        r = requests.patch(uri, headers=headers, auth=auth, data=sparql)
+        r.raise_for_status()
+        return r.status_code
+    except requests.exceptions.HTTPError as e:
+        raise e

@@ -85,11 +85,12 @@ def fedora():
                 status_code=204)
         m.patch('/rest/tx:123456789/theses/',
                 status_code=204)
-        m.patch('/rest/tx:123456789/theses/thesis',
-                status_code=204)
         m.patch('/rest/tx:123456789/theses/thesis/',
                 status_code=204)
+        m.patch('/rest/tx:123456789/theses/thesis',
+                status_code=204)
         m.patch('/rest/theses/', status_code=204)
+        m.patch('/rest/theses/thesis', status_code=204)
         m.put(matcher, status_code=201)
         m.patch(matcher, status_code=204)
         yield m
@@ -100,16 +101,12 @@ def fedora_errors():
     with requests_mock.Mocker() as m:
         m.post('/rest/fcr:tx', status_code=201,
                headers={'Location': 'mock://example.com/rest/tx:error'})
-        m.post('/rest/tx:error/fcr:tx/fcr:commit',
-               status_code=410)
-        m.post('/rest/tx:error/fcr:tx/fcr:rollback',
-               status_code=410)
-        m.put('/rest/tx:error/theses/thesis',
-              status_code=412)
-        m.put('/rest/tx:error/theses/thesis/thesis.pdf',
-              status_code=412)
+        m.post('/rest/tx:error/fcr:tx/fcr:commit', status_code=410)
+        m.post('/rest/tx:error/fcr:tx/fcr:rollback', status_code=410)
+        m.put('/rest/tx:error/theses/thesis', status_code=412)
+        m.put('/rest/tx:error/theses/thesis/thesis.pdf', status_code=412)
         m.patch('/rest/tx:error/theses/thesis/thesis.pdf/fcr:metadata',
                 status_code=412)
-        m.patch('/rest/tx:error/theses',
-                status_code=412)
+        m.patch('/rest/tx:error/theses', status_code=412)
+        m.patch('/rest/theses/thesis', status_code=412)
         yield m

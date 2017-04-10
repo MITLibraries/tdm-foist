@@ -15,7 +15,7 @@ from foist import (add_file_metadata, add_thesis_item_file,
                    create_pcdm_relationships, create_theses_container,
                    create_thesis_item_container, initialize_custom_prefixes,
                    parse_text_encoding_errors, Thesis, transaction,
-                   upload_thesis)
+                   update_metadata, upload_thesis)
 
 
 logger = logging.getLogger(__name__)
@@ -65,7 +65,7 @@ def main():
                               resolve_path=False),
               help=('Output directory for thesis metadata files. Default is '
                     'same as input directory.'))
-def process_metadata(input_directory, output_directory, collection_name):
+def process_metadata(input_directory, collection_name, output_directory):
     '''Parse metadata for all thesis items in a directory.
 
     This script traverses the given INPUT_DIRECTORY of thesis files and for
@@ -160,6 +160,36 @@ def initialize_fedora(fedora_uri, username, password):
     auth = (username, password) if username else None
     initialize_custom_prefixes(fedora_uri, auth)
     create_theses_container(fedora_uri, auth)
+
+
+@main.command()
+@click.argument('directory', type=click.Path(exists=True, file_okay=False,
+                                             resolve_path=True))
+@click.argument('sparql')
+@click.option('-f', '--fedora-uri',
+              default='http://localhost:8080/fcrepo/rest/',
+              help=('Base Fedora REST URI. Default is '
+                    'http://localhost:8080/fcrepo/rest/'))
+@click.option('-u', '--username', default=None)
+@click.option('-p', '--password', default=None)
+def update_metadata_for_collection(directory, sparql, fedora_uri, username,
+                                   password):
+    '''Updates a single metadata field for all items in a collection, using
+    the provided SPARQL query
+    '''
+    auth = (username, password) if username else None
+    items = next(os.walk(os.path.join(directory, '.')))[1]
+    thesis_count = 0
+    for i in items:
+        try:
+            uri = fedora_uri + 'theses/' + i
+            r = update_metadata(uri, sparql, auth=auth)
+            logger.debug('Thesis %s updated.' % i)
+            thesis_count += 1
+        except Exception as e:
+            logger.warning('Thesis %s update failed' % i)
+            logger.debug(e)
+    logger.info('TOTAL: %s theses updated.\n' % thesis_count)
 
 
 if __name__ == '__main__':

@@ -31,3 +31,11 @@ def test_upload_theses(runner, theses_dir, fedora):
     result = runner.invoke(main, ['upload_theses', theses_dir, '-f',
                            'mock://example.com/rest/'])
     assert result.exit_code == 0
+
+
+def test_update_metadata(runner, theses_dir, fedora):
+    result = runner.invoke(main, ['update_metadata_for_collection', theses_dir,
+                           ('PREFIX local: <http://example.com/> INSERT { <> '
+                            'local:isFun "True" . } WHERE { }'), '-f',
+                           'mock://example.com/rest/'])
+    assert result.exit_code == 0
