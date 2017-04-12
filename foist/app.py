@@ -21,7 +21,6 @@ except NameError:
 
 log = logging.getLogger(__name__)
 
-base_mets_search = './mets:dmdSec/*/*/*/mods:'
 mets_namespace = {'mets': 'http://www.loc.gov/METS/',
                   'mods': 'http://www.loc.gov/mods/v3'}
 
@@ -39,11 +38,13 @@ class Thesis(object):
     '''A thesis object representing a single thesis intellectual entity with
     all its associated metadata.
     '''
-    def __init__(self, name, mets, collection, text_errors=None):
+    def __init__(self, name, mets, departments, text_errors=None):
         self.name = name
         self.mets = mets
         self.errors = text_errors
-        self.collection = collection
+        self.departments = departments
+        self._no_full_text = self._get_full_text_error() if self.errors else \
+            None
 
     @property
     def abstract(self):
@@ -123,7 +124,7 @@ class Thesis(object):
 
     @property
     def department(self):
-        return str(self.collection)
+        return self.departments
 
     @property
     def encoded_text(self):
@@ -162,7 +163,11 @@ class Thesis(object):
 
     @property
     def no_full_text(self):
-        return self._get_full_text_error() if self.errors else None
+        return self._no_full_text
+
+    @no_full_text.setter
+    def no_full_text(self, x):
+        self._no_full_text = x
 
     @property
     def notes(self):
@@ -170,7 +175,7 @@ class Thesis(object):
             result = [e.text for e in
                       self.mets.findall('.//mods:note', mets_namespace)]
         except AttributeError:
-            pass
+            result = None
         return result or None
 
     @property
@@ -211,7 +216,7 @@ class Thesis(object):
                 except TypeError:
                     # not iterable
                     pass
-            if obj is not None:
+            else:
                 o = _create_rdf_obj(obj, is_uri)
                 m.add((s, p, o))
 
@@ -282,13 +287,13 @@ class Thesis(object):
 
     def _get_error_value(self, error):
         if self.errors[error] == '1':
-            return True
+            return 'True'
 
     def _get_full_text_error(self):
         s = self.errors
         if (s['PDFBox err'] == '1' or (s['No text old file'] == '1' and
                                        s['No text new file'] == '1')):
-            return True
+            return 'True'
 
 
 def parse_text_encoding_errors(tsv_file):
@@ -326,55 +331,51 @@ def transaction(fedora_uri, auth=None):
             raise e
 
 
-def create_thesis_item_container(location, item, turtle_path, auth=None):
-    '''Create basic PCDM container for a thesis item.
+def create_container(uri, turtle, auth=None):
+    '''Create basic container for an item.
     '''
-    uri = location + item
     headers = {'Content-Type': 'text/turtle; charset=utf-8'}
-    with open(turtle_path, 'rb') as data:
-        try:
-            r = requests.put(uri, headers=headers, auth=auth, data=data)
-            r.raise_for_status()
-            return r.status_code
-        except requests.exceptions.HTTPError as e:
-            raise e
+    try:
+        r = requests.put(uri, headers=headers, auth=auth, data=turtle)
+        r.raise_for_status()
+        return r
+    except requests.exceptions.HTTPError as e:
+        raise e
 
 
-def add_thesis_item_file(location, item, ext, mimetype, file_path, auth=None):
-    '''Add a file to a thesis item container.
+def upload_content(uri, content_to_upload, mimetype, auth=None):
+    '''Add content in string or bytes format to a given container uri.
     '''
-    uri = location + item + ext
-    headers = {'Content-Type': mimetype}
-    with open(file_path, 'rb') as data:
-        try:
-            r = requests.put(uri, headers=headers, auth=auth, data=data)
-            r.raise_for_status()
-            return r.status_code
-        except requests.exceptions.HTTPError as e:
-            raise e
+    try:
+        headers = {'Content-Type': mimetype}
+        r = requests.put(uri, headers=headers, auth=auth,
+                         data=content_to_upload)
+        r.raise_for_status()
+        return r.status_code
+    except requests.exceptions.HTTPError as e:
+        raise e
 
 
-def add_file_metadata(location, item, ext, file_path, sparql_path, auth=None):
-    '''Update the metadata for a given file.
+def upload_file(uri, file_path, mimetype, auth=None):
+    '''Add a file to a given container uri.
     '''
-    uri = location + 'fcr:metadata'
-    headers = {'Content-Type': 'application/sparql-update'}
-    with open(sparql_path, 'rb') as data:
-        try:
-            r = requests.patch(uri, headers=headers, auth=auth, data=data)
-            r.raise_for_status()
-            return r.status_code
-        except requests.exceptions.HTTPError as e:
-            raise e
+    try:
+        headers = {'Content-Type': mimetype}
+        f = {'file': open(file_path, 'rb')}
+        r = requests.put(uri, headers=headers, auth=auth, files=f)
+        r.raise_for_status()
+        return r.status_code
+    except requests.exceptions.HTTPError as e:
+        raise e
 
 
-def create_pcdm_relationships(uri, query, auth=None):
-    '''Create PCDM relationship statement between a thesis item and its parent
-    container (hasMember).
+def update_metadata(uri, sparql, auth=None):
+    '''Update metadata for a single item in Fedora, given the item's URI and a
+    SPARQL update query.
     '''
     headers = {'Content-Type': 'application/sparql-update'}
     try:
-        r = requests.patch(uri, headers=headers, auth=auth, data=query)
+        r = requests.patch(uri, headers=headers, auth=auth, data=sparql)
         r.raise_for_status()
         return r.status_code
     except requests.exceptions.HTTPError as e:
@@ -408,110 +409,53 @@ def initialize_custom_prefixes(fedora_uri, auth=None):
         r2 = requests.patch(uri, headers=headers, auth=auth,
                             data=data)
         r2.raise_for_status
-        log.info('Custom prefixes initialized')
         r3 = requests.delete(uri, auth=auth)
         r3.raise_for_status
         r4 = requests.delete(uri+'/fcr:tombstone', auth=auth)
         r4.raise_for_status
-        log.info('Dummy initialization resource deleted')
     except requests.exceptions.HTTPError as e:
-        log.error(e)
-
-
-# Create basic PCDM container for thesis collection
-def create_theses_container(fedora_uri, auth=None):
-    uri = fedora_uri + 'theses'
-    headers = {'Content-Type': 'text/turtle'}
-    turtle = '''
-        @prefix pcdm: <http://pcdm.org/models#>
-
-        <> a pcdm:Collection .
-        '''
-    try:
-        r = requests.put(uri, headers=headers, auth=auth,
-                         data=turtle)
-        r.raise_for_status
-        log.info('Theses container created at location: %s' %
-                 (r.headers['Location']))
-    except requests.exceptions.HTTPError as e:
-        log.error(e)
-    except KeyError as e:
-        log.warning('Thesis container already exists')
+        raise(e)
 
 
 # Upload a single thesis item and its files to Fedora
-def upload_thesis(d, parent_dir, fedora_uri, auth):
-    turtle_path = os.path.join(parent_dir, d, d + '.ttl')
-    pdf_path = os.path.join(parent_dir, d, d + '.pdf')
-    text_path = None
-
-    if not os.path.exists(pdf_path):
-        return 'Not a thesis'
-
-    with open(turtle_path, 'r') as f:
-        s = f.read()
-        if 'local:no_full_text "True"' not in s:
-            if os.path.exists(os.path.join(parent_dir, d, d + '-new.txt')):
-                text_path = os.path.join(parent_dir, d, d + '-new.txt')
-            elif os.path.exists(os.path.join(parent_dir, d, d + '.txt')):
-                text_path = os.path.join(parent_dir, d, d + '.txt')
-
+def upload_thesis(fedora_uri, collection_name, handle, turtle, pdf_file,
+                  pdf_sparql, text_file=None, text_sparql=None, auth=None):
     retries = 0
     while retries < 5:
         try:
-            with transaction(fedora_uri, auth) as t:
-                parent_loc = t + '/theses/'
-                item_loc = parent_loc + d + '/'
-                create_thesis_item_container(parent_loc, d, turtle_path,
-                                             auth)
+            with transaction(fedora_uri, auth=auth) as t:
+                parent_uri = t + '/' + collection_name + '/'
+                item_uri = parent_uri + handle + '/'
+                create_container(item_uri, turtle, auth=auth)
 
-                pdf_loc = item_loc + d + '.pdf/'
-                pdf_sparql = os.path.join(parent_dir, d, d + '.pdf.ru')
-                add_thesis_item_file(item_loc, d, '.pdf',
-                                     'application/pdf', pdf_path, auth)
-                add_file_metadata(pdf_loc, d, '.pdf', pdf_path, pdf_sparql,
-                                  auth)
-
+                pdf_uri = item_uri + handle + '.pdf/'
+                upload_file(pdf_uri, pdf_file, 'application/pdf', auth=auth)
+                update_metadata(pdf_uri + 'fcr:metadata', pdf_sparql,
+                                auth=auth)
+                u = (fedora_uri + '/' + collection_name + '/' + handle + '/' +
+                     handle + '.pdf/')
                 query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { '
-                         '<> pcdm:hasFile <' + fedora_uri + 'theses/' + d +
-                         '/' + d + '.pdf> . } WHERE { }')
-                create_pcdm_relationships(item_loc, query, auth)
+                         '<> pcdm:hasFile <' + u + '> . } WHERE { }')
+                update_metadata(item_uri, query, auth=auth)
 
-                if text_path:
-                    text_loc = item_loc + d + '.txt/'
-                    text_sparql = os.path.join(parent_dir, d, d + '.txt.ru')
-                    add_thesis_item_file(item_loc, d, '.txt', 'text/plain',
-                                         text_path, auth)
-                    add_file_metadata(text_loc, d, '.txt', text_path,
-                                      text_sparql, auth)
-
+                if text_file:
+                    text_uri = item_uri + handle + '.txt/'
+                    upload_content(text_uri, text_file, 'text/plain',
+                                   auth=auth)
+                    update_metadata(text_uri + 'fcr:metadata', text_sparql,
+                                    auth=auth)
+                    u = (fedora_uri + '/' + collection_name + '/' + handle +
+                         '/' + handle + '.txt/')
                     query = ('PREFIX pcdm: <http://pcdm.org/models#> '
-                             'INSERT { <> pcdm:hasFile <' + fedora_uri +
-                             'theses/' + d + '/' + d + '.txt> . } WHERE '
-                             '{ }')
-                    create_pcdm_relationships(item_loc, query, auth)
+                             'INSERT { <> pcdm:hasFile <' + u + '> . } '
+                             'WHERE { }')
+                    update_metadata(item_uri, query, auth=auth)
+            return 'Success'
         except requests.exceptions.HTTPError as e:
             if str(e).startswith('409'):
                 return 'Exists'
             else:
-                log.warning('Upload attempt failed, retrying %s' % d)
+                log.warning('Upload attempt failed, retrying %s' % handle)
                 log.debug(e)
                 retries += 1
-        query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { '
-                 '<> pcdm:hasMember <' + fedora_uri + 'theses/' +
-                 d + '> . } WHERE { }')
-        create_pcdm_relationships(fedora_uri + 'theses/', query, auth)
-        return 'Success'
-
-
-def update_metadata(uri, sparql, auth=None):
-    '''Update metadata for a single item in Fedora, given the item's URI and a
-    SPARQL update query.
-    '''
-    headers = {'Content-Type': 'application/sparql-update'}
-    try:
-        r = requests.patch(uri, headers=headers, auth=auth, data=sparql)
-        r.raise_for_status()
-        return r.status_code
-    except requests.exceptions.HTTPError as e:
-        raise e
+        return 'Failure'

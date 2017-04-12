@@ -1,0 +1,1456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+   <responseDate>2017-04-24T14:32:03Z</responseDate>
+   <request verb="ListSets">http://dspace.mit.edu/oai/request</request>
+   <ListSets>
+      <set>
+         <setSpec>hdl_1721.1_18195</setSpec>
+         <setName>3. Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7630</setSpec>
+         <setName>Aeronautics and Astronautics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7760</setSpec>
+         <setName>Aeronautics and Astronautics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7744</setSpec>
+         <setName>Aeronautics and Astronautics - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7768</setSpec>
+         <setName>Aeronautics and Astronautics - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7631</setSpec>
+         <setName>Aeronautics and Astronautics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7767</setSpec>
+         <setName>Aeronautics and Astronautics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7632</setSpec>
+         <setName>Aeronautics and Astronautics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7766</setSpec>
+         <setName>Aeronautics and Astronautics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7771</setSpec>
+         <setName>Architecture - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7634</setSpec>
+         <setName>Architecture - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7772</setSpec>
+         <setName>Architecture - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7635</setSpec>
+         <setName>Architecture - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7633</setSpec>
+         <setName>Architecture - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7765</setSpec>
+         <setName>Architecture - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7755</setSpec>
+         <setName>Biological Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7626</setSpec>
+         <setName>Biological Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7627</setSpec>
+         <setName>Biological Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7770</setSpec>
+         <setName>Biological Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7756</setSpec>
+         <setName>Biological Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7628</setSpec>
+         <setName>Biological Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7769</setSpec>
+         <setName>Biological Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7629</setSpec>
+         <setName>Biological Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7636</setSpec>
+         <setName>Biology - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7784</setSpec>
+         <setName>Biology - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7591</setSpec>
+         <setName>Biology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7785</setSpec>
+         <setName>Biology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7783</setSpec>
+         <setName>Biology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7592</setSpec>
+         <setName>Biology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7780</setSpec>
+         <setName>Brain and Cognitive Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7637</setSpec>
+         <setName>Brain and Cognitive Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7781</setSpec>
+         <setName>Brain and Cognitive Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7638</setSpec>
+         <setName>Brain and Cognitive Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7779</setSpec>
+         <setName>Brain and Cognitive Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7639</setSpec>
+         <setName>Brain and Cognitive Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7789</setSpec>
+         <setName>Chemical Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7641</setSpec>
+         <setName>Chemical Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7791</setSpec>
+         <setName>Chemical Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7643</setSpec>
+         <setName>Chemical Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7790</setSpec>
+         <setName>Chemical Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7642</setSpec>
+         <setName>Chemical Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7640</setSpec>
+         <setName>Chemical Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7788</setSpec>
+         <setName>Chemical Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7644</setSpec>
+         <setName>Chemistry - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7795</setSpec>
+         <setName>Chemistry - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7645</setSpec>
+         <setName>Chemistry - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7796</setSpec>
+         <setName>Chemistry - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7646</setSpec>
+         <setName>Chemistry - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7794</setSpec>
+         <setName>Chemistry - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7800</setSpec>
+         <setName>Civil and Environmental Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7648</setSpec>
+         <setName>Civil and Environmental Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7801</setSpec>
+         <setName>Civil and Environmental Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7649</setSpec>
+         <setName>Civil and Environmental Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7802</setSpec>
+         <setName>Civil and Environmental Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7652</setSpec>
+         <setName>Civil and Environmental Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7799</setSpec>
+         <setName>Civil and Environmental Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7653</setSpec>
+         <setName>Civil and Environmental Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39100</setSpec>
+         <setName>Comparative Media Studies - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39097</setSpec>
+         <setName>Comparative Media Studies- Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_72924</setSpec>
+         <setName>Computational and Systems Biology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_72923</setSpec>
+         <setName>Computational and Systems Biology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54828</setSpec>
+         <setName>Computational and Systems Biology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54823</setSpec>
+         <setName>Computational and Systems Biology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_35732</setSpec>
+         <setName>Computation and Systems Biology (CSB)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39117</setSpec>
+         <setName>Computation for Design and Optimization - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39115</setSpec>
+         <setName>Computation for Design and Optimization - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7655</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7806</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7656</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7807</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7654</setSpec>
+         <setName>Earth, Atmospheric and Planetary Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7805</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7811</setSpec>
+         <setName>Economics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7657</setSpec>
+         <setName>Economics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7812</setSpec>
+         <setName>Economics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7658</setSpec>
+         <setName>Economics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7659</setSpec>
+         <setName>Economics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7810</setSpec>
+         <setName>Economics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7661</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7816</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7662</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7818</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7817</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7663</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7815</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7660</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7886</setSpec>
+         <setName>Engineering Systems - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7709</setSpec>
+         <setName>Engineering Systems - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7887</setSpec>
+         <setName>Engineering Systems - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7711</setSpec>
+         <setName>Engineering Systems - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7710</setSpec>
+         <setName>Engineering Systems - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7888</setSpec>
+         <setName>Engineering Systems - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7708</setSpec>
+         <setName>Engineering Systems - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7885</setSpec>
+         <setName>Engineering Systems - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7714</setSpec>
+         <setName>Health Sciences and Technology - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7892</setSpec>
+         <setName>Health Sciences and Technology - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7893</setSpec>
+         <setName>Health Sciences and Technology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7715</setSpec>
+         <setName>Health Sciences and Technology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7891</setSpec>
+         <setName>Health Sciences and Technology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7712</setSpec>
+         <setName>Health Sciences and Technology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7666</setSpec>
+         <setName>Humanities - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7822</setSpec>
+         <setName>Humanities - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7823</setSpec>
+         <setName>Humanities - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7667</setSpec>
+         <setName>Humanities - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7821</setSpec>
+         <setName>Humanities - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7665</setSpec>
+         <setName>Humanities - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102295</setSpec>
+         <setName>Institute for Data, Systems, and Society - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102290</setSpec>
+         <setName>Institute for Data, Systems, and Society - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102296</setSpec>
+         <setName>Institute for Data, Systems, and Society - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102291</setSpec>
+         <setName>Institute for Data, Systems, and Society - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102297</setSpec>
+         <setName>Institute for Data, Systems, and Society - Ph.D / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102292</setSpec>
+         <setName>Institute for Data, Systems, and Society - Ph.D / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7671</setSpec>
+         <setName>Interdisciplinary Science - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7827</setSpec>
+         <setName>Interdisciplinary Science - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7828</setSpec>
+         <setName>Interdisciplinary Science - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7672</setSpec>
+         <setName>Interdisciplinary Science - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7670</setSpec>
+         <setName>Interdisciplinary Science - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7826</setSpec>
+         <setName>Interdisciplinary Science - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7674</setSpec>
+         <setName>Linguistics and Philosophy - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7833</setSpec>
+         <setName>Linguistics and Philosophy - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7834</setSpec>
+         <setName>Linguistics and Philosophy - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7675</setSpec>
+         <setName>Linguistics and Philosophy - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7832</setSpec>
+         <setName>Linguistics and Philosophy - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7673</setSpec>
+         <setName>Linguistics and Philosophy - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7729</setSpec>
+         <setName>Management - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7918</setSpec>
+         <setName>Management - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7919</setSpec>
+         <setName>Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7730</setSpec>
+         <setName>Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7728</setSpec>
+         <setName>Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7917</setSpec>
+         <setName>Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7678</setSpec>
+         <setName>Materials Science and Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7838</setSpec>
+         <setName>Materials Science and Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7679</setSpec>
+         <setName>Materials Science and Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7839</setSpec>
+         <setName>Materials Science and Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7840</setSpec>
+         <setName>Materials Science and Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7677</setSpec>
+         <setName>Materials Science and Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7676</setSpec>
+         <setName>Materials Science and Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7837</setSpec>
+         <setName>Materials Science and Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7681</setSpec>
+         <setName>Mathematics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7844</setSpec>
+         <setName>Mathematics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7845</setSpec>
+         <setName>Mathematics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7682</setSpec>
+         <setName>Mathematics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7680</setSpec>
+         <setName>Mathematics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7843</setSpec>
+         <setName>Mathematics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7849</setSpec>
+         <setName>Mechanical Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7686</setSpec>
+         <setName>Mechanical Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7851</setSpec>
+         <setName>Mechanical Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7685</setSpec>
+         <setName>Mechanical Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7684</setSpec>
+         <setName>Mechanical Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7850</setSpec>
+         <setName>Mechanical Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7683</setSpec>
+         <setName>Mechanical Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7848</setSpec>
+         <setName>Mechanical Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7899</setSpec>
+         <setName>Media Arts and Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7717</setSpec>
+         <setName>Media Arts and Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7900</setSpec>
+         <setName>Media Arts and Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7718</setSpec>
+         <setName>Media Arts and Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7716</setSpec>
+         <setName>Media Arts and Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7898</setSpec>
+         <setName>Media Arts and Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7855</setSpec>
+         <setName>Nuclear Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7688</setSpec>
+         <setName>Nuclear Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7690</setSpec>
+         <setName>Nuclear Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7857</setSpec>
+         <setName>Nuclear Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7689</setSpec>
+         <setName>Nuclear Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7856</setSpec>
+         <setName>Nuclear Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7854</setSpec>
+         <setName>Nuclear Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7687</setSpec>
+         <setName>Nuclear Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7861</setSpec>
+         <setName>Ocean Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7692</setSpec>
+         <setName>Ocean Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7863</setSpec>
+         <setName>Ocean Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7694</setSpec>
+         <setName>Ocean Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7862</setSpec>
+         <setName>Ocean Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7693</setSpec>
+         <setName>Ocean Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7691</setSpec>
+         <setName>Ocean Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7860</setSpec>
+         <setName>Ocean Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7904</setSpec>
+         <setName>Operations Research - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7721</setSpec>
+         <setName>Operations Research - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5067</setSpec>
+         <setName>Operations Research Center Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7720</setSpec>
+         <setName>Operations Research - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7905</setSpec>
+         <setName>Operations Research - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7719</setSpec>
+         <setName>Operations Research - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7903</setSpec>
+         <setName>Operations Research - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7867</setSpec>
+         <setName>Physics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7696</setSpec>
+         <setName>Physics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7697</setSpec>
+         <setName>Physics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7868</setSpec>
+         <setName>Physics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7866</setSpec>
+         <setName>Physics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7695</setSpec>
+         <setName>Physics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7871</setSpec>
+         <setName>Political Science - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7700</setSpec>
+         <setName>Political Science - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7872</setSpec>
+         <setName>Political Science - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7699</setSpec>
+         <setName>Political Science - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7698</setSpec>
+         <setName>Political Science - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7870</setSpec>
+         <setName>Political Science - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54831</setSpec>
+         <setName>Program in Real Estate Development - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54825</setSpec>
+         <setName>Program in Real Estate Development - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39103</setSpec>
+         <setName>Program in Writing and Humanistic Studies - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39111</setSpec>
+         <setName>Program in Writing and Humanistic Studies - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39112</setSpec>
+         <setName>Program in Writing and Humanistic Studies - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39104</setSpec>
+         <setName>Program in Writing and Humanistic Studies - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7727</setSpec>
+         <setName>Science, Technology and Society - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7726</setSpec>
+         <setName>Science, Technology and Society - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7725</setSpec>
+         <setName>Science, Technology and Society - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7914</setSpec>
+         <setName>Science, Technology &amp; Society - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7915</setSpec>
+         <setName>Science, Technology &amp; Society - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7913</setSpec>
+         <setName>Science, Technology &amp; Society - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_106908</setSpec>
+         <setName>Science Writing - Master's Degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_106909</setSpec>
+         <setName>Science Writing - Master's Degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91671</setSpec>
+         <setName>Student Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107232</setSpec>
+         <setName>Supply Chain Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107236</setSpec>
+         <setName>Supply Chain Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107233</setSpec>
+         <setName>Supply Chain Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107237</setSpec>
+         <setName>Supply Chain Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7740</setSpec>
+         <setName>Systems Design and Management - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7923</setSpec>
+         <setName>Systems Design and Management - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7739</setSpec>
+         <setName>Systems Design and Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7924</setSpec>
+         <setName>Systems Design and Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7922</setSpec>
+         <setName>Systems Design and Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7738</setSpec>
+         <setName>Systems Design and Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7743</setSpec>
+         <setName>Technology and Policy - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7928</setSpec>
+         <setName>Technology and Policy - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7929</setSpec>
+         <setName>Technology and Policy - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7742</setSpec>
+         <setName>Technology and Policy - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7927</setSpec>
+         <setName>Technology and Policy - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7741</setSpec>
+         <setName>Technology and Policy - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29798</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92513</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_80746</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88077</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_80739</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18230</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91571</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26680</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18215</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26585</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18219</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26674</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18899</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18235</setSpec>
+         <setName>Theses - BS</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18225</setSpec>
+         <setName>Theses - MS</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18224</setSpec>
+         <setName>Theses - PhD</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7703</setSpec>
+         <setName>Urban Studies and Planning - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7876</setSpec>
+         <setName>Urban Studies and Planning - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7704</setSpec>
+         <setName>Urban Studies and Planning - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7877</setSpec>
+         <setName>Urban Studies and Planning - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7875</setSpec>
+         <setName>Urban Studies and Planning - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7702</setSpec>
+         <setName>Urban Studies and Planning - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16459</setSpec>
+         <setName>Various Historical Departments</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7752</setSpec>
+         <setName>Biological Engineering Division</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39094</setSpec>
+         <setName>Comparative Media Studies/Writing (CMS/W)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54826</setSpec>
+         <setName>Computational and Systems Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33227</setSpec>
+         <setName>Computation for Design and Optimization (CDO)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5458</setSpec>
+         <setName>Computer Science and Artificial Intelligence Lab (CSAIL)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7758</setSpec>
+         <setName>Department of Aeronautics and Astronautics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7749</setSpec>
+         <setName>Department of Architecture</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7761</setSpec>
+         <setName>Department of Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7776</setSpec>
+         <setName>Department of Brain and Cognitive Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7786</setSpec>
+         <setName>Department of Chemical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7792</setSpec>
+         <setName>Department of Chemistry</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7797</setSpec>
+         <setName>Department of Civil and Environmental Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7803</setSpec>
+         <setName>Department of Earth, Atmospheric, and Planetary Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7808</setSpec>
+         <setName>Department of Economics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7813</setSpec>
+         <setName>Department of Electrical Engineering and Computer Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7819</setSpec>
+         <setName>Department of Humanities</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7824</setSpec>
+         <setName>Department of Interdisciplinary Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7829</setSpec>
+         <setName>Department of Linguistics and Philosophy</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7835</setSpec>
+         <setName>Department of Materials Science and Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7841</setSpec>
+         <setName>Department of Mathematics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7846</setSpec>
+         <setName>Department of Mechanical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7852</setSpec>
+         <setName>Department of Nuclear Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1774</setSpec>
+         <setName>Department of Ocean Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7864</setSpec>
+         <setName>Department of Physics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5427</setSpec>
+         <setName>Department of Political Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7873</setSpec>
+         <setName>Department of Urban Studies and Planning</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7883</setSpec>
+         <setName>Engineering Systems Division</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7889</setSpec>
+         <setName>Harvard-MIT Program of Health Sciences and Technology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102293</setSpec>
+         <setName>Institute for Data, Systems, and Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7896</setSpec>
+         <setName>Media Arts &amp; Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7582</setSpec>
+         <setName>MIT Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5066</setSpec>
+         <setName>Operations Research Center</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54829</setSpec>
+         <setName>Program in Real Estate Development</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39101</setSpec>
+         <setName>Program in Writing and Humanistic Studies</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7911</setSpec>
+         <setName>Science, Technology &amp; Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1777</setSpec>
+         <setName>Sloan School of Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18201</setSpec>
+         <setName>Studios, Workshops, and Practicum Classes</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107234</setSpec>
+         <setName>Supply Chain Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7920</setSpec>
+         <setName>Systems Design &amp; Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7925</setSpec>
+         <setName>Technology and Policy Program</setName>
+      </set>
+
+      <set>
+         <setSpec>hdl_1721.1_7759</setSpec>
+         <setName>Theses - Aeronautics and Astronautics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7622</setSpec>
+         <setName>Theses - Biological Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7754</setSpec>
+         <setName>Theses - Biological Engineering Division</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7782</setSpec>
+         <setName>Theses - Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7778</setSpec>
+         <setName>Theses - Brain and Cognitive Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7787</setSpec>
+         <setName>Theses - Chemical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7793</setSpec>
+         <setName>Theses - Chemistry</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7798</setSpec>
+         <setName>Theses - Civil and Environmental Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39095</setSpec>
+         <setName>Theses - Comparative Media Studies/Writing</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39098</setSpec>
+         <setName>Theses - Comparative Media Studies/Writing</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54822</setSpec>
+         <setName>Theses - Computational and Systems Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54827</setSpec>
+         <setName>Theses - Computational and Systems Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39116</setSpec>
+         <setName>Theses - Computation for Design and Optimization</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39113</setSpec>
+         <setName>Theses - Computation for Design and Optimization</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7750</setSpec>
+         <setName>Theses - Department of Architecture</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7621</setSpec>
+         <setName>Theses - Dept. of Aeronautics and Astronautics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7583</setSpec>
+         <setName>Theses - Dept. of Architecture</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7589</setSpec>
+         <setName>Theses - Dept. of Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7593</setSpec>
+         <setName>Theses - Dept. of Brain and Cognitive Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7594</setSpec>
+         <setName>Theses - Dept. of Chemical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7595</setSpec>
+         <setName>Theses - Dept. of Chemistry</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7596</setSpec>
+         <setName>Theses - Dept. of Civil and Environmental Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7597</setSpec>
+         <setName>Theses - Dept. of Earth, Atmospheric, and Planetary Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7598</setSpec>
+         <setName>Theses - Dept. of Economics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7599</setSpec>
+         <setName>Theses - Dept. of Electrical Engineering and Computer Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7600</setSpec>
+         <setName>Theses - Dept. of Humanities</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7601</setSpec>
+         <setName>Theses - Dept. of Interdisciplinary Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7602</setSpec>
+         <setName>Theses - Dept. of Linguistics and Philosophy</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7603</setSpec>
+         <setName>Theses - Dept. of Materials Science and Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7604</setSpec>
+         <setName>Theses - Dept. of Mathematics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7605</setSpec>
+         <setName>Theses - Dept. of Mechanical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7606</setSpec>
+         <setName>Theses - Dept. of Nuclear Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7607</setSpec>
+         <setName>Theses - Dept. of Ocean Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7608</setSpec>
+         <setName>Theses - Dept. of Physics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7609</setSpec>
+         <setName>Theses - Dept. of Political Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7610</setSpec>
+         <setName>Theses - Dept. of Urban Studies and Planning</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7804</setSpec>
+         <setName>Theses - Earth, Atmospheric and Planetary Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7809</setSpec>
+         <setName>Theses - Economics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7814</setSpec>
+         <setName>Theses - Electrical Engineering and Computer Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7884</setSpec>
+         <setName>Theses - Engineering Systems</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7612</setSpec>
+         <setName>Theses - Engineering Systems Division</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7613</setSpec>
+         <setName>Theses - Harvard-MIT Program of Health Sciences and Technology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7890</setSpec>
+         <setName>Theses - Health Sciences and Technology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7820</setSpec>
+         <setName>Theses - Humanities</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102294</setSpec>
+         <setName>Theses - Institute for Data, Systems, and Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102289</setSpec>
+         <setName>Theses - Institute for Data, Systems, and Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7825</setSpec>
+         <setName>Theses - Interdisciplinary Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7830</setSpec>
+         <setName>Theses - Linguistics and Philosophy</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7916</setSpec>
+         <setName>Theses - Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7836</setSpec>
+         <setName>Theses - Materials Science and Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7842</setSpec>
+         <setName>Theses - Mathematics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7847</setSpec>
+         <setName>Theses - Mechanical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7614</setSpec>
+         <setName>Theses - Media Arts and Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7897</setSpec>
+         <setName>Theses - Media Arts &amp; Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7853</setSpec>
+         <setName>Theses - Nuclear Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7859</setSpec>
+         <setName>Theses - Ocean Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7902</setSpec>
+         <setName>Theses - Operations Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7615</setSpec>
+         <setName>Theses - Operations Research Center</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7865</setSpec>
+         <setName>Theses - Physics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7869</setSpec>
+         <setName>Theses - Political Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54830</setSpec>
+         <setName>Theses - Program in Real Estate Development</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54824</setSpec>
+         <setName>Theses - Program in Real Estate Development</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39102</setSpec>
+         <setName>Theses - Program in Writing and Humanistic Studies</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39110</setSpec>
+         <setName>Theses - Program in Writing and Humanistic Studies</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7617</setSpec>
+         <setName>Theses - Science, Technology, and Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7912</setSpec>
+         <setName>Theses - Science, Technology &amp; Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7618</setSpec>
+         <setName>Theses - Sloan School of Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107235</setSpec>
+         <setName>Theses - Supply Chain Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107231</setSpec>
+         <setName>Theses - Supply Chain Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7737</setSpec>
+         <setName>Theses - Systems Design and Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7921</setSpec>
+         <setName>Theses - Systems Design &amp; Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7926</setSpec>
+         <setName>Theses - Technology and Policy</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7620</setSpec>
+         <setName>Theses - Technology and Policy Program</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7874</setSpec>
+         <setName>Theses - Urban Studies and Planning</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7959</setSpec>
+         <setName>Theses - Various Historical Departments</setName>
+      </set>
+   </ListSets>
+</OAI-PMH>

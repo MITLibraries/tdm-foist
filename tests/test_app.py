@@ -8,25 +8,28 @@ from rdflib import Graph, Literal, Namespace, URIRef
 import requests
 import xml.etree.ElementTree as ET
 
-from foist.app import (add_file_metadata, add_thesis_item_file,
-                       create_pcdm_relationships, create_thesis_item_container,
-                       parse_text_encoding_errors, Thesis, transaction,
-                       update_metadata)
+from foist import (create_container, initialize_custom_prefixes,
+                   parse_text_encoding_errors, Thesis, transaction,
+                   upload_file, update_metadata, upload_thesis)
+
 from foist.namespaces import BIBO, DCTERMS, DCTYPE, LOCAL, MODS, MSL, PCDM, RDF
 
 
 def test_thesis(tmpdir, xml, text_errors):
-    '''Thesis object should initialize with a name, mets, errors.
+    '''Thesis object should initialize with a name, mets, errors, and full
+    text status.
     '''
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
-    t = Thesis('thesis', mets, 'Computation for Design and Optimization',
+    t = Thesis('thesis', mets, 'Department One',
                errors)
 
     assert t.name == 'thesis'
     assert t.mets == mets
     assert t.errors == errors
+    assert t.departments == 'Department One'
+    assert t.no_full_text == 'True'
 
 
 def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
@@ -36,7 +39,7 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
-    t = Thesis('thesis', mets, 'Computation for Design and Optimization',
+    t = Thesis('thesis', mets, ['Department One', 'Department Two'],
                errors)
 
     assert t.abstract == 'Sample abstract.'
@@ -49,13 +52,13 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
     assert t.degree_statement == ('Thesis (S.M. and M.B.A.)--Massachusetts '
                                   'Institute of Technology, Computation for '
                                   'Design and Optimization Program, 2006.')
-    assert t.department == 'Computation for Design and Optimization'
-    assert t.encoded_text is True
+    assert t.department == ['Department One', 'Department Two']
+    assert t.encoded_text is 'True'
     assert t.handle == 'http://hdl.handle.net/1721.1/39208'
     assert t.handle_part == '39208'
     assert t.issue_date == '2006'
     assert t.ligatures is None
-    assert t.no_full_text is True
+    assert t.no_full_text is 'True'
     assert t.notes == [('Thesis (S.M. and M.B.A.)--Massachusetts Institute of '
                         'Technology, Computation for Design and Optimization '
                         'Program, 2006.'),
@@ -71,11 +74,22 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
     assert t.title == 'Sample Title.'
 
 
+def test_set_thesis_full_text_property(tmpdir, xml, text_errors):
+    l = tempfile.mkdtemp()
+    mets = ET.parse(xml).getroot()
+    errors = parse_text_encoding_errors(text_errors).get('thesis')
+    t = Thesis('thesis', mets, ['Department One', 'Department Two'],
+               errors)
+    t.no_full_text = None
+
+    assert t.no_full_text is None
+
+
 def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
-    t = Thesis('thesis', mets, 'Computation for Design and Optimization',
+    t = Thesis('thesis', mets, ['Department One'],
                errors)
     m = t.get_metadata()
 
@@ -99,22 +113,21 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     assert b'bibo:Thesis' in m
     assert b'dcterms:type dctype:Text' in m
     assert b'dcterms:title "Alternative Title."' in m
-    assert b'local:encoded_text true' in m
+    assert b'local:encoded_text "True"' in m
     assert b'bibo:handle <http://hdl.handle.net/1721.1/39208>' in m
     assert b'msl:degreeGrantedForCompletion "M.B.A."' in m
     assert b'"S.M."' in m
     assert (b'local:degree_statement "Thesis (S.M. and M.B.A.)--Massachusetts '
             b'Institute of Technology, Computation for Design and Optimization'
             b' Program, 2006."' in m)
-    assert (b'msl:associatedDepartment "Computation for Design and '
-            b'Optimization"' in m)
+    assert (b'msl:associatedDepartment "Department One"' in m)
     assert b'local:handle_part "39208"' in m
 
 
 def test_get_metadata_removes_fields_with_none(xml, text_errors):
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
-    t = Thesis('thesis', mets, 'Computation for Design and Optimization',
+    t = Thesis('thesis', mets, 'Department One',
                errors)
     m = t.get_metadata()
     assert b'local:ligature_errors' not in m
@@ -125,14 +138,14 @@ def test_thesis_handles_missing_metadata_fields(tmpdir, xml_missing_fields,
     l = tempfile.mkdtemp()
     mets = ET.parse(xml_missing_fields).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis-02')
-    t = Thesis('thesis-02', mets, 'Test department', errors)
+    t = Thesis('thesis-02', mets, ['Test department'], errors)
 
     assert t.abstract is None
     assert t.advisor is None
     assert t.copyright_date is None
     assert t.degree is None
     assert t.degree_statement is None
-    assert t.department == 'Test department'
+    assert t.department == ['Test department']
     assert t.encoded_text is None
     assert t.handle is None
     assert t.handle_part is None
@@ -202,79 +215,45 @@ def test_transaction_commit_fail_raises_exception(fedora_errors):
             pass
 
 
-def test_create_thesis_item_container_is_successful(fedora, turtle):
+def test_create_container_is_successful(fedora, turtle):
     r = None
     with transaction('mock://example.com/rest/') as t:
-        r = create_thesis_item_container(t + '/theses/', 'thesis', turtle)
+        uri = t + '/theses/thesis'
+        r = create_container(uri, turtle)
+    assert r.status_code == 201
+
+
+def test_create_container_failure_raises_error(fedora_errors, turtle):
+    with pytest.raises(requests.exceptions.HTTPError):
+        uri = 'mock://example.com/rest/tx:error/theses/thesis'
+        create_container(uri, turtle)
+
+
+def test_upload_file_is_successful(fedora, pdf):
+    r = None
+    with transaction('mock://example.com/rest/') as t:
+        uri = t + '/theses/thesis/thesis.pdf/'
+        r = upload_file(uri, pdf, 'application/pdf')
     assert r == 201
 
 
-def test_create_thesis_item_failure_raises_error(fedora_errors, turtle):
+def test_upload_file_failure_raises_error(fedora_errors, pdf):
     with pytest.raises(requests.exceptions.HTTPError):
-        create_thesis_item_container(('mock://example.com/rest/tx:error/'
-                                     'theses/'), 'thesis', turtle)
+        uri = 'mock://example.com/rest/tx:error/theses/thesis/thesis.pdf'
+        upload_file(uri, pdf, 'application/pdf')
 
 
-def test_add_thesis_item_file_is_successful(fedora, pdf):
+def test_add_file_metadata_is_successful(fedora, sparql, auth=None):
     r = None
     with transaction('mock://example.com/rest/') as t:
-        r = add_thesis_item_file(t + '/theses/thesis/', 'thesis', '.pdf',
-                                 'application/pdf', pdf)
-    assert r == 201
-
-
-def test_add_thesis_item_file_failure_raises_error(fedora_errors, pdf):
-    with pytest.raises(requests.exceptions.HTTPError):
-        add_thesis_item_file('mock://example.com/rest/tx:error/theses/thesis/',
-                             'thesis', '.pdf', 'application/pdf', pdf)
-
-
-def test_add_file_metadata_is_successful(fedora, pdf, sparql):
-    r = None
-    with transaction('mock://example.com/rest/') as t:
-        r = add_file_metadata(t + '/theses/thesis/thesis.pdf/', 'thesis',
-                              '.pdf', pdf, sparql)
+        uri = t + '/theses/thesis/thesis.pdf/fcr:metadata'
+        r = update_metadata(uri, sparql)
     assert r == 204
 
 
-def test_add_file_metadata_failure_raises_error(fedora_errors, pdf, sparql):
+def test_add_file_metadata_failure_raises_error(fedora_errors, sparql,
+                                                auth=None):
     with pytest.raises(requests.exceptions.HTTPError):
-        add_file_metadata(('mock://example.com/rest/tx:error/theses/thesis/'
-                          'thesis.pdf/'), 'thesis', '.pdf', pdf, sparql)
-
-
-def test_create_pcdm_relationships_is_successful(fedora):
-    r = None
-    with transaction('mock://example.com/rest/') as t:
-        uri = t + '/theses/'
-        query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
-                 'pcdm:hasMember <' + uri + '/thesis> . } WHERE { }')
-        r = create_pcdm_relationships(uri, query)
-    assert r == 204
-
-
-def test_create_pcdm_relationships_failure_raises_error(fedora_errors):
-    with pytest.raises(requests.exceptions.HTTPError):
-        uri = 'mock://example.com/rest/tx:error/theses'
-        query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> '
-                 'pcdm:hasMember <' + uri + '/thesis> . } WHERE { }')
-        create_pcdm_relationships(uri, query)
-
-
-def test_update_metadata_is_successful(fedora):
-    r = None
-    uri = 'mock://example.com/rest/theses/thesis'
-    query = ('PREFIX msl: <http://purl.org/montana-state/library/> INSERT { <>'
-             ' msl:associatedDepartment "A sample department" . } WHERE { NOT '
-             'EXISTS { ?s msl:associatedDepartment ?o } }')
-    r = update_metadata(uri, query)
-    assert r == 204
-
-
-def test_update_metadata_failure_raises_error(fedora_errors):
-    with pytest.raises(requests.exceptions.HTTPError):
-        uri = 'mock://example.com/rest/theses/thesis'
-        query = ('PREFIX msl: <http://purl.org/montana-state/library/> INSERT '
-                 '{ <> msl:associatedDepartment "A sample department" . } '
-                 'WHERE { NOT EXISTS { ?s msl:associatedDepartment ?o } }')
-        update_metadata(uri, query)
+        uri = ('mock://example.com/rest/tx:error/theses/thesis/thesis.pdf/'
+               'fcr:metadata')
+        update_metadata(uri, sparql)

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2017-04-27T15:33:33Z</responseDate>
+  <request metadataPrefix="mets" verb="ListIdentifiers" from="2017-04-26">http://dspace.mit.edu/oai/request</request>
+  <ListIdentifiers>
+    <header>
+      <identifier>oai:dspace.mit.edu:1721.1/108425</identifier>
+      <datestamp>2017-04-27T06:16:19Z</datestamp>
+      <setSpec>hdl_1721.1_494</setSpec>
+    </header>
+    <header>
+      <identifier>oai:dspace.mit.edu:1721.1/108390</identifier>
+      <datestamp>2017-04-26T06:16:23Z</datestamp>
+      <setSpec>hdl_1721.1_494</setSpec>
+      <setSpec>hdl_1721.1_7593</setSpec>
+    </header>
+    <header>
+      <identifier>oai:dspace.mit.edu:1721.1/108391</identifier>
+      <datestamp>2017-04-26T06:16:23Z</datestamp>
+    </header>
+  </ListIdentifiers>
+</OAI-PMH>
