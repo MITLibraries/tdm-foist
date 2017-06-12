@@ -1,0 +1,4151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+   <responseDate>2017-04-24T14:32:03Z</responseDate>
+   <request verb="ListSets">http://dspace.mit.edu/oai/request</request>
+   <ListSets>
+      <set>
+         <setSpec>hdl_1721.1_18193</setSpec>
+         <setName>1. Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18194</setSpec>
+         <setName>2. Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18195</setSpec>
+         <setName>3. Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_89012</setSpec>
+         <setName>AACL Preprints</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_95694</setSpec>
+         <setName>AACL Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_95692</setSpec>
+         <setName>AACL Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3650</setSpec>
+         <setName>Advanced Materials for Micro- and Nano-Systems  (AMMNS)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67473</setSpec>
+         <setName>Advanced Nuclear Power Technology Program (ANP) - Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33972</setSpec>
+         <setName>Aeronautics and Astronautics (16) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7630</setSpec>
+         <setName>Aeronautics and Astronautics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7760</setSpec>
+         <setName>Aeronautics and Astronautics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7744</setSpec>
+         <setName>Aeronautics and Astronautics - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7768</setSpec>
+         <setName>Aeronautics and Astronautics - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7631</setSpec>
+         <setName>Aeronautics and Astronautics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7767</setSpec>
+         <setName>Aeronautics and Astronautics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7632</setSpec>
+         <setName>Aeronautics and Astronautics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7766</setSpec>
+         <setName>Aeronautics and Astronautics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50867</setSpec>
+         <setName>Aerospace Computational Design Laboratory: Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_37333</setSpec>
+         <setName>Aerospace Control Laboratory: Manuscripts</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_37334</setSpec>
+         <setName>Aerospace Control Laboratory: Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5460</setSpec>
+         <setName>AI Memos (1959 - 2004)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97459</setSpec>
+         <setName>Air Traffic Control - Technical Report Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5461</setSpec>
+         <setName>AI Technical Reports (1964 - 2004)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39813</setSpec>
+         <setName>AI Working Papers (1971 - 1995)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33973</setSpec>
+         <setName>Anthropology (21A) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33974</setSpec>
+         <setName>Architecture (4) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7771</setSpec>
+         <setName>Architecture - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7634</setSpec>
+         <setName>Architecture - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7772</setSpec>
+         <setName>Architecture - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7635</setSpec>
+         <setName>Architecture - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7633</setSpec>
+         <setName>Architecture - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7765</setSpec>
+         <setName>Architecture - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_79695</setSpec>
+         <setName>Astro- and Geoinformatics Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33975</setSpec>
+         <setName>Athletics, Physical Education and Recreation (PE) -</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18236</setSpec>
+         <setName>Audio--paragraphs</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18237</setSpec>
+         <setName>Audio--sentences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18238</setSpec>
+         <setName>Audio--syllables</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33977</setSpec>
+         <setName>Biological Engineering (20) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7755</setSpec>
+         <setName>Biological Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7626</setSpec>
+         <setName>Biological Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33976</setSpec>
+         <setName>Biological Engineering (BE) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7627</setSpec>
+         <setName>Biological Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7770</setSpec>
+         <setName>Biological Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7756</setSpec>
+         <setName>Biological Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7628</setSpec>
+         <setName>Biological Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7769</setSpec>
+         <setName>Biological Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7629</setSpec>
+         <setName>Biological Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33978</setSpec>
+         <setName>Biology (7) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7636</setSpec>
+         <setName>Biology - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7784</setSpec>
+         <setName>Biology - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7591</setSpec>
+         <setName>Biology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7785</setSpec>
+         <setName>Biology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7783</setSpec>
+         <setName>Biology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7592</setSpec>
+         <setName>Biology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91673</setSpec>
+         <setName>Book Chapters</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7352</setSpec>
+         <setName>Books</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33979</setSpec>
+         <setName>Brain and Cognitive Sciences (9) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7780</setSpec>
+         <setName>Brain and Cognitive Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7637</setSpec>
+         <setName>Brain and Cognitive Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7781</setSpec>
+         <setName>Brain and Cognitive Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7638</setSpec>
+         <setName>Brain and Cognitive Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7779</setSpec>
+         <setName>Brain and Cognitive Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7639</setSpec>
+         <setName>Brain and Cognitive Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_81425</setSpec>
+         <setName>Case Studies</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88072</setSpec>
+         <setName>Case Studies</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5462</setSpec>
+         <setName>CBCL Memos (1993 - 2004)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88531</setSpec>
+         <setName>CBMM Memo Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_35731</setSpec>
+         <setName>Chemical and Pharmaceutical Engineering (CPE)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33980</setSpec>
+         <setName>Chemical Engineering (10) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7789</setSpec>
+         <setName>Chemical Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7641</setSpec>
+         <setName>Chemical Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7791</setSpec>
+         <setName>Chemical Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7643</setSpec>
+         <setName>Chemical Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7790</setSpec>
+         <setName>Chemical Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7642</setSpec>
+         <setName>Chemical Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7640</setSpec>
+         <setName>Chemical Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7788</setSpec>
+         <setName>Chemical Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33981</setSpec>
+         <setName>Chemistry (5) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7644</setSpec>
+         <setName>Chemistry - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7795</setSpec>
+         <setName>Chemistry - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7645</setSpec>
+         <setName>Chemistry - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7796</setSpec>
+         <setName>Chemistry - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7646</setSpec>
+         <setName>Chemistry - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7794</setSpec>
+         <setName>Chemistry - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88516</setSpec>
+         <setName>China Energy and Climate Project Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7934</setSpec>
+         <setName>China Marches West: the Qing Conquest of Central Eurasia</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33982</setSpec>
+         <setName>Civil and Environmental Engineering (1) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7800</setSpec>
+         <setName>Civil and Environmental Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7648</setSpec>
+         <setName>Civil and Environmental Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7801</setSpec>
+         <setName>Civil and Environmental Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7649</setSpec>
+         <setName>Civil and Environmental Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7802</setSpec>
+         <setName>Civil and Environmental Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7652</setSpec>
+         <setName>Civil and Environmental Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7799</setSpec>
+         <setName>Civil and Environmental Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7653</setSpec>
+         <setName>Civil and Environmental Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18186</setSpec>
+         <setName>Communications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33983</setSpec>
+         <setName>Comparative Media Studies (CMS) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39100</setSpec>
+         <setName>Comparative Media Studies - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39097</setSpec>
+         <setName>Comparative Media Studies- Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97512</setSpec>
+         <setName>Comparative Media Studies/Writing (CMS-W) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_72924</setSpec>
+         <setName>Computational and Systems Biology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_72923</setSpec>
+         <setName>Computational and Systems Biology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54828</setSpec>
+         <setName>Computational and Systems Biology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54823</setSpec>
+         <setName>Computational and Systems Biology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_35730</setSpec>
+         <setName>Computational Engineering (CE)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_35732</setSpec>
+         <setName>Computation and Systems Biology (CSB)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39117</setSpec>
+         <setName>Computation for Design and Optimization - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39115</setSpec>
+         <setName>Computation for Design and Optimization - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3651</setSpec>
+         <setName>Computer Science (CS)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_85661</setSpec>
+         <setName>Concourse (CC) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_85979</setSpec>
+         <setName>Conference Presentations</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91672</setSpec>
+         <setName>Conference Presentations</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88006</setSpec>
+         <setName>Conferences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1779</setSpec>
+         <setName>Cooperative Mobility Program</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29807</setSpec>
+         <setName>CSAIL Technical Reports (July 1, 2003 - present)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29808</setSpec>
+         <setName>CSAIL Work Products</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1778</setSpec>
+         <setName>CTPID Archive</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18187</setSpec>
+         <setName>Data</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_105853</setSpec>
+         <setName>Data for Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55346</setSpec>
+         <setName>Data Layers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55382</setSpec>
+         <setName>Data Processing</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_71743</setSpec>
+         <setName>Data Releases for Global  Neutrino Oscillation Fits</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55383</setSpec>
+         <setName>Data Visualization</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88179</setSpec>
+         <setName>Dept. of Nuclear Engineering Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1780</setSpec>
+         <setName>Design Project Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102699</setSpec>
+         <setName>Detector Development</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_103854</setSpec>
+         <setName>Dissertation</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3765</setSpec>
+         <setName>Distributed Object-based Modeling Environment (DOME)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_30597</setSpec>
+         <setName>Documentation and course notes</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_41529</setSpec>
+         <setName>Documented Designs</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102537</setSpec>
+         <setName>Documents</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102535</setSpec>
+         <setName>Drawings</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33984</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences (12) -</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7655</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7806</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7656</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7807</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7654</setSpec>
+         <setName>Earth, Atmospheric and Planetary Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7805</setSpec>
+         <setName>Earth, Atmospheric, and Planetary Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33985</setSpec>
+         <setName>Economics (14) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7811</setSpec>
+         <setName>Economics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7657</setSpec>
+         <setName>Economics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7812</setSpec>
+         <setName>Economics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7658</setSpec>
+         <setName>Economics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7659</setSpec>
+         <setName>Economics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7810</setSpec>
+         <setName>Economics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_85663</setSpec>
+         <setName>Edgerton Center (EC) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_83579</setSpec>
+         <setName>Educational Network (EdNet)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3766</setSpec>
+         <setName>Effective Enterprise Learning</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33986</setSpec>
+         <setName>Electrical Engineering and Computer Science (6) -</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7661</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7816</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7662</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7818</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7817</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7663</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7815</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7660</setSpec>
+         <setName>Electrical Engineering and Computer Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92516</setSpec>
+         <setName>Energy Futures</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7886</setSpec>
+         <setName>Engineering Systems - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7709</setSpec>
+         <setName>Engineering Systems - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33987</setSpec>
+         <setName>Engineering Systems Division (ESD) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97456</setSpec>
+         <setName>Engineering Systems Division (ESD) Working Paper Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7887</setSpec>
+         <setName>Engineering Systems - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7711</setSpec>
+         <setName>Engineering Systems - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7710</setSpec>
+         <setName>Engineering Systems - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7888</setSpec>
+         <setName>Engineering Systems - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7708</setSpec>
+         <setName>Engineering Systems - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7885</setSpec>
+         <setName>Engineering Systems - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67705</setSpec>
+         <setName>ERL Industry Consortia Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_83560</setSpec>
+         <setName>Events</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_85664</setSpec>
+         <setName>Experimental Study Group (ES) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33988</setSpec>
+         <setName>Experimental Study Group (ESG) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_96123</setSpec>
+         <setName>Experiment Data: Mechanistic Origins of Bombardier Beetle (Brachinini) Explosion-Induced Defensive Spray Pulsation</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_104843</setSpec>
+         <setName>Explorations in Cyber International Relations (ECIR)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_105478</setSpec>
+         <setName>Fermi DM Decay Limits</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67903</setSpec>
+         <setName>Flight Transportation Laboratory Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100167</setSpec>
+         <setName>Fluid Interfaces - Conference Proceedings</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1781</setSpec>
+         <setName>Ford-MIT Alliance</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33989</setSpec>
+         <setName>Foreign Languages and Literatures (21F) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_68162</setSpec>
+         <setName>Gabrieli Lab - Supplemental Materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34284</setSpec>
+         <setName>GAL - Presentations</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34283</setSpec>
+         <setName>GAL - Reports and Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_104382</setSpec>
+         <setName>Gas Turbine Laboratory Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_98079</setSpec>
+         <setName>Global Studies and Languages (21G) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_46718</setSpec>
+         <setName>HAL Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_79432</setSpec>
+         <setName>Haystack Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7714</setSpec>
+         <setName>Health Sciences and Technology - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7892</setSpec>
+         <setName>Health Sciences and Technology - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33990</setSpec>
+         <setName>Health Sciences and Technology (HST) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7893</setSpec>
+         <setName>Health Sciences and Technology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7715</setSpec>
+         <setName>Health Sciences and Technology - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7891</setSpec>
+         <setName>Health Sciences and Technology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7712</setSpec>
+         <setName>Health Sciences and Technology - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_61396</setSpec>
+         <setName>Heat Transfer Laboratory Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3652</setSpec>
+         <setName>High Performance Computation for Engineered Systems (HPCES)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5551</setSpec>
+         <setName>Historical Essays on Heat Transfer and Heat Engineering at MIT</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33991</setSpec>
+         <setName>History (21H) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_6750</setSpec>
+         <setName>HML Preprints 2003</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_6751</setSpec>
+         <setName>HML Preprints 2004</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7624</setSpec>
+         <setName>HML Preprints 2005</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33950</setSpec>
+         <setName>HML Preprints (for all years)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102515</setSpec>
+         <setName>HSI Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7666</setSpec>
+         <setName>Humanities - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7822</setSpec>
+         <setName>Humanities - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7823</setSpec>
+         <setName>Humanities - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7667</setSpec>
+         <setName>Humanities - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7821</setSpec>
+         <setName>Humanities - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7665</setSpec>
+         <setName>Humanities - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34286</setSpec>
+         <setName>ICAT - Presentations</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34285</setSpec>
+         <setName>ICAT - Reports and Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3767</setSpec>
+         <setName>Implementation Dynamics (ID)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3768</setSpec>
+         <setName>Incentives and Boundaries (IB)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3769</setSpec>
+         <setName>Information Flow Modeling (IFM)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3653</setSpec>
+         <setName>Innovation in Manufacturing Systems and Technology (IMST)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102295</setSpec>
+         <setName>Institute for Data, Systems, and Society - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102290</setSpec>
+         <setName>Institute for Data, Systems, and Society - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102296</setSpec>
+         <setName>Institute for Data, Systems, and Society - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102291</setSpec>
+         <setName>Institute for Data, Systems, and Society - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102297</setSpec>
+         <setName>Institute for Data, Systems, and Society - Ph.D / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102292</setSpec>
+         <setName>Institute for Data, Systems, and Society - Ph.D / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91215</setSpec>
+         <setName>Intelligent Transporation Systems Lab - Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7671</setSpec>
+         <setName>Interdisciplinary Science - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7827</setSpec>
+         <setName>Interdisciplinary Science - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7828</setSpec>
+         <setName>Interdisciplinary Science - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7672</setSpec>
+         <setName>Interdisciplinary Science - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7670</setSpec>
+         <setName>Interdisciplinary Science - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7826</setSpec>
+         <setName>Interdisciplinary Science - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1782</setSpec>
+         <setName>International Motor Vehicle Program</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100478</setSpec>
+         <setName>International Workshop - data</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100479</setSpec>
+         <setName>International Workshop - papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100480</setSpec>
+         <setName>International Workshop - supplemental materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3550</setSpec>
+         <setName>Joint Program on the Science and Policy of Global Change Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7353</setSpec>
+         <setName>Journal Articles</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91274</setSpec>
+         <setName>Journal Articles</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92857</setSpec>
+         <setName>Journal Article Series (JA)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39119</setSpec>
+         <setName>J-PAL Datasets</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1784</setSpec>
+         <setName>Labor Aerospace Research Agenda</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29811</setSpec>
+         <setName>LCS Technical Memos (1974 - 2003)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29812</setSpec>
+         <setName>LCS Technical Reports (1974 - 2003)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55347</setSpec>
+         <setName>Leadership</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1785</setSpec>
+         <setName>Lean Advancement Initiative</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1786</setSpec>
+         <setName>Lean Sustainment Initiative</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88005</setSpec>
+         <setName>Lectures</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_60280</setSpec>
+         <setName>LIDS - Supplementary Materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1783</setSpec>
+         <setName>LIDS Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33992</setSpec>
+         <setName>Linguistics and Philosophy (24) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7674</setSpec>
+         <setName>Linguistics and Philosophy - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7833</setSpec>
+         <setName>Linguistics and Philosophy - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7834</setSpec>
+         <setName>Linguistics and Philosophy - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7675</setSpec>
+         <setName>Linguistics and Philosophy - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7832</setSpec>
+         <setName>Linguistics and Philosophy - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7673</setSpec>
+         <setName>Linguistics and Philosophy - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33993</setSpec>
+         <setName>Literature (21L) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29814</setSpec>
+         <setName>MAC Memos (1963 - 1974)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_103890</setSpec>
+         <setName>Major Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7729</setSpec>
+         <setName>Management - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7918</setSpec>
+         <setName>Management - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7919</setSpec>
+         <setName>Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7730</setSpec>
+         <setName>Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7728</setSpec>
+         <setName>Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7917</setSpec>
+         <setName>Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_35733</setSpec>
+         <setName>Manufacturing Systems and Technology (MST)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29796</setSpec>
+         <setName>Manuscripts</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7509</setSpec>
+         <setName>Map data for clutter experiments, CHI 2005</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33994</setSpec>
+         <setName>Materials Science and Engineering (3) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7678</setSpec>
+         <setName>Materials Science and Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7838</setSpec>
+         <setName>Materials Science and Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7679</setSpec>
+         <setName>Materials Science and Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7839</setSpec>
+         <setName>Materials Science and Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7840</setSpec>
+         <setName>Materials Science and Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7677</setSpec>
+         <setName>Materials Science and Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7676</setSpec>
+         <setName>Materials Science and Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7837</setSpec>
+         <setName>Materials Science and Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1788</setSpec>
+         <setName>Materials Systems Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33995</setSpec>
+         <setName>Mathematics (18) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7681</setSpec>
+         <setName>Mathematics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7844</setSpec>
+         <setName>Mathematics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7845</setSpec>
+         <setName>Mathematics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7682</setSpec>
+         <setName>Mathematics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7680</setSpec>
+         <setName>Mathematics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7843</setSpec>
+         <setName>Mathematics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_37287</setSpec>
+         <setName>Measures of visual clutter</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33996</setSpec>
+         <setName>Mechanical Engineering (2) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7849</setSpec>
+         <setName>Mechanical Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7686</setSpec>
+         <setName>Mechanical Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7851</setSpec>
+         <setName>Mechanical Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7685</setSpec>
+         <setName>Mechanical Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7684</setSpec>
+         <setName>Mechanical Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7850</setSpec>
+         <setName>Mechanical Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7683</setSpec>
+         <setName>Mechanical Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7848</setSpec>
+         <setName>Mechanical Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7899</setSpec>
+         <setName>Media Arts and Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7717</setSpec>
+         <setName>Media Arts and Sciences - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33997</setSpec>
+         <setName>Media Arts and Sciences (MAS) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7900</setSpec>
+         <setName>Media Arts and Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7718</setSpec>
+         <setName>Media Arts and Sciences - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7716</setSpec>
+         <setName>Media Arts and Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7898</setSpec>
+         <setName>Media Arts and Sciences - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100266</setSpec>
+         <setName>Microfluidic - data</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100469</setSpec>
+         <setName>Microfluidic - papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100470</setSpec>
+         <setName>Microfluidic - supplemental materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97457</setSpec>
+         <setName>Millstone Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_81436</setSpec>
+         <setName>MIT Dept. of Economics Graduate Student Research Papers Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_63243</setSpec>
+         <setName>MIT Dept. of Economics Working Papers Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7532</setSpec>
+         <setName>MIT Japan Program Working Paper Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18116</setSpec>
+         <setName>MIT Libraries Research Collection</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_49433</setSpec>
+         <setName>MIT Open Access Articles</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1787</setSpec>
+         <setName>MIT Press Out of Print Books</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5539</setSpec>
+         <setName>MIT Program on Information Quality</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_96971</setSpec>
+         <setName>MIT Sea Grant Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7295</setSpec>
+         <setName>MIT Workplace Center Teaching Cases</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7296</setSpec>
+         <setName>MIT Workplace Center Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_96537</setSpec>
+         <setName>MITx Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3654</setSpec>
+         <setName>Molecular Engineering of Biological and Chemical Systems (MEBCS)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100482</setSpec>
+         <setName>Molten oxide - data</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100483</setSpec>
+         <setName>Molten oxide - papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100484</setSpec>
+         <setName>Molten oxide - supplemental materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100486</setSpec>
+         <setName>Molten sulfides - data</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100488</setSpec>
+         <setName>Molten sulfides - papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100489</setSpec>
+         <setName>Molten sulfides - supplemental materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18239</setSpec>
+         <setName>Multichannel recordings</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33998</setSpec>
+         <setName>Music and Theater Arts (21M) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88182</setSpec>
+         <setName>Natural Moso Bamboo</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88019</setSpec>
+         <setName>NECSTLAB Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_83516</setSpec>
+         <setName>News and Published Articles</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_76749</setSpec>
+         <setName>Notes</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_105479</setSpec>
+         <setName>NPTFit</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67476</setSpec>
+         <setName>Nuclear Energy and Sustainability Program (NES) - Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7855</setSpec>
+         <setName>Nuclear Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7688</setSpec>
+         <setName>Nuclear Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7690</setSpec>
+         <setName>Nuclear Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7857</setSpec>
+         <setName>Nuclear Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7689</setSpec>
+         <setName>Nuclear Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7856</setSpec>
+         <setName>Nuclear Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7854</setSpec>
+         <setName>Nuclear Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7687</setSpec>
+         <setName>Nuclear Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67474</setSpec>
+         <setName>Nuclear Fuel Cycle Technology and Policy Program (NFC) - Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33999</setSpec>
+         <setName>Nuclear Science and Engineering (22) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67477</setSpec>
+         <setName>Nuclear Space Applications (NSA) - Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67475</setSpec>
+         <setName>Nuclear Systems Enhanced Performance Program (NSP) - Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34000</setSpec>
+         <setName>Ocean Engineering (13) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7861</setSpec>
+         <setName>Ocean Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7692</setSpec>
+         <setName>Ocean Engineering - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1789</setSpec>
+         <setName>Ocean Engineering Collection</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7863</setSpec>
+         <setName>Ocean Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7694</setSpec>
+         <setName>Ocean Engineering - Engineer's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7862</setSpec>
+         <setName>Ocean Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7693</setSpec>
+         <setName>Ocean Engineering - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7691</setSpec>
+         <setName>Ocean Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7860</setSpec>
+         <setName>Ocean Engineering - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7904</setSpec>
+         <setName>Operations Research - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7721</setSpec>
+         <setName>Operations Research - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5067</setSpec>
+         <setName>Operations Research Center Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7720</setSpec>
+         <setName>Operations Research - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7905</setSpec>
+         <setName>Operations Research - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7719</setSpec>
+         <setName>Operations Research - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7903</setSpec>
+         <setName>Operations Research - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3774</setSpec>
+         <setName>Other CIPD Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_103891</setSpec>
+         <setName>Other Interesting Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91675</setSpec>
+         <setName>Other Major Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7356</setSpec>
+         <setName>Other Publications of Interest</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91670</setSpec>
+         <setName>Papers in Refereed Conference Proceedings</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7357</setSpec>
+         <setName>Patents</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_85978</setSpec>
+         <setName>Peer-reviewed Manuscripts - Miscellaneous</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102448</setSpec>
+         <setName>Peer-reviewed Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16547</setSpec>
+         <setName>Personal Interviews</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16564</setSpec>
+         <setName>Personal Interviews</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16556</setSpec>
+         <setName>Personal Interviews</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16560</setSpec>
+         <setName>Personal Interviews</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16552</setSpec>
+         <setName>Personal Interviews</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102536</setSpec>
+         <setName>Photograhps</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34001</setSpec>
+         <setName>Physics (8) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7867</setSpec>
+         <setName>Physics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7696</setSpec>
+         <setName>Physics - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7697</setSpec>
+         <setName>Physics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7868</setSpec>
+         <setName>Physics - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7866</setSpec>
+         <setName>Physics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7695</setSpec>
+         <setName>Physics - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3770</setSpec>
+         <setName>Platform Architectures (PA)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_32548</setSpec>
+         <setName>Poet Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34002</setSpec>
+         <setName>Political Science (17) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7871</setSpec>
+         <setName>Political Science - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7700</setSpec>
+         <setName>Political Science - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7872</setSpec>
+         <setName>Political Science - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7699</setSpec>
+         <setName>Political Science - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7698</setSpec>
+         <setName>Political Science - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7870</setSpec>
+         <setName>Political Science - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_89476</setSpec>
+         <setName>Preparing Cities for Climate Change</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102534</setSpec>
+         <setName>Presentations</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88073</setSpec>
+         <setName>Presentations</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_80741</setSpec>
+         <setName>Presentations</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16565</setSpec>
+         <setName>Presentations of the Work</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16561</setSpec>
+         <setName>Presentations of the Work</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16553</setSpec>
+         <setName>Presentations of the Work</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16548</setSpec>
+         <setName>Presentations of the Work</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16557</setSpec>
+         <setName>Presentations of the Work</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97894</setSpec>
+         <setName>Proceedings of JuliaCon 2014</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97895</setSpec>
+         <setName>Proceedings of JuliaCon 2015</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_80814</setSpec>
+         <setName>Products and Tools</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88074</setSpec>
+         <setName>Products and Tools</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54831</setSpec>
+         <setName>Program in Real Estate Development - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54825</setSpec>
+         <setName>Program in Real Estate Development - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39103</setSpec>
+         <setName>Program in Writing and Humanistic Studies - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39111</setSpec>
+         <setName>Program in Writing and Humanistic Studies - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39112</setSpec>
+         <setName>Program in Writing and Humanistic Studies - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39104</setSpec>
+         <setName>Program in Writing and Humanistic Studies - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1790</setSpec>
+         <setName>Program on Internet and Telecoms Convergence</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1791</setSpec>
+         <setName>Program on Science, Technology, and Environmental Policy</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5435</setSpec>
+         <setName>Project History</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55385</setSpec>
+         <setName>Provenance/Pedigree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102516</setSpec>
+         <setName>PTSI</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102550</setSpec>
+         <setName>PTSI Final Report</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_103855</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18155</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18157</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18159</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18897</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91572</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18213</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_86180</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26399</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_45562</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18217</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18161</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26672</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26584</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18228</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26401</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18163</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_30600</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18165</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26678</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5444</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5530</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18111</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18107</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18168</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5443</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18105</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18109</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34016</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5436</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5529</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5531</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_32529</setSpec>
+         <setName>Publications and Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_62236</setSpec>
+         <setName>Radish: Robotics Research Datasets</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18112</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18110</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18108</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18106</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18080</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_32530</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18076</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18078</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18079</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18169</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5437</setSpec>
+         <setName>Raw Data and Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18077</setSpec>
+         <setName>Raw Data And Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_70033</setSpec>
+         <setName>Reactor AntiNeutrino Flux</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67478</setSpec>
+         <setName>Reactor Redesign Program (MRR) - Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16550</setSpec>
+         <setName>Reflection Transcript</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16562</setSpec>
+         <setName>Reflection Transcript</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16546</setSpec>
+         <setName>Reflection Transcript</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16554</setSpec>
+         <setName>Reflection Transcript</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16558</setSpec>
+         <setName>Reflection Transcript</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92238</setSpec>
+         <setName>Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_83528</setSpec>
+         <setName>Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88075</setSpec>
+         <setName>Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102450</setSpec>
+         <setName>Reports and Research Briefs</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_43714</setSpec>
+         <setName>Requests for Comments (RFCs)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88076</setSpec>
+         <setName>Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_83613</setSpec>
+         <setName>Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_96426</setSpec>
+         <setName>Research Data</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_41896</setSpec>
+         <setName>Research Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88000</setSpec>
+         <setName>Research Presentations</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18212</setSpec>
+         <setName>Research Projects</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26677</setSpec>
+         <setName>Research Projects</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26583</setSpec>
+         <setName>Research Projects</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18892</setSpec>
+         <setName>Research Projects</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18216</setSpec>
+         <setName>Research Projects</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26673</setSpec>
+         <setName>Research Projects</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18227</setSpec>
+         <setName>Research Projects</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_87999</setSpec>
+         <setName>Research Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100707</setSpec>
+         <setName>Research Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92859</setSpec>
+         <setName>Research Report Series (RR)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_49817</setSpec>
+         <setName>RLE Progress Report, No. 001 (1946)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_49830</setSpec>
+         <setName>RLE Progress Report, No. 002 (1946)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50644</setSpec>
+         <setName>RLE Progress Report, No. 003 (1946)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50655</setSpec>
+         <setName>RLE Progress Report, No. 004 (1947)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50666</setSpec>
+         <setName>RLE Progress Report, No. 005 (1947)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50676</setSpec>
+         <setName>RLE Progress Report, No. 006 (1947)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50686</setSpec>
+         <setName>RLE Progress Report, No. 007 (1947)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50716</setSpec>
+         <setName>RLE Progress Report, No. 008 (1948)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50726</setSpec>
+         <setName>RLE Progress Report, No. 009 (1948)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50740</setSpec>
+         <setName>RLE Progress Report, No. 010 (1948)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50761</setSpec>
+         <setName>RLE Progress Report, No. 011 (1948)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50763</setSpec>
+         <setName>RLE Progress Report, No. 012 (1949)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50793</setSpec>
+         <setName>RLE Progress Report, No. 013 (1949)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50794</setSpec>
+         <setName>RLE Progress Report, No. 014 (1949)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50823</setSpec>
+         <setName>RLE Progress Report, No. 015 (1949)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50838</setSpec>
+         <setName>RLE Progress Report, No. 016 (1950)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50852</setSpec>
+         <setName>RLE Progress Report, No. 017 (1950)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50869</setSpec>
+         <setName>RLE Progress Report, No. 018 (1950)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50883</setSpec>
+         <setName>RLE Progress Report, No. 019 (1950)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50898</setSpec>
+         <setName>RLE Progress Report, No. 020 (1951)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50913</setSpec>
+         <setName>RLE Progress Report, No. 021 (1951)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50914</setSpec>
+         <setName>RLE Progress Report, No. 022 (1951)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50915</setSpec>
+         <setName>RLE Progress Report, No. 023 (1951)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50916</setSpec>
+         <setName>RLE Progress Report, No. 024 (1952)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50917</setSpec>
+         <setName>RLE Progress Report, No. 025 (1952)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51010</setSpec>
+         <setName>RLE Progress Report, No. 026 (1952)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51011</setSpec>
+         <setName>RLE Progress Report, No. 027 (1952)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51073</setSpec>
+         <setName>RLE Progress Report, No. 028 (1953)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51074</setSpec>
+         <setName>RLE Progress Report, No. 029 (1953)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51075</setSpec>
+         <setName>RLE Progress Report, No. 030 (1953)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51122</setSpec>
+         <setName>RLE Progress Report, No. 031 (1953)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51138</setSpec>
+         <setName>RLE Progress Report, No. 032 (1954)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51139</setSpec>
+         <setName>RLE Progress Report, No. 033 (1954)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51189</setSpec>
+         <setName>RLE Progress Report, No. 034 (1954)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51190</setSpec>
+         <setName>RLE Progress Report, No. 035 (1954)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51236</setSpec>
+         <setName>RLE Progress Report, No. 036 (1955)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51237</setSpec>
+         <setName>RLE Progress Report, No. 037 (1955)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51238</setSpec>
+         <setName>RLE Progress Report, No. 038 (1955)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51239</setSpec>
+         <setName>RLE Progress Report, No. 039 (1955)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51900</setSpec>
+         <setName>RLE Progress Report, No. 040 (1956)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51928</setSpec>
+         <setName>RLE Progress Report, No. 041 (1956)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51952</setSpec>
+         <setName>RLE Progress Report, No. 042 (1956)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_51976</setSpec>
+         <setName>RLE Progress Report, No. 043 (1956)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52013</setSpec>
+         <setName>RLE Progress Report, No. 044 (1957)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52041</setSpec>
+         <setName>RLE Progress Report, No. 045 (1957)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52068</setSpec>
+         <setName>RLE Progress Report, No. 046 (1957)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52095</setSpec>
+         <setName>RLE Progress Report, No. 047 (1957)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52117</setSpec>
+         <setName>RLE Progress Report, No. 048 (1958)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52145</setSpec>
+         <setName>RLE Progress Report, No. 049 (1958)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52168</setSpec>
+         <setName>RLE Progress Report, No. 050 (1958)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52189</setSpec>
+         <setName>RLE Progress Report, No. 051 (1958)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52212</setSpec>
+         <setName>RLE Progress Report, No. 052 (1959)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52245</setSpec>
+         <setName>RLE Progress Report, No. 053 (1959)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52274</setSpec>
+         <setName>RLE Progress Report, No. 054 (1959)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53335</setSpec>
+         <setName>RLE Progress Report, No. 055 (1959)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53355</setSpec>
+         <setName>RLE Progress Report, No. 056 (1960)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53386</setSpec>
+         <setName>RLE Progress Report, No. 057 (1960)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53418</setSpec>
+         <setName>RLE Progress Report, No. 058 (1960)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53448</setSpec>
+         <setName>RLE Progress Report, No. 059 (1960)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53474</setSpec>
+         <setName>RLE Progress Report, No. 060 (1961)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53510</setSpec>
+         <setName>RLE Progress Report, No. 061 (1961)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53587</setSpec>
+         <setName>RLE Progress Report, No. 062 (1961)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53612</setSpec>
+         <setName>RLE Progress Report, No. 063 (1961)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53635</setSpec>
+         <setName>RLE Progress Report, No. 064 (1962)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53674</setSpec>
+         <setName>RLE Progress Report, No. 065 (1962)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53751</setSpec>
+         <setName>RLE Progress Report, No. 066 (1962)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53779</setSpec>
+         <setName>RLE Progress Report, No. 067 (1962)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53806</setSpec>
+         <setName>RLE Progress Report, No. 068 (1963)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53845</setSpec>
+         <setName>RLE Progress Report, No. 069 (1963)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53869</setSpec>
+         <setName>RLE Progress Report, No. 070 (1963)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53899</setSpec>
+         <setName>RLE Progress Report, No. 071 (1963)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53923</setSpec>
+         <setName>RLE Progress Report, No. 072 (1964)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53955</setSpec>
+         <setName>RLE Progress Report, No. 073 (1964)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53988</setSpec>
+         <setName>RLE Progress Report, No. 074 (1964)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54016</setSpec>
+         <setName>RLE Progress Report, No. 075 (1964)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54038</setSpec>
+         <setName>RLE Progress Report, No. 076 (1965)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55589</setSpec>
+         <setName>RLE Progress Report, No. 077 (1965)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54105</setSpec>
+         <setName>RLE Progress Report, No. 078 (1965)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54130</setSpec>
+         <setName>RLE Progress Report, No. 079 (1965)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54154</setSpec>
+         <setName>RLE Progress Report, No. 080 (1966)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55434</setSpec>
+         <setName>RLE Progress Report, No. 081 (1966)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55460</setSpec>
+         <setName>RLE Progress Report, No. 082 (1966)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55490</setSpec>
+         <setName>RLE Progress Report, No. 083 (1966)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55512</setSpec>
+         <setName>RLE Progress Report, No. 084 (1967)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55553</setSpec>
+         <setName>RLE Progress Report, No. 085 (1967)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55617</setSpec>
+         <setName>RLE Progress Report, No. 086 (1967)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55651</setSpec>
+         <setName>RLE Progress Report, No. 087 (1967)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55672</setSpec>
+         <setName>RLE Progress Report, No. 088 (1968)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55714</setSpec>
+         <setName>RLE Progress Report, No. 089 (1968)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55747</setSpec>
+         <setName>RLE Progress Report, No. 090 (1968)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55775</setSpec>
+         <setName>RLE Progress Report, No. 091 (1968)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55817</setSpec>
+         <setName>RLE Progress Report, No. 092 (1969)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55852</setSpec>
+         <setName>RLE Progress Report, No. 093 (1969)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55870</setSpec>
+         <setName>RLE Progress Report, No. 094 (1969)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56010</setSpec>
+         <setName>RLE Progress Report, No. 095 (1969)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56030</setSpec>
+         <setName>RLE Progress Report, No. 096 (1970)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56066</setSpec>
+         <setName>RLE Progress Report, No. 097 (1970)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56089</setSpec>
+         <setName>RLE Progress Report, No. 098 (1970)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56109</setSpec>
+         <setName>RLE Progress Report, No. 099 (1970)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56128</setSpec>
+         <setName>RLE Progress Report, No. 100 (1971)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56161</setSpec>
+         <setName>RLE Progress Report, No. 101 (1971)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56182</setSpec>
+         <setName>RLE Progress Report, No. 102 (1971)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56201</setSpec>
+         <setName>RLE Progress Report, No. 103 (1971)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56220</setSpec>
+         <setName>RLE Progress Report, No. 104 (1972)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56265</setSpec>
+         <setName>RLE Progress Report, No. 105 (1972)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56266</setSpec>
+         <setName>RLE Progress Report, No. 106 (1972)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56267</setSpec>
+         <setName>RLE Progress Report, No. 107 (1972)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56345</setSpec>
+         <setName>RLE Progress Report, No. 108 (1973)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56375</setSpec>
+         <setName>RLE Progress Report, No. 109 (1973)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56393</setSpec>
+         <setName>RLE Progress Report, No. 110 (1973)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56412</setSpec>
+         <setName>RLE Progress Report, No. 111 (1973)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56431</setSpec>
+         <setName>RLE Progress Report, No. 112 (1974)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56458</setSpec>
+         <setName>RLE Progress Report, No. 113 (1974)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56479</setSpec>
+         <setName>RLE Progress Report, No. 114 (1974)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56505</setSpec>
+         <setName>RLE Progress Report, No. 115 (1975)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56533</setSpec>
+         <setName>RLE Progress Report, No. 116 (1975)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56582</setSpec>
+         <setName>RLE Progress Report, No. 117 (1975)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56610</setSpec>
+         <setName>RLE Progress Report, No. 118 (1976)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56635</setSpec>
+         <setName>RLE Progress Report, No. 119 (1977)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56676</setSpec>
+         <setName>RLE Progress Report, No. 120 (1978)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56715</setSpec>
+         <setName>RLE Progress Report, No. 121 (1979)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56751</setSpec>
+         <setName>RLE Progress Report, No. 122 (1980)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56746</setSpec>
+         <setName>RLE Progress Report, No. 123 (1981)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56732</setSpec>
+         <setName>RLE Progress Report, No. 124 (1982)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56717</setSpec>
+         <setName>RLE Progress Report, No. 125 (1983)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56716</setSpec>
+         <setName>RLE Progress Report, No. 126 (1984)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56714</setSpec>
+         <setName>RLE Progress Report, No. 127 (1985)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56708</setSpec>
+         <setName>RLE Progress Report, No. 128 (1986)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56692</setSpec>
+         <setName>RLE Progress Report, No. 129 (1987)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56679</setSpec>
+         <setName>RLE Progress Report, No. 130 (1987)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56678</setSpec>
+         <setName>RLE Progress Report, No. 131 (1988)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56675</setSpec>
+         <setName>RLE Progress Report, No. 132 (1989)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56674</setSpec>
+         <setName>RLE Progress Report, No. 133 (1990)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56673</setSpec>
+         <setName>RLE Progress Report, No. 134 (1991)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56672</setSpec>
+         <setName>RLE Progress Report, No. 135 (1992)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56661</setSpec>
+         <setName>RLE Progress Report, No. 136 (1993)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56647</setSpec>
+         <setName>RLE Progress Report, No. 137 (1994)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56644</setSpec>
+         <setName>RLE Progress Report, No. 138 (1995)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56638</setSpec>
+         <setName>RLE Progress Report, No. 139 (1996)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_56637</setSpec>
+         <setName>RLE Progress Report, No. 140 (1997)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_4059</setSpec>
+         <setName>RLE Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5552</setSpec>
+         <setName>Rohsenow Symposium on Future Trends in Heat Transfer</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_101610</setSpec>
+         <setName>SCALE Research Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_101403</setSpec>
+         <setName>SCALE Working Paper Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7727</setSpec>
+         <setName>Science, Technology and Society - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7726</setSpec>
+         <setName>Science, Technology and Society - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7725</setSpec>
+         <setName>Science, Technology and Society - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34003</setSpec>
+         <setName>Science, Technology, and Society (STS) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7914</setSpec>
+         <setName>Science, Technology &amp; Society - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7915</setSpec>
+         <setName>Science, Technology &amp; Society - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7913</setSpec>
+         <setName>Science, Technology &amp; Society - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_106908</setSpec>
+         <setName>Science Writing - Master's Degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_106909</setSpec>
+         <setName>Science Writing - Master's Degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_65423</setSpec>
+         <setName>Selected Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_76637</setSpec>
+         <setName>Selected Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_85574</setSpec>
+         <setName>Selected Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_62800</setSpec>
+         <setName>Selected Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_46704</setSpec>
+         <setName>Selected Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_46333</setSpec>
+         <setName>Selected Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102236</setSpec>
+         <setName>Selected Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_40283</setSpec>
+         <setName>Selected Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16545</setSpec>
+         <setName>Selected Stories</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16551</setSpec>
+         <setName>Selected Stories</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16563</setSpec>
+         <setName>Selected Stories</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16559</setSpec>
+         <setName>Selected Stories</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16555</setSpec>
+         <setName>Selected Stories</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_70040</setSpec>
+         <setName>Selected Works</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_37288</setSpec>
+         <setName>Set perception models</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34004</setSpec>
+         <setName>Sloan School of Management (15) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1792</setSpec>
+         <setName>Sloan Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18188</setSpec>
+         <setName>Software</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34005</setSpec>
+         <setName>Special Programs (SP) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100474</setSpec>
+         <setName>Stonemeal - data</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100475</setSpec>
+         <setName>Stonemeal - papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100476</setSpec>
+         <setName>Stonemeal - supplemental materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91671</setSpec>
+         <setName>Student Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92512</setSpec>
+         <setName>Studies</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_76638</setSpec>
+         <setName>Supplemental Materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53733</setSpec>
+         <setName>Supplemental Materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_57506</setSpec>
+         <setName>Supplemental Resources (RES)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107232</setSpec>
+         <setName>Supply Chain Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107236</setSpec>
+         <setName>Supply Chain Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107233</setSpec>
+         <setName>Supply Chain Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107237</setSpec>
+         <setName>Supply Chain Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100491</setSpec>
+         <setName>Suspension electrolysis - data</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100492</setSpec>
+         <setName>Suspension electrolysis - papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100493</setSpec>
+         <setName>Suspension electrolysis - supplemental materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88003</setSpec>
+         <setName>Systems Biology Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7740</setSpec>
+         <setName>Systems Design and Management - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7923</setSpec>
+         <setName>Systems Design and Management - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7739</setSpec>
+         <setName>Systems Design and Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7924</setSpec>
+         <setName>Systems Design and Management - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7922</setSpec>
+         <setName>Systems Design and Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7738</setSpec>
+         <setName>Systems Design and Management - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_87998</setSpec>
+         <setName>Systems Research Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_65424</setSpec>
+         <setName>Teaching Materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_76639</setSpec>
+         <setName>Teaching Materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92406</setSpec>
+         <setName>Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29797</setSpec>
+         <setName>Technical Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_76745</setSpec>
+         <setName>Technical Reports - Miscellaneous</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1793</setSpec>
+         <setName>Technology and Law Program</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7743</setSpec>
+         <setName>Technology and Policy - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7928</setSpec>
+         <setName>Technology and Policy - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7929</setSpec>
+         <setName>Technology and Policy - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7742</setSpec>
+         <setName>Technology and Policy - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7927</setSpec>
+         <setName>Technology and Policy - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7741</setSpec>
+         <setName>Technology and Policy - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55584</setSpec>
+         <setName>The Internet of Things</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55916</setSpec>
+         <setName>The Predictive Analyses of Things</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97455</setSpec>
+         <setName>The Rosemarie Rogers Working Paper Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_42001</setSpec>
+         <setName>The Search for Extraterrestrial Genomes (SETG)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29798</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92513</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_80746</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88077</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_80739</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18230</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91571</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26680</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18215</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26585</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18219</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26674</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18899</setSpec>
+         <setName>Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18235</setSpec>
+         <setName>Theses - BS</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18225</setSpec>
+         <setName>Theses - MS</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18224</setSpec>
+         <setName>Theses - PhD</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55586</setSpec>
+         <setName>The Simulating of Things</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55719</setSpec>
+         <setName>The Specific Modeling of Things</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55588</setSpec>
+         <setName>The Visualizing of Things</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_78860</setSpec>
+         <setName>Trope Report Technical Report Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18226</setSpec>
+         <setName>Unpublished Work</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34006</setSpec>
+         <setName>Urban Studies and Planning (11) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7703</setSpec>
+         <setName>Urban Studies and Planning - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7876</setSpec>
+         <setName>Urban Studies and Planning - Bachelor's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7704</setSpec>
+         <setName>Urban Studies and Planning - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7877</setSpec>
+         <setName>Urban Studies and Planning - Master's degree</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7875</setSpec>
+         <setName>Urban Studies and Planning - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7702</setSpec>
+         <setName>Urban Studies and Planning - Ph.D. / Sc.D.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16459</setSpec>
+         <setName>Various Historical Departments</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18240</setSpec>
+         <setName>Video and images</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7358</setSpec>
+         <setName>Videos</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3771</setSpec>
+         <setName>Virtual Customer (VC)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92515</setSpec>
+         <setName>White Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91573</setSpec>
+         <setName>White Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_40088</setSpec>
+         <setName>Women's and Gender Studies (WGS) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34007</setSpec>
+         <setName>Women's Studies (WMN) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33228</setSpec>
+         <setName>Working papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92514</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97717</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34010</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26679</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18229</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18222</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26586</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18218</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_80740</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26676</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18214</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18898</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88078</setSpec>
+         <setName>Working Papers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102683</setSpec>
+         <setName>Working Paper Series</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_81470</setSpec>
+         <setName>Working Papers Series C</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_104840</setSpec>
+         <setName>WorkLab@MIT</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88079</setSpec>
+         <setName>Workshops</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_83431</setSpec>
+         <setName>Workshops</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34008</setSpec>
+         <setName>Writing and Humanistic Studies (21W) - Archived</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_52116</setSpec>
+         <setName />
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39118</setSpec>
+         <setName>Abdul Latif Jameel Poverty Action Lab (J-PAL)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_89011</setSpec>
+         <setName>Active Adaptive Control Laboratory (AACL)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_50866</setSpec>
+         <setName>Aerospace Computational Design Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_37332</setSpec>
+         <setName>Aerospace Control Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34280</setSpec>
+         <setName>Air Transportation Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100263</setSpec>
+         <setName>Allanore Group</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100471</setSpec>
+         <setName>Alternative Metal Extraction</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100264</setSpec>
+         <setName>Alternative Potash Fertilizer</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5459</setSpec>
+         <setName>Artificial Intelligence Lab Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16538</setSpec>
+         <setName>Asian Pacific American Legal Center (APALC)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55583</setSpec>
+         <setName>Auto-ID Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_87997</setSpec>
+         <setName>Ayyadurai, V. A. Shiva</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88181</setSpec>
+         <setName>Bamboo Data</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102532</setSpec>
+         <setName>Bates Research and Engineering Center</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16539</setSpec>
+         <setName>Beloved Community Center (BCC)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7752</setSpec>
+         <setName>Biological Engineering Division</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_103853</setSpec>
+         <setName>Bourg, Chris</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_40282</setSpec>
+         <setName>Bucciarelli, Louis</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97716</setSpec>
+         <setName>Building Technology Program</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67472</setSpec>
+         <setName>Center for Advanced Nuclear Energy Systems (CANES)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88529</setSpec>
+         <setName>Center for Brains, Minds &amp; Machines</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34009</setSpec>
+         <setName>Center for Energy and Environmental Policy Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3549</setSpec>
+         <setName>Center for Global Change Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55585</setSpec>
+         <setName>Center for Grid Computing</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3764</setSpec>
+         <setName>Center for Innovation in Product Development (CIPD)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7530</setSpec>
+         <setName>Center for International Studies (CIS)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18211</setSpec>
+         <setName>Center for Real Estate</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16165</setSpec>
+         <setName>Center for Reflective Community Practice (CRCP)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18154</setSpec>
+         <setName>C. Forbes Dewey, Jr.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26400</setSpec>
+         <setName>Christopher A. Schuh</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18203</setSpec>
+         <setName>City Design and Development</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39094</setSpec>
+         <setName>Comparative Media Studies/Writing (CMS/W)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54826</setSpec>
+         <setName>Computational and Systems Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33227</setSpec>
+         <setName>Computation for Design and Optimization (CDO)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5458</setSpec>
+         <setName>Computer Science and Artificial Intelligence Lab (CSAIL)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16540</setSpec>
+         <setName>Conservation Law Foundation Greater Boston Institute (CLF)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88071</setSpec>
+         <setName>Consortium for Engineering Program Excellence (CEPE)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100706</setSpec>
+         <setName>Crandall, Stephen H.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16535</setSpec>
+         <setName>CRCP Working Papers Collection</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29806</setSpec>
+         <setName>CSAIL Digital Archive</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18118</setSpec>
+         <setName>Databases</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_105852</setSpec>
+         <setName>Data for Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55384</setSpec>
+         <setName>Data Ingestion</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18160</setSpec>
+         <setName>David Vogan</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_85573</setSpec>
+         <setName>Del Vecchio, Domitilla</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7758</setSpec>
+         <setName>Department of Aeronautics and Astronautics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7749</setSpec>
+         <setName>Department of Architecture</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7761</setSpec>
+         <setName>Department of Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7776</setSpec>
+         <setName>Department of Brain and Cognitive Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7786</setSpec>
+         <setName>Department of Chemical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7792</setSpec>
+         <setName>Department of Chemistry</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7797</setSpec>
+         <setName>Department of Civil and Environmental Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7803</setSpec>
+         <setName>Department of Earth, Atmospheric, and Planetary Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7808</setSpec>
+         <setName>Department of Economics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7813</setSpec>
+         <setName>Department of Electrical Engineering and Computer Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7819</setSpec>
+         <setName>Department of Humanities</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7824</setSpec>
+         <setName>Department of Interdisciplinary Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7829</setSpec>
+         <setName>Department of Linguistics and Philosophy</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7835</setSpec>
+         <setName>Department of Materials Science and Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7841</setSpec>
+         <setName>Department of Mathematics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7846</setSpec>
+         <setName>Department of Mechanical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7852</setSpec>
+         <setName>Department of Nuclear Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1774</setSpec>
+         <setName>Department of Ocean Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7864</setSpec>
+         <setName>Department of Physics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5427</setSpec>
+         <setName>Department of Political Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7873</setSpec>
+         <setName>Department of Urban Studies and Planning</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67704</setSpec>
+         <setName>Earth Resources Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7883</setSpec>
+         <setName>Engineering Systems Division</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18204</setSpec>
+         <setName>Environmental Policy Group</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_30596</setSpec>
+         <setName>Estimating the Circulation and Climate of the Ocean (ECCO)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_104841</setSpec>
+         <setName>Explorations in Cyber International Relations (ECIR)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_46702</setSpec>
+         <setName>Faculty and Researchers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7507</setSpec>
+         <setName>Faculty and Researchers</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18202</setSpec>
+         <setName>Faculty Research and Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_67902</setSpec>
+         <setName>Flight Transportation Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100166</setSpec>
+         <setName>Fluid Interfaces</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_68161</setSpec>
+         <setName>Gabrieli Lab at MIT</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_104381</setSpec>
+         <setName>Gas Turbine Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55718</setSpec>
+         <setName>GeoNumerics Group</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55915</setSpec>
+         <setName>GeoSpatial Data Center</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34282</setSpec>
+         <setName>Global Airline Industry</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_76636</setSpec>
+         <setName>Hackl, Martin</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7889</setSpec>
+         <setName>Harvard-MIT Program of Health Sciences and Technology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_6749</setSpec>
+         <setName>Hatsopoulos Microfluids Laboratory (HML)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_79431</setSpec>
+         <setName>Haystack Observatory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_61395</setSpec>
+         <setName>Heat Transfer Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7932</setSpec>
+         <setName>History</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18205</setSpec>
+         <setName>Housing, Community, and Economic Development</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_46717</setSpec>
+         <setName>Humans and Automation Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100472</setSpec>
+         <setName>Hydrothermal treatment</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102514</setSpec>
+         <setName>Initiative for Health Systems Innovation</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102293</setSpec>
+         <setName>Institute for Data, Systems, and Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55587</setSpec>
+         <setName>Intelligent Engineering Systems Laboratory (IESL)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91214</setSpec>
+         <setName>Intelligent Transportation Systems Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34281</setSpec>
+         <setName>International Center for Air Transportation</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18206</setSpec>
+         <setName>International Development and Regional Planning</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100477</setSpec>
+         <setName>International Workshop</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97893</setSpec>
+         <setName>Julia Language</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_26398</setSpec>
+         <setName>Krystyn J. Van Vliet</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18192</setSpec>
+         <setName>Laboratory for Energy and the Environment (LFEE)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1775</setSpec>
+         <setName>Laboratory for Information and Decision Systems (LIDS)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_70032</setSpec>
+         <setName>Laboratory for Nuclear Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29810</setSpec>
+         <setName>LCS Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_80738</setSpec>
+         <setName>Lean Advancement Initiative (LAI)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97458</setSpec>
+         <setName>Lincoln Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88180</setSpec>
+         <setName>LJ Gibson Group</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29795</setSpec>
+         <setName>Man Vehicle Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18162</setSpec>
+         <setName>Martin Z. Bazant</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_68160</setSpec>
+         <setName>McGovern Institute for Brain Research at MIT</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7896</setSpec>
+         <setName>Media Arts &amp; Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18156</setSpec>
+         <setName>Michael S. Triantafyllou</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100265</setSpec>
+         <setName>Microfluidic</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102447</setSpec>
+         <setName>MIT Concrete Sustainability Hub</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92237</setSpec>
+         <setName>MIT Energy Initiative (MITEI)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_41894</setSpec>
+         <setName>MIT Forum for Supply Chain Innovation</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7531</setSpec>
+         <setName>MIT Japan Program</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7581</setSpec>
+         <setName>MIT Libraries</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100165</setSpec>
+         <setName>MIT Media Lab</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33971</setSpec>
+         <setName>MIT OCW Archived Courses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_49432</setSpec>
+         <setName>MIT Open Access Articles</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33970</setSpec>
+         <setName>MIT OpenCourseWare (MIT OCW) - Archived Content</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1776</setSpec>
+         <setName>MIT Press</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_96970</setSpec>
+         <setName>MIT Sea Grant</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1773</setSpec>
+         <setName>MIT Sociotechnical Systems Research Center (SSRC)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91570</setSpec>
+         <setName>MIT Tata Center for Technology + Design</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7582</setSpec>
+         <setName>MIT Theses</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7294</setSpec>
+         <setName>MIT Workplace Center</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100481</setSpec>
+         <setName>Molten oxide</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100485</setSpec>
+         <setName>Molten sulfides</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18158</setSpec>
+         <setName>Nam Pyo Suh</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_30599</setSpec>
+         <setName>Natalie Kuldell: teaching materials</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88018</setSpec>
+         <setName>NECSTLAB</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7351</setSpec>
+         <setName>Nonlinear Systems Laboratory (NSL)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_70038</setSpec>
+         <setName>Oehmen, Josef</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_96536</setSpec>
+         <setName>Office of Digital Learning</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5066</setSpec>
+         <setName>Operations Research Center</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16537</setSpec>
+         <setName>Organization Collections</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_96122</setSpec>
+         <setName>Ortiz Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7933</setSpec>
+         <setName>Peter C.  Perdue</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92856</setSpec>
+         <setName>Plasma Science and Fusion Center (PSFC)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102533</setSpec>
+         <setName>Polarized Electron Gun</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18167</setSpec>
+         <setName>Political Science Data Pool</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_53732</setSpec>
+         <setName>Precision Compliant Systems Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_41528</setSpec>
+         <setName>Precision Motion Control Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88004</setSpec>
+         <setName>Presentations - Biological Engineering Division</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54829</setSpec>
+         <setName>Program in Real Estate Development</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39101</setSpec>
+         <setName>Program in Writing and Humanistic Studies</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_32547</setSpec>
+         <setName>Program on Emerging Technologies</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_80743</setSpec>
+         <setName>Project Health</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_29813</setSpec>
+         <setName>Project Mac Memos</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_80745</setSpec>
+         <setName>PTSI Project</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88530</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18119</setSpec>
+         <setName>Publications</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16536</setSpec>
+         <setName>Race &amp; Democracy Reflection Project</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_62799</setSpec>
+         <setName>Raskar, Ramesh</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18170</setSpec>
+         <setName>Regional and Local Government in Comparative Perspective</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_4058</setSpec>
+         <setName>Research Laboratory for Electronics (RLE)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_88001</setSpec>
+         <setName>Research Papers - Biological Engineering Division</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_49816</setSpec>
+         <setName>RLE Progress Reports</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_62234</setSpec>
+         <setName>Robotics Research Datasets</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7508</setSpec>
+         <setName>Rosenholtz, Ruth</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_101402</setSpec>
+         <setName>SCALE Network</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_91273</setSpec>
+         <setName>Scheller Teacher Education Program</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_33226</setSpec>
+         <setName>School of Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7911</setSpec>
+         <setName>Science, Technology &amp; Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_46703</setSpec>
+         <setName>Sheila E. Widnall</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18164</setSpec>
+         <setName>Sigurdur Helgason</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_3649</setSpec>
+         <setName>Singapore-MIT Alliance (SMA)</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_1777</setSpec>
+         <setName>Sloan School of Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16541</setSpec>
+         <setName>Southern Echo</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_92405</setSpec>
+         <setName>Space Systems Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18117</setSpec>
+         <setName>Speech Communication Group</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18210</setSpec>
+         <setName>SPURS/Humphrey Fellows</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_45561</setSpec>
+         <setName>Steven G. Johnson</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100473</setSpec>
+         <setName>Stonemeal</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18201</setSpec>
+         <setName>Studios, Workshops, and Practicum Classes</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107234</setSpec>
+         <setName>Supply Chain Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_100490</setSpec>
+         <setName>Suspension electrolysis</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18185</setSpec>
+         <setName>Synthetic Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7920</setSpec>
+         <setName>Systems Design &amp; Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7925</setSpec>
+         <setName>Technology and Policy Program</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_16542</setSpec>
+         <setName>Texas LEADS: Local Empowerment for Accessible and Diverse Schools</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_55345</setSpec>
+         <setName>The Big Data Problem</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_97454</setSpec>
+         <setName>The Inter-University Committee  on International Migration</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7759</setSpec>
+         <setName>Theses - Aeronautics and Astronautics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7622</setSpec>
+         <setName>Theses - Biological Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7754</setSpec>
+         <setName>Theses - Biological Engineering Division</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7782</setSpec>
+         <setName>Theses - Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7778</setSpec>
+         <setName>Theses - Brain and Cognitive Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7787</setSpec>
+         <setName>Theses - Chemical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7793</setSpec>
+         <setName>Theses - Chemistry</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7798</setSpec>
+         <setName>Theses - Civil and Environmental Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39095</setSpec>
+         <setName>Theses - Comparative Media Studies/Writing</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39098</setSpec>
+         <setName>Theses - Comparative Media Studies/Writing</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54822</setSpec>
+         <setName>Theses - Computational and Systems Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54827</setSpec>
+         <setName>Theses - Computational and Systems Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39116</setSpec>
+         <setName>Theses - Computation for Design and Optimization</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39113</setSpec>
+         <setName>Theses - Computation for Design and Optimization</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7750</setSpec>
+         <setName>Theses - Department of Architecture</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7621</setSpec>
+         <setName>Theses - Dept. of Aeronautics and Astronautics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7583</setSpec>
+         <setName>Theses - Dept. of Architecture</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7589</setSpec>
+         <setName>Theses - Dept. of Biology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7593</setSpec>
+         <setName>Theses - Dept. of Brain and Cognitive Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7594</setSpec>
+         <setName>Theses - Dept. of Chemical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7595</setSpec>
+         <setName>Theses - Dept. of Chemistry</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7596</setSpec>
+         <setName>Theses - Dept. of Civil and Environmental Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7597</setSpec>
+         <setName>Theses - Dept. of Earth, Atmospheric, and Planetary Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7598</setSpec>
+         <setName>Theses - Dept. of Economics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7599</setSpec>
+         <setName>Theses - Dept. of Electrical Engineering and Computer Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7600</setSpec>
+         <setName>Theses - Dept. of Humanities</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7601</setSpec>
+         <setName>Theses - Dept. of Interdisciplinary Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7602</setSpec>
+         <setName>Theses - Dept. of Linguistics and Philosophy</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7603</setSpec>
+         <setName>Theses - Dept. of Materials Science and Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7604</setSpec>
+         <setName>Theses - Dept. of Mathematics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7605</setSpec>
+         <setName>Theses - Dept. of Mechanical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7606</setSpec>
+         <setName>Theses - Dept. of Nuclear Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7607</setSpec>
+         <setName>Theses - Dept. of Ocean Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7608</setSpec>
+         <setName>Theses - Dept. of Physics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7609</setSpec>
+         <setName>Theses - Dept. of Political Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7610</setSpec>
+         <setName>Theses - Dept. of Urban Studies and Planning</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7804</setSpec>
+         <setName>Theses - Earth, Atmospheric and Planetary Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7809</setSpec>
+         <setName>Theses - Economics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7814</setSpec>
+         <setName>Theses - Electrical Engineering and Computer Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7884</setSpec>
+         <setName>Theses - Engineering Systems</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7612</setSpec>
+         <setName>Theses - Engineering Systems Division</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7613</setSpec>
+         <setName>Theses - Harvard-MIT Program of Health Sciences and Technology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7890</setSpec>
+         <setName>Theses - Health Sciences and Technology</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7820</setSpec>
+         <setName>Theses - Humanities</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102294</setSpec>
+         <setName>Theses - Institute for Data, Systems, and Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102289</setSpec>
+         <setName>Theses - Institute for Data, Systems, and Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7825</setSpec>
+         <setName>Theses - Interdisciplinary Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7830</setSpec>
+         <setName>Theses - Linguistics and Philosophy</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7916</setSpec>
+         <setName>Theses - Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7836</setSpec>
+         <setName>Theses - Materials Science and Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7842</setSpec>
+         <setName>Theses - Mathematics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7847</setSpec>
+         <setName>Theses - Mechanical Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7614</setSpec>
+         <setName>Theses - Media Arts and Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7897</setSpec>
+         <setName>Theses - Media Arts &amp; Sciences</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7853</setSpec>
+         <setName>Theses - Nuclear Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7859</setSpec>
+         <setName>Theses - Ocean Engineering</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7902</setSpec>
+         <setName>Theses - Operations Research</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7615</setSpec>
+         <setName>Theses - Operations Research Center</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7865</setSpec>
+         <setName>Theses - Physics</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7869</setSpec>
+         <setName>Theses - Political Science</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54830</setSpec>
+         <setName>Theses - Program in Real Estate Development</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_54824</setSpec>
+         <setName>Theses - Program in Real Estate Development</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39102</setSpec>
+         <setName>Theses - Program in Writing and Humanistic Studies</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_39110</setSpec>
+         <setName>Theses - Program in Writing and Humanistic Studies</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7617</setSpec>
+         <setName>Theses - Science, Technology, and Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7912</setSpec>
+         <setName>Theses - Science, Technology &amp; Society</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7618</setSpec>
+         <setName>Theses - Sloan School of Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107235</setSpec>
+         <setName>Theses - Supply Chain Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_107231</setSpec>
+         <setName>Theses - Supply Chain Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7737</setSpec>
+         <setName>Theses - Systems Design and Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7921</setSpec>
+         <setName>Theses - Systems Design &amp; Management</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7926</setSpec>
+         <setName>Theses - Technology and Policy</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7620</setSpec>
+         <setName>Theses - Technology and Policy Program</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7874</setSpec>
+         <setName>Theses - Urban Studies and Planning</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_7959</setSpec>
+         <setName>Theses - Various Historical Departments</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_65422</setSpec>
+         <setName>Tokmakoff, Andrei</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_102235</setSpec>
+         <setName>Trancik, Jessika E.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_78859</setSpec>
+         <setName>Trope Tank</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18131</setSpec>
+         <setName>Unpublished</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_89474</setSpec>
+         <setName>Urban Climate Adaptation Project</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18209</setSpec>
+         <setName>Urban Information Systems</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_76748</setSpec>
+         <setName>Victor Guillemin</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_46332</setSpec>
+         <setName>von Hippel, Eric A.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5432</setSpec>
+         <setName>Voting Technology Project</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5549</setSpec>
+         <setName>Warren M. Rohsenow Heat and Mass Transfer Laboratory</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_103889</setSpec>
+         <setName>Willcox, Karen E.</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_104839</setSpec>
+         <setName>WorkLab@MIT</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18081</setSpec>
+         <setName>Works of Adam Berinsky</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18082</setSpec>
+         <setName>Works of Chappell Lawson</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5523</setSpec>
+         <setName>Works of Charles Stewart</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_34015</setSpec>
+         <setName>Works of Clifton Fonstad</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5524</setSpec>
+         <setName>Works of Eugene Skolnikoff</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18083</setSpec>
+         <setName>Works of James Snyder</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_18084</setSpec>
+         <setName>Works of Jonathan Rodden</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5442</setSpec>
+         <setName>Works of Joshua Cohen</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_32528</setSpec>
+         <setName>Works of Lily Tsai</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5528</setSpec>
+         <setName>Works of Stephen Ansolabehere</setName>
+      </set>
+      <set>
+         <setSpec>hdl_1721.1_5431</setSpec>
+         <setName>Works of Stephen van Evera</setName>
+      </set>
+   </ListSets>
+</OAI-PMH>

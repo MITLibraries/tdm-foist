@@ -1,1 +1,0 @@
-PREFIX dcterms: <http://purl.org/dc/terms/> PREFIX pcdm: <http://pcdm.org/models#> INSERT { <> a pcdm:File ; dcterms:language "eng" ; dcterms:extent "109 p." . } WHERE { }
