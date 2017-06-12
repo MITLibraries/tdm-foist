@@ -4,7 +4,6 @@ from contextlib import contextmanager
 from functools import reduce
 import csv
 import logging
-import os
 import re
 
 
@@ -12,12 +11,6 @@ import rdflib
 import requests
 
 from foist.namespaces import BIBO, DCTERMS, DCTYPE, LOCAL, MODS, MSL, PCDM, RDF
-
-
-try:
-    basestring
-except NameError:
-    basestring = (str, bytes)
 
 log = logging.getLogger(__name__)
 
@@ -43,7 +36,7 @@ class Thesis(object):
         self.mets = mets
         self.errors = text_errors
         self.departments = departments
-        self._no_full_text = self._get_full_text_error() if self.errors else \
+        self._no_full_text = self.errors and self._has_full_text_error() or \
             None
 
     @property
@@ -128,8 +121,7 @@ class Thesis(object):
 
     @property
     def encoded_text(self):
-        return (self._get_error_value('Encoded text new file') if self.errors
-                else None)
+        return self.errors and self._has_error('Encoded text new file') or None
 
     @property
     def handle(self):
@@ -159,7 +151,7 @@ class Thesis(object):
 
     @property
     def ligatures(self):
-        return self._get_error_value('Ligatures new') if self.errors else None
+        return self.errors and self._has_error('Ligatures new') or None
 
     @property
     def no_full_text(self):
@@ -207,15 +199,10 @@ class Thesis(object):
         s = rdflib.URIRef('')
 
         def _add_metadata_field(p, obj, is_uri=False):
-            if not isinstance(obj, basestring):
-                try:
-                    for i in obj:
-                        o = _create_rdf_obj(i, is_uri)
-                        m.add((s, p, o))
-                    return
-                except TypeError:
-                    # not iterable
-                    pass
+            if isinstance(obj, list):
+                for i in obj:
+                    o = _create_rdf_obj(i, is_uri)
+                    m.add((s, p, o))
             else:
                 o = _create_rdf_obj(obj, is_uri)
                 m.add((s, p, o))
@@ -285,15 +272,15 @@ class Thesis(object):
         query += ' . } WHERE { }'
         return query
 
-    def _get_error_value(self, error):
+    def _has_error(self, error):
         if self.errors[error] == '1':
-            return 'True'
+            return True
 
-    def _get_full_text_error(self):
+    def _has_full_text_error(self):
         s = self.errors
         if (s['PDFBox err'] == '1' or (s['No text old file'] == '1' and
                                        s['No text new file'] == '1')):
-            return 'True'
+            return True
 
 
 def parse_text_encoding_errors(tsv_file):
@@ -324,49 +311,37 @@ def transaction(fedora_uri, auth=None):
         raise(e)
     else:
         uri = location + '/fcr:tx/fcr:commit'
-        try:
-            r = requests.post(uri, auth=auth)
-            r.raise_for_status()
-        except requests.exceptions.HTTPError as e:
-            raise e
+        r = requests.post(uri, auth=auth)
+        r.raise_for_status()
 
 
 def create_container(uri, turtle, auth=None):
     '''Create basic container for an item.
     '''
     headers = {'Content-Type': 'text/turtle; charset=utf-8'}
-    try:
-        r = requests.put(uri, headers=headers, auth=auth, data=turtle)
-        r.raise_for_status()
-        return r
-    except requests.exceptions.HTTPError as e:
-        raise e
+    r = requests.put(uri, headers=headers, auth=auth, data=turtle)
+    r.raise_for_status()
+    return r
 
 
 def upload_content(uri, content_to_upload, mimetype, auth=None):
     '''Add content in string or bytes format to a given container uri.
     '''
-    try:
-        headers = {'Content-Type': mimetype}
-        r = requests.put(uri, headers=headers, auth=auth,
-                         data=content_to_upload)
-        r.raise_for_status()
-        return r.status_code
-    except requests.exceptions.HTTPError as e:
-        raise e
+    headers = {'Content-Type': mimetype}
+    r = requests.put(uri, headers=headers, auth=auth,
+                     data=content_to_upload)
+    r.raise_for_status()
+    return r.status_code
 
 
 def upload_file(uri, file_path, mimetype, auth=None):
     '''Add a file to a given container uri.
     '''
-    try:
-        headers = {'Content-Type': mimetype}
-        f = {'file': open(file_path, 'rb')}
-        r = requests.put(uri, headers=headers, auth=auth, files=f)
-        r.raise_for_status()
-        return r.status_code
-    except requests.exceptions.HTTPError as e:
-        raise e
+    headers = {'Content-Type': mimetype}
+    f = {'file': open(file_path, 'rb')}
+    r = requests.put(uri, headers=headers, auth=auth, files=f)
+    r.raise_for_status()
+    return r.status_code
 
 
 def update_metadata(uri, sparql, auth=None):
@@ -374,12 +349,9 @@ def update_metadata(uri, sparql, auth=None):
     SPARQL update query.
     '''
     headers = {'Content-Type': 'application/sparql-update'}
-    try:
-        r = requests.patch(uri, headers=headers, auth=auth, data=sparql)
-        r.raise_for_status()
-        return r.status_code
-    except requests.exceptions.HTTPError as e:
-        raise e
+    r = requests.patch(uri, headers=headers, auth=auth, data=sparql)
+    r.raise_for_status()
+    return r.status_code
 
 
 # Create a temporary dummy resource to initialize custom RDF namespace prefixes
@@ -403,23 +375,20 @@ def initialize_custom_prefixes(fedora_uri, auth=None):
             mods:test 'test' ;
             msl:test 'test' .
         }'''
-    try:
-        r1 = requests.put(uri, auth=auth)
-        r1.raise_for_status
-        r2 = requests.patch(uri, headers=headers, auth=auth,
-                            data=data)
-        r2.raise_for_status
-        r3 = requests.delete(uri, auth=auth)
-        r3.raise_for_status
-        r4 = requests.delete(uri+'/fcr:tombstone', auth=auth)
-        r4.raise_for_status
-    except requests.exceptions.HTTPError as e:
-        raise(e)
+    r1 = requests.put(uri, auth=auth)
+    r1.raise_for_status()
+    r2 = requests.patch(uri, headers=headers, auth=auth,
+                        data=data)
+    r2.raise_for_status()
+    r3 = requests.delete(uri, auth=auth)
+    r3.raise_for_status()
+    r4 = requests.delete(uri+'/fcr:tombstone', auth=auth)
+    r4.raise_for_status()
 
 
 # Upload a single thesis item and its files to Fedora
 def upload_thesis(fedora_uri, collection_name, handle, turtle, pdf_file,
-                  pdf_sparql, text_file=None, text_sparql=None, auth=None):
+                  pdf_sparql, text_content=None, text_sparql=None, auth=None):
     retries = 0
     while retries < 5:
         try:
@@ -438,9 +407,9 @@ def upload_thesis(fedora_uri, collection_name, handle, turtle, pdf_file,
                          '<> pcdm:hasFile <' + u + '> . } WHERE { }')
                 update_metadata(item_uri, query, auth=auth)
 
-                if text_file:
+                if text_content:
                     text_uri = item_uri + handle + '.txt/'
-                    upload_content(text_uri, text_file, 'text/plain',
+                    upload_content(text_uri, text_content, 'text/plain',
                                    auth=auth)
                     update_metadata(text_uri + 'fcr:metadata', text_sparql,
                                     auth=auth)

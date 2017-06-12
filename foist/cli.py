@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
-import concurrent.futures
+import datetime
 import glob
-from io import StringIO
 import logging
 import logging.config
 import os
@@ -14,12 +13,12 @@ import requests
 from timeit import default_timer as timer
 
 from foist import (create_container, initialize_custom_prefixes,
-                   parse_text_encoding_errors, Thesis, transaction,
-                   upload_file, update_metadata, upload_thesis)
+                   parse_text_encoding_errors, Thesis, update_metadata,
+                   upload_thesis)
 
-from foist.pipeline import (extract_text, get_collection_names, get_pdf,
-                            get_pdf_url, get_record, get_record_list,
-                            is_thesis, is_in_fedora, parse_record_list)
+from foist.pipeline import (extract_text, get_collection_names, get_pdf_url,
+                            get_record, get_record_list, is_thesis,
+                            is_in_fedora, parse_record_list)
 
 CUR_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -66,8 +65,8 @@ def main():
               default='http://localhost:8080/fcrepo/rest/',
               help=('Base Fedora REST URI. Default is '
                     'http://localhost:8080/fcrepo/rest/'))
-@click.option('-u', '--username', default=None)
-@click.option('-p', '--password', default=None)
+@click.option('-u', '--username')
+@click.option('-p', '--password')
 def initialize_fedora(parent_container, fedora_uri, username, password):
     auth = (username, password) if username else None
     logger.info(fedora_uri)
@@ -148,8 +147,8 @@ def process_metadata(input_directory, department, output_directory):
               help=('Base Fedora REST URI. Default is '
                     'http://localhost:8080/fcrepo/rest/'))
 @click.option('-c', '--parent-collection', default='theses')
-@click.option('-u', '--username', default=None)
-@click.option('-p', '--password', default=None)
+@click.option('-u', '--username')
+@click.option('-p', '--password')
 def batch_upload_theses(directory, fedora_uri, parent_collection, username,
                         password):
     '''Uploads all thesis items in a directory to Fedora.
@@ -212,8 +211,8 @@ def batch_upload_theses(directory, fedora_uri, parent_collection, username,
               default='http://localhost:8080/fcrepo/rest/',
               help=('Base Fedora REST URI. Default is '
                     'http://localhost:8080/fcrepo/rest/'))
-@click.option('-u', '--username', default=None)
-@click.option('-p', '--password', default=None)
+@click.option('-u', '--username')
+@click.option('-p', '--password')
 def update_metadata_for_collection(directory, sparql, fedora_uri, username,
                                    password):
     '''Updates a single metadata field for all items in a collection, using
@@ -225,7 +224,7 @@ def update_metadata_for_collection(directory, sparql, fedora_uri, username,
     for i in items:
         try:
             uri = fedora_uri + 'theses/' + i
-            r = update_metadata(uri, sparql, auth=auth)
+            update_metadata(uri, sparql, auth=auth)
             logger.debug('Thesis %s updated.' % i)
             thesis_count += 1
         except Exception as e:
@@ -234,20 +233,30 @@ def update_metadata_for_collection(directory, sparql, fedora_uri, username,
     logger.info('TOTAL: %s theses updated.\n' % thesis_count)
 
 
+def validate_date(ctx, param, value):
+    if value is not None:
+        try:
+            datetime.datetime.strptime(value, '%Y-%m-%d')
+            return value
+        except ValueError:
+            raise click.BadParameter('Date must be given using YYYY-MM-DD'
+                                     'format')
+
+
 @main.command()
 @click.argument('dspace_oai_uri')
 @click.argument('dspace_oai_identifier')
 @click.option('-md', '--metadata-format', default='mets')
-@click.option('-sd', '--start-date', default=None,
+@click.option('-sd', '--start-date', callback=validate_date,
               help='Start date for theses to ingest.')
-@click.option('-ed', '--end-date', default=None,
+@click.option('-ed', '--end-date', callback=validate_date,
               help='End date for theses to ingest.')
 @click.option('-f', '--fedora-uri',
               default='http://localhost:8080/fcrepo/rest/',
               help=('Base Fedora REST URI. Default is '
                     'http://localhost:8080/fcrepo/rest/'))
-@click.option('-u', '--username', default=None)
-@click.option('-p', '--password', default=None)
+@click.option('-u', '--username')
+@click.option('-p', '--password')
 def ingest_new_theses(dspace_oai_uri, dspace_oai_identifier, metadata_format,
                       start_date, end_date, fedora_uri, username, password):
     '''Adds new theses added to DSpace repository since start_date to Fedora
@@ -263,7 +272,6 @@ def ingest_new_theses(dspace_oai_uri, dspace_oai_identifier, metadata_format,
     items = get_record_list(dspace_oai_uri, metadata_format, start_date,
                             end_date)
     parsed_items = parse_record_list(items)
-    theses_to_ingest = []
     for item in parsed_items:
         logger.debug('Checking item %s' % item['handle'])
         total_items_processed += 1
@@ -274,20 +282,21 @@ def ingest_new_theses(dspace_oai_uri, dspace_oai_identifier, metadata_format,
             logger.info('%s already in Fedora' % item['handle'])
             already_in_fedora += 1
             continue
-        theses_to_ingest.append(item)
-
-    for t in theses_to_ingest:
-        logger.debug('Processing item %s' % t['handle'])
+        logger.debug('Processing item %s' % item['handle'])
         metadata = get_record(dspace_oai_uri, dspace_oai_identifier,
-                              t['identifier'], metadata_format)
+                              item['identifier'], metadata_format)
         mets = ET.fromstring(metadata)
-        depts = get_collection_names(t['sets'])
+        depts = get_collection_names(item['sets'])
 
-        thesis = Thesis(t['handle'], mets, depts)
+        thesis = Thesis(item['handle'], mets, depts)
         pdf_url = get_pdf_url(mets)
 
         with tempfile.NamedTemporaryFile() as pdf_file:
-            pdf_file.write(get_pdf(pdf_url))
+            r = requests.get(pdf_url, stream=True)
+            r.raise_for_status()
+            for chunk in r.iter_content(1024):
+                pdf_file.write(chunk)
+            pdf_file.flush()
             pdf_sparql = thesis.create_file_sparql_update('.pdf')
 
             try:
@@ -301,17 +310,19 @@ def ingest_new_theses(dspace_oai_uri, dspace_oai_identifier, metadata_format,
                 no_full_text += 1
 
             turtle = thesis.get_metadata()
-            u = upload_thesis(fedora_uri, 'theses', t['handle'], turtle,
-                              pdf_file.name, pdf_sparql, text_file=text_string,
+            u = upload_thesis(fedora_uri, 'theses', item['handle'], turtle,
+                              pdf_file.name, pdf_sparql,
+                              text_content=text_string,
                               text_sparql=text_sparql, auth=auth)
             if u == 'Success':
-                logger.info('Thesis "%s" uploaded' % t['handle'])
+                logger.info('Thesis "%s" uploaded' % item['handle'])
                 added_to_fedora += 1
             elif u == 'Exists':
-                logger.warning('Item "%s" already in collection' % t['handle'])
+                logger.warning('Item "%s" already in collection' %
+                               item['handle'])
                 already_in_fedora += 1
             else:
-                logger.warning('Thesis "%s" upload failed' % t['handle'])
+                logger.warning('Thesis "%s" upload failed' % item['handle'])
 
     logger.info('\n%s total new items processed\n%s non-thesis items\n%s '
                 'theses added to Fedora\n%s theses already in Fedora\n%s '

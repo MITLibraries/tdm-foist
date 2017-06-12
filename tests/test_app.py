@@ -1,25 +1,20 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
-import os
-import tempfile
 
 import pytest
-from rdflib import Graph, Literal, Namespace, URIRef
 import requests
 import xml.etree.ElementTree as ET
 
-from foist import (create_container, initialize_custom_prefixes,
-                   parse_text_encoding_errors, Thesis, transaction,
-                   upload_file, update_metadata, upload_thesis)
+from foist import (create_container, parse_text_encoding_errors, Thesis,
+                   transaction, upload_file, update_metadata)
 
-from foist.namespaces import BIBO, DCTERMS, DCTYPE, LOCAL, MODS, MSL, PCDM, RDF
+from foist.namespaces import BIBO, DCTYPE, PCDM
 
 
-def test_thesis(tmpdir, xml, text_errors):
+def test_thesis(xml, text_errors):
     '''Thesis object should initialize with a name, mets, errors, and full
     text status.
     '''
-    l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
     t = Thesis('thesis', mets, 'Department One',
@@ -29,14 +24,12 @@ def test_thesis(tmpdir, xml, text_errors):
     assert t.mets == mets
     assert t.errors == errors
     assert t.departments == 'Department One'
-    assert t.no_full_text == 'True'
+    assert t.no_full_text is True
 
 
-def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
-                                                          text_errors):
+def test_thesis_with_all_metadata_fields_parses_correctly(xml, text_errors):
     '''Thesis object should create properties for all metadata fields.
     '''
-    l = tempfile.mkdtemp()
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
     t = Thesis('thesis', mets, ['Department One', 'Department Two'],
@@ -53,12 +46,12 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
                                   'Institute of Technology, Computation for '
                                   'Design and Optimization Program, 2006.')
     assert t.department == ['Department One', 'Department Two']
-    assert t.encoded_text is 'True'
+    assert t.encoded_text is True
     assert t.handle == 'http://hdl.handle.net/1721.1/39208'
     assert t.handle_part == '39208'
     assert t.issue_date == '2006'
     assert t.ligatures is None
-    assert t.no_full_text is 'True'
+    assert t.no_full_text is True
     assert t.notes == [('Thesis (S.M. and M.B.A.)--Massachusetts Institute of '
                         'Technology, Computation for Design and Optimization '
                         'Program, 2006.'),
@@ -74,8 +67,7 @@ def test_thesis_with_all_metadata_fields_parses_correctly(tmpdir, xml,
     assert t.title == 'Sample Title.'
 
 
-def test_set_thesis_full_text_property(tmpdir, xml, text_errors):
-    l = tempfile.mkdtemp()
+def test_set_thesis_full_text_property(xml, text_errors):
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
     t = Thesis('thesis', mets, ['Department One', 'Department Two'],
@@ -85,8 +77,7 @@ def test_set_thesis_full_text_property(tmpdir, xml, text_errors):
     assert t.no_full_text is None
 
 
-def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
-    l = tempfile.mkdtemp()
+def test_thesis_get_metadata_returns_turtle(xml, text_errors):
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
     t = Thesis('thesis', mets, ['Department One'],
@@ -113,7 +104,8 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     assert b'bibo:Thesis' in m
     assert b'dcterms:type dctype:Text' in m
     assert b'dcterms:title "Alternative Title."' in m
-    assert b'local:encoded_text "True"' in m
+    assert b'local:encoded_text true' in m
+    assert b'local:ligature_errors "None"' in m
     assert b'bibo:handle <http://hdl.handle.net/1721.1/39208>' in m
     assert b'msl:degreeGrantedForCompletion "M.B.A."' in m
     assert b'"S.M."' in m
@@ -124,18 +116,8 @@ def test_thesis_get_metadata_returns_turtle(tmpdir, xml, text_errors):
     assert b'local:handle_part "39208"' in m
 
 
-def test_get_metadata_removes_fields_with_none(xml, text_errors):
-    mets = ET.parse(xml).getroot()
-    errors = parse_text_encoding_errors(text_errors).get('thesis')
-    t = Thesis('thesis', mets, 'Department One',
-               errors)
-    m = t.get_metadata()
-    assert b'local:ligature_errors' not in m
-
-
-def test_thesis_handles_missing_metadata_fields(tmpdir, xml_missing_fields,
+def test_thesis_handles_missing_metadata_fields(xml_missing_fields,
                                                 text_errors):
-    l = tempfile.mkdtemp()
     mets = ET.parse(xml_missing_fields).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis-02')
     t = Thesis('thesis-02', mets, ['Test department'], errors)
@@ -156,8 +138,7 @@ def test_thesis_handles_missing_metadata_fields(tmpdir, xml_missing_fields,
     assert t.title is None
 
 
-def test_thesis_create_file_sparql_update_is_correct(tmpdir, xml, text_errors):
-    l = tempfile.mkdtemp()
+def test_thesis_create_file_sparql_update_is_correct(xml, text_errors):
     mets = ET.parse(xml).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
     t = Thesis('thesis', mets, errors)
@@ -177,10 +158,8 @@ def test_thesis_create_file_sparql_update_is_correct(tmpdir, xml, text_errors):
                  'ebucore:hasEncodingFormat "utf-8" . } WHERE { }')
 
 
-def test_thesis_create_file_sparql_update_missing_fields(tmpdir,
-                                                         xml_missing_fields,
+def test_thesis_create_file_sparql_update_missing_fields(xml_missing_fields,
                                                          text_errors):
-    l = tempfile.mkdtemp()
     mets = ET.parse(xml_missing_fields).getroot()
     errors = parse_text_encoding_errors(text_errors).get('thesis')
     t = Thesis('thesis', mets, errors)
@@ -205,13 +184,13 @@ def test_transaction_commits(fedora):
 
 def test_transaction_with_error_raises_exception(fedora):
     with pytest.raises(RuntimeError):
-        with transaction('mock://example.com/rest/') as t:
+        with transaction('mock://example.com/rest/'):
             raise
 
 
 def test_transaction_commit_fail_raises_exception(fedora_errors):
     with pytest.raises(requests.exceptions.HTTPError):
-        with transaction('mock://example.com/rest/') as t:
+        with transaction('mock://example.com/rest/'):
             pass
 
 

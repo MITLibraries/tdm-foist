@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import os
 import tempfile
 
+import click
 from click.testing import CliRunner
 import pytest
 
@@ -22,11 +23,20 @@ def test_initialize_fedora(runner, fedora):
 
 def test_ingest_new_theses(runner, pipeline):
     result = runner.invoke(main, ['ingest_new_theses',
-                                  'mock://example.com/oai/request?',
-                                  'oai%3Adspace.mit.edu%3A1721.1%2F', '-sd',
+                                  'http://example.com/oai/request?',
+                                  'oai:dspace.mit.edu:1721.1/', '-sd',
                                   '2017-01-01', '-ed', '2017-02-01', '-f',
                                   'mock://example.com/rest/'])
     assert result.exit_code == 0
+
+
+def test_ingest_new_theses_with_bad_date_returns_error(runner, pipeline):
+    result = runner.invoke(main, ['ingest_new_theses',
+                                  'http://example.com/oai/request?',
+                                  'oai:dspace.mit.edu:1721.1/', '-sd',
+                                  '20170101', '-ed', '20170201', '-f',
+                                  'mock://example.com/rest/'])
+    assert result.exit_code == 2
 
 
 def test_process_metadata(runner, theses_dir, tmpdir):

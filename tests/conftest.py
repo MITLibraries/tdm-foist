@@ -133,18 +133,11 @@ def pipeline():
         with open(record_list, 'rb') as rl, \
                 open(pdf_file, 'rb') as pdf, \
                 open(mets_record, 'rb') as xml:
-            m.get('/oai/request?verb=ListIdentifiers', status_code=200,
-                  text=('<?xml version="1.0" encoding="UTF-8"?><OAI-PMH'
-                        'xmlns="http://www.openarchives.org/OAI/2.0/" '
-                        'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'
-                        ' xsi:schemaLocation="http://www.openarchives.org/'
-                        'OAI/2.0/ http://www.openarchives.org/OAI/2.0/'
-                        'OAI-PMH.xsd"></OAI-PMH>'))
-            m.get(('/oai/request?verb=ListIdentifiers&metadataPrefix=mets&'
-                   'from=2017-01-01&until=2017-02-01'), status_code=200,
-                  content=rl.read())
-            m.get(('/oai/request?verb=GetRecord&identifier=oai%3A'
-                   'dspace.mit.edu%3A1721.1%2F12345&metadataPrefix=mets'),
+            m.get('/oai/request?verb=ListIdentifiers&metadataPrefix=mets'
+                  '&from=2017-01-01&until=2017-02-01',
+                  status_code=200, content=rl.read())
+            m.get(('/oai/request?verb=GetRecord&identifier=oai:'
+                   'dspace.mit.edu:1721.1/12345&metadataPrefix=mets'),
                   status_code=200,
                   text=('<?xml version="1.0" encoding="UTF-8"?><OAI-PMH '
                         'xmlns="http://www.openarchives.org/OAI/2.0/" '
@@ -152,8 +145,8 @@ def pipeline():
                         ' xsi:schemaLocation="http://www.openarchives.org/'
                         'OAI/2.0/ http://www.openarchives.org/OAI/2.0/'
                         'OAI-PMH.xsd"></OAI-PMH>'))
-            m.get(('/oai/request?verb=GetRecord&identifier=oai%3A'
-                   'dspace.mit.edu%3A1721.1%2F108390&metadataPrefix=mets'),
+            m.get(('/oai/request?verb=GetRecord&identifier=oai:'
+                   'dspace.mit.edu:1721.1/108390&metadataPrefix=mets'),
                   status_code=200, content=xml.read())
             m.get('/bitstream/handle/test/pdf', status_code=200,
                   content=pdf.read())

@@ -3,12 +3,11 @@ from __future__ import absolute_import
 
 import pytest
 import requests
-import tempfile
 import xml.etree.ElementTree as ET
 
-from foist.pipeline import (extract_text, get_collection_names, get_pdf,
-                            get_pdf_url, get_record, get_record_list,
-                            is_in_fedora, is_thesis, parse_record_list)
+from foist.pipeline import (extract_text, get_collection_names, get_pdf_url,
+                            get_record, get_record_list, is_in_fedora,
+                            is_thesis, parse_record_list)
 
 
 def test_extract_text_returns_bytes(pdf):
@@ -25,18 +24,6 @@ def test_get_collection_names_returns_correct_names():
                      'Institute for Data, Systems, and Society'}
 
 
-def test_get_pdf_returns_bytes(pipeline):
-    uri = 'http://example.com/bitstream/handle/test/pdf'
-    pdf = get_pdf(uri)
-    assert type(pdf) is bytes
-
-
-def test_get_pdf_error_raises_exception(pipeline):
-    with pytest.raises(requests.exceptions.HTTPError):
-        uri = 'http://example.com/bitstream/handle/test/bad_pdf'
-        pdf = get_pdf(uri)
-
-
 def test_get_pdf_url_succeeds(mets_xml):
     mets = ET.parse(mets_xml).getroot()
     pdf_url = get_pdf_url(mets)
@@ -48,7 +35,7 @@ def test_get_record_succeeds(pipeline):
     '''Correctly-formed request should return XML response.
     '''
     dspace_oai_uri = 'http://example.com/oai/request?'
-    dspace_oai_identifier = 'oai%3Adspace.mit.edu%3A1721.1%2F'
+    dspace_oai_identifier = 'oai:dspace.mit.edu:1721.1/'
     identifier = '12345'
     metadata_format = 'mets'
     r = get_record(dspace_oai_uri, dspace_oai_identifier, identifier,
@@ -62,22 +49,10 @@ def test_get_record_list_succeeds(pipeline):
     dspace_oai_uri = 'http://example.com/oai/request?'
     metadata_format = 'mets'
     start_date = '2017-01-01'
-    end_date = '2017-03-01'
+    end_date = '2017-02-01'
     r = get_record_list(dspace_oai_uri, metadata_format, start_date=start_date,
                         end_date=end_date)
-
     assert '<?xml version="1.0" encoding="UTF-8"?>' in r
-
-
-def test_get_record_list_bad_date_format_raises_error(pipeline):
-    '''Request with incorrectly formatted date input should raise an error.
-    '''
-    with pytest.raises(ValueError):
-        dspace_oai_uri = 'http://example.com/oai/request?'
-        metadata_format = 'mets'
-        start_date = '201-01-01'
-        r = get_record_list(dspace_oai_uri, metadata_format,
-                            start_date=start_date)
 
 
 def test_is_in_fedora_returns_true_for_ingested_item(fedora):
@@ -111,11 +86,5 @@ def test_is_thesis_returns_false_for_not_thesis():
 
 def test_parse_record_list_returns_correct_json(record_list):
     json_records = parse_record_list(record_list)
-    assert json_records == [{'identifier': '108425',
-                             'sets': ['hdl_1721.1_494'],
-                             'handle': '1721.1-108425'},
-                            {'identifier': '108390',
-                             'sets': ['hdl_1721.1_494', 'hdl_1721.1_7593'],
-                             'handle': '1721.1-108390'},
-                            {'identifier': '108391', 'sets': [],
-                             'handle': '1721.1-108391'}]
+    assert {'identifier': '108425', 'sets': ['hdl_1721.1_494'],
+            'handle': '1721.1-108425'} in json_records
