@@ -199,7 +199,7 @@ class Thesis(object):
         s = rdflib.URIRef('')
 
         def _add_metadata_field(p, obj, is_uri=False):
-            if isinstance(obj, list):
+            if isinstance(obj, list) or isinstance(obj, set):
                 for i in obj:
                     o = _create_rdf_obj(i, is_uri)
                     m.add((s, p, o))
@@ -401,7 +401,7 @@ def upload_thesis(fedora_uri, collection_name, handle, turtle, pdf_file,
                 upload_file(pdf_uri, pdf_file, 'application/pdf', auth=auth)
                 update_metadata(pdf_uri + 'fcr:metadata', pdf_sparql,
                                 auth=auth)
-                u = (fedora_uri + '/' + collection_name + '/' + handle + '/' +
+                u = (fedora_uri + collection_name + '/' + handle + '/' +
                      handle + '.pdf/')
                 query = ('PREFIX pcdm: <http://pcdm.org/models#> INSERT { '
                          '<> pcdm:hasFile <' + u + '> . } WHERE { }')
@@ -413,7 +413,7 @@ def upload_thesis(fedora_uri, collection_name, handle, turtle, pdf_file,
                                    auth=auth)
                     update_metadata(text_uri + 'fcr:metadata', text_sparql,
                                     auth=auth)
-                    u = (fedora_uri + '/' + collection_name + '/' + handle +
+                    u = (fedora_uri + collection_name + '/' + handle +
                          '/' + handle + '.txt/')
                     query = ('PREFIX pcdm: <http://pcdm.org/models#> '
                              'INSERT { <> pcdm:hasFile <' + u + '> . } '
